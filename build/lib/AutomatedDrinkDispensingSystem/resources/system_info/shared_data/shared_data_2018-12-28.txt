@@ -1,0 +1,22 @@
+STATUS
+mixing
+employee
+admin
+INVENTORY
+rum 300 1000
+vodka 500 900
+tequila 300 1000
+gin 1000 1000
+triple_sec 300 400
+soda_water 200 1500
+SALES
+cuba_libre 25.00
+daiquiri 10.00
+kamikaze 10.00
+long_island_iced_tea 23.00
+naval_gimlet 5.00
+rum_and_coke 10.00
+screwdriver 10.00
+tequila 0.00
+vodka 19.00
+vodka_and_cranberry 20.00

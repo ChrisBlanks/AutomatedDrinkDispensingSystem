@@ -1,0 +1,73 @@
+2019-01-12 06:18:41.079892 : Running main application
+2019-01-12 06:19:42.442664 : Running main application
+2019-01-12 06:30:39.833296 : Running main application
+2019-01-12 06:31:14.410876 : Running main application
+2019-01-12 06:31:17.196997 : Cleaned Config file.
+2019-01-12 06:33:33.480029 : Running main application
+2019-01-12 06:33:35.328285 : Cleaned Config file.
+2019-01-12 06:33:40.434383 : admin logged in
+2019-01-12 06:39:37.382609 : Running main application
+2019-01-12 06:39:39.280519 : Cleaned Config file.
+2019-01-12 06:39:45.406098 : admin logged in
+2019-01-12 06:41:43.873539 : Running main application
+2019-01-12 06:41:45.438046 : Cleaned Config file.
+2019-01-12 06:41:50.189858 : admin logged in
+2019-01-12 07:03:57.173518 : Running main application
+2019-01-12 07:04:00.763880 : Cleaned Config file.
+2019-01-12 07:04:05.801856 : admin logged in
+2019-01-12 07:05:59.539910 : Running main application
+2019-01-12 07:06:04.939572 : Cleaned Config file.
+2019-01-12 07:06:09.191871 : admin logged in
+2019-01-12 07:08:16.897605 : Running main application
+2019-01-12 07:08:18.767879 : Cleaned Config file.
+2019-01-12 07:08:23.026957 : admin logged in
+2019-01-12 07:09:07.218108 : Running main application
+2019-01-12 07:09:09.069939 : Cleaned Config file.
+2019-01-12 07:09:13.313474 : admin logged in
+2019-01-12 14:46:33.602182 : Running main application
+2019-01-12 14:46:35.636549 : Cleaned Config file.
+2019-01-12 14:46:41.300362 : admin logged in
+2019-01-12 15:40:02.774721 : Running main application
+2019-01-12 15:40:04.643854 : Cleaned Config file.
+2019-01-12 15:40:09.457853 : admin logged in
+2019-01-12 12:30:41.933545 : Running main application
+2019-01-12 12:30:44.180557 : Cleaned Config file.
+2019-01-12 12:30:50.239398 : admin logged in
+2019-01-12 15:15:22.134528 : Running main application
+2019-01-12 15:15:22.794313 : Made new login file
+2019-01-12 15:23:40.915250 : Running main application
+2019-01-12 15:32:48.261444 : Running main application
+2019-01-12 15:33:36.566489 : Running main application
+2019-01-12 15:33:54.721581 : Running main application
+2019-01-12 15:33:57.086098 : Cleaned Config file.
+2019-01-12 15:34:02.897416 : admin logged in
+2019-01-12 15:36:29.578159 : Running main application
+2019-01-12 15:36:31.739989 : Cleaned Config file.
+2019-01-12 15:36:36.816580 : admin logged in
+2019-01-12 15:43:59.518966 : Running main application
+2019-01-12 15:45:11.277107 : Running main application
+2019-01-12 15:45:11.936712 : Made new login file
+2019-01-12 15:45:13.827057 : Cleaned Config file.
+2019-01-12 15:45:20.651291 : admin logged in
+2019-01-12 15:48:19.590950 : Running main application
+2019-01-12 15:48:22.143035 : Cleaned Config file.
+2019-01-12 15:48:27.771703 : admin logged in
+2019-01-12 15:52:04.297705 : Running main application
+2019-01-12 15:52:04.964755 : Made new login file
+2019-01-12 15:52:06.645443 : Cleaned Config file.
+2019-01-12 15:52:12.104951 : admin logged in
+2019-01-12 15:52:50.506449 : Running main application
+2019-01-12 15:52:52.714020 : Cleaned Config file.
+2019-01-12 15:52:57.625819 : admin logged in
+2019-01-12 15:53:25.831570 : Added nathan account to login.
+2019-01-12 15:53:38.532176 : Added ryan account to login.
+2019-01-12 15:54:06.717078 : Added chris account to login.
+2019-01-12 15:57:32.230185 : Running main application
+2019-01-12 15:57:34.485775 : Cleaned Config file.
+2019-01-12 15:57:39.932638 : chris logged in
+2019-01-12 16:03:32.533304 : Running main application
+2019-01-12 16:03:37.374405 : Cleaned Config file.
+2019-01-12 16:03:46.374458 : Failed login
+2019-01-12 16:06:29.927533 : Running main application
+2019-01-12 16:06:41.321570 : Cleaned Config file.
+2019-01-12 16:06:50.918475 : admin logged in

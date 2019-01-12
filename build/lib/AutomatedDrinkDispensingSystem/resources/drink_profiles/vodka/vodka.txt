@@ -1,0 +1,7 @@
+id_number 8
+name vodka
+ingredients vodka
+picture_location /home/pi/PYTHON_PROJECTS/AutomatedDrinkDispensingSystem/AutomatedDrinkDispensingSystem/resources/drink_profiles/vodka/vodka.jpg
+isUrl False
+isActive 1
+Price 5.00

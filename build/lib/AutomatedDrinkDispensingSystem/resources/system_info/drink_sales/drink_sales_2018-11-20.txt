@@ -1,0 +1,2 @@
+2018-11-20 21:22:30.166987 : 5 tequilas were ordered.
+2018-11-20 21:24:57.432084 : 1 cuba libre was ordered.

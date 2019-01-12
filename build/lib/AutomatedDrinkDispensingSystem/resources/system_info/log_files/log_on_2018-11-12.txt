@@ -1,0 +1,14 @@
+2018-11-12 00:29:19.623913 : Running main application
+2018-11-12 00:29:22.333488 : Cleaned Config file.
+2018-11-12 00:29:32.699691 : nathan logged in
+2018-11-12 00:30:03.733703 : lei logged in
+2018-11-12 00:35:09.465876 : Running main application
+2018-11-12 00:35:13.369220 : Cleaned Config file.
+2018-11-12 00:35:22.904104 : lei logged in
+2018-11-12 00:37:13.103401 : Running main application
+2018-11-12 00:37:14.323950 : Cleaned Config file.
+2018-11-12 00:37:22.114906 : nathan logged in
+2018-11-12 00:38:05.128063 : lei logged in
+2018-11-12 00:39:11.775072 : Running main application
+2018-11-12 00:39:12.723625 : Cleaned Config file.
+2018-11-12 00:39:20.075955 : lei logged in

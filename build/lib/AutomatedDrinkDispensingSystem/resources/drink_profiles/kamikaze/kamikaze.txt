@@ -1,0 +1,7 @@
+id_number 2
+name kamikaze
+ingredients tequila orange_liquer lime_juice
+picture_location /home/pi/PYTHON_PROJECTS/AutomatedDrinkDispensingSystem/AutomatedDrinkDispensingSystem/resources/drink_profiles/kamikaze/kamikaze.jpg
+isUrl False
+isActive 1
+Price 5.00

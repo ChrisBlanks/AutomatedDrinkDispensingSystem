@@ -2,15 +2,19 @@
 
 import setuptools
 
+
 setuptools.setup(
     name="AutomatedDrinkDispensingSystem",
-    version="0.0a1",
-    author="Chris B.",
+    version="0.0a3",
+    author="Chris Blanks",
     author_email="christopherablanks@gmail.com",
+    url="https://github.com/ChrisBlanks/AutomatedDrinkDispensingSystem",
     packages=setuptools.find_packages(),
+    include_package_data=True,
     license="LICENSE.txt",
     long_description=open("README.txt").read(),
     install_requires=[
-        "cryptography >= 1.7.1",
+        "setuptools >= 18.5", "cryptography >= 1.7.1",
+
     ],
 )

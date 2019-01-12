@@ -1,9 +1,9 @@
 Metadata-Version: 1.0
 Name: AutomatedDrinkDispensingSystem
-Version: 0.0a1
+Version: 0.0a3
 Summary: UNKNOWN
-Home-page: UNKNOWN
-Author: Chris B.
+Home-page: https://github.com/ChrisBlanks/AutomatedDrinkDispensingSystem
+Author: Chris Blanks
 Author-email: christopherablanks@gmail.com
 License: LICENSE.txt
 Description: This project is a GUI (graphical user interface) application for controlling the Automated Drink

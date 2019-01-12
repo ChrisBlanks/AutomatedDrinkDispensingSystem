@@ -1,0 +1,7 @@
+This text file contains the instructions for how to use the automated drink making machine for a customer.
+Here are the steps:
+1. View available drinks.
+2. Click on a drink button to see its details.
+3. Click the back button if you want to view other drinks.
+4. Click the buy button if you want to purchase the drink.
+5. Insert money into the machine in order to start the drink making process.

@@ -1,0 +1,7 @@
+id_number 1
+name daiquiri
+ingredients tequila orange_liquer lime_juice
+picture_location /home/pi/PYTHON_PROJECTS/AutomatedDrinkDispensingSystem/AutomatedDrinkDispensingSystem/resources/drink_profiles/daiquiri/daiquiri.jpg
+isUrl False
+isActive 1
+Price 5.00

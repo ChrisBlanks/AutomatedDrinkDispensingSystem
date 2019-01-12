@@ -1,0 +1,3 @@
+2018-11-03 17:14:43.514934 : Running main application
+2018-11-03 17:14:45.017940 : Cleaned Config file.
+

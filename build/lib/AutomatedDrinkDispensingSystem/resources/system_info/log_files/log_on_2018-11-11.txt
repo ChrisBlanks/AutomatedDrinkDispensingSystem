@@ -1,0 +1,248 @@
+2018-11-11 00:00:42.172344 : Running main application
+2018-11-11 00:00:43.072141 : Cleaned Config file.
+2018-11-11 00:01:06.064622 : chris logged in
+2018-11-11 00:02:59.708067 : Running main application
+2018-11-11 00:03:01.051444 : Cleaned Config file.
+2018-11-11 00:03:06.987464 : chris logged in
+2018-11-11 00:27:04.595847 : Running main application
+2018-11-11 00:27:05.396054 : Cleaned Config file.
+2018-11-11 00:27:30.602724 : Running main application
+2018-11-11 00:27:32.183600 : Cleaned Config file.
+2018-11-11 00:27:46.836352 : chris logged in
+2018-11-11 00:28:06.967304 : Cleaned Config file.
+2018-11-11 00:29:36.987064 : Running main application
+2018-11-11 00:29:38.753122 : Cleaned Config file.
+2018-11-11 00:29:53.194490 : chris logged in
+2018-11-11 00:30:48.610719 : Running main application
+2018-11-11 00:30:49.510497 : Cleaned Config file.
+2018-11-11 00:30:55.108127 : chris logged in
+2018-11-11 00:40:15.380057 : Running main application
+2018-11-11 00:40:16.129989 : Cleaned Config file.
+2018-11-11 00:40:23.351733 : chris logged in
+2018-11-11 02:24:46.561092 : Running main application
+2018-11-11 02:24:47.457779 : Cleaned Config file.
+2018-11-11 02:24:55.278135 : chris logged in
+2018-11-11 02:29:48.883933 : Running main application
+2018-11-11 02:29:49.543058 : Cleaned Config file.
+2018-11-11 02:29:56.268615 : chris logged in
+2018-11-11 02:30:52.313766 : Running main application
+2018-11-11 02:30:53.215738 : Cleaned Config file.
+2018-11-11 02:30:59.722078 : chris logged in
+2018-11-11 02:32:17.957399 : Running main application
+2018-11-11 02:32:18.719365 : Cleaned Config file.
+2018-11-11 02:32:25.884495 : chris logged in
+2018-11-11 02:32:59.883724 : Running main application
+2018-11-11 02:33:00.527170 : Cleaned Config file.
+2018-11-11 02:33:10.368839 : chris logged in
+2018-11-11 02:33:47.004374 : Added nathanaccount to login.
+2018-11-11 02:36:12.756559 : Running main application
+2018-11-11 02:36:13.502715 : Cleaned Config file.
+2018-11-11 02:36:21.857703 : nathan logged in
+2018-11-11 02:36:49.567401 : Added ryanaccount to login.
+2018-11-11 02:38:08.120744 : Running main application
+2018-11-11 02:38:08.763191 : Cleaned Config file.
+2018-11-11 02:38:16.105610 : chris logged in
+2018-11-11 02:38:41.770460 : Removed chrisaccount from login.
+2018-11-11 02:39:17.415286 : Removed nathanaccount from login.
+2018-11-11 02:40:49.212205 : Running main application
+2018-11-11 02:40:49.790742 : Cleaned Config file.
+2018-11-11 02:40:56.023851 : chris logged in
+2018-11-11 02:41:11.337290 : Removed chrisaccount from login.
+2018-11-11 02:41:32.526304 : Removed nathanaccount from login.
+2018-11-11 02:42:42.200081 : Running main application
+2018-11-11 02:42:43.521856 : Cleaned Config file.
+2018-11-11 02:42:51.317227 : chris logged in
+2018-11-11 02:43:04.170056 : Removed nathanaccount from login.
+2018-11-11 02:43:44.725891 : Running main application
+2018-11-11 02:43:45.476013 : Cleaned Config file.
+2018-11-11 02:43:51.298299 : chris logged in
+2018-11-11 02:44:03.353202 : Removed chrisaccount from login.
+2018-11-11 02:44:22.378057 : Added chrisaccount to login.
+2018-11-11 02:45:50.660223 : Running main application
+2018-11-11 02:45:51.474732 : Cleaned Config file.
+2018-11-11 02:46:01.248533 : chris logged in
+2018-11-11 12:58:22.419966 : Running main application
+2018-11-11 12:58:23.802760 : Cleaned Config file.
+2018-11-11 12:58:30.794420 : chris logged in
+2018-11-11 12:59:12.160196 : Added ryanaccount to login.
+2018-11-11 13:00:40.201786 : Running main application
+2018-11-11 13:00:44.076190 : Cleaned Config file.
+2018-11-11 13:00:52.029810 : admin logged in
+2018-11-11 13:02:58.561666 : Running main application
+2018-11-11 13:02:59.507461 : Cleaned Config file.
+2018-11-11 13:03:06.081369 : admin logged in
+2018-11-11 13:04:06.023534 : Running main application
+2018-11-11 13:04:10.421410 : Cleaned Config file.
+2018-11-11 13:04:17.527726 : chris logged in
+2018-11-11 13:04:33.933927 : Removed nathanaccount from login.
+2018-11-11 13:08:14.426323 : Running main application
+2018-11-11 13:08:15.307184 : Cleaned Config file.
+2018-11-11 13:08:20.932440 : admin logged in
+2018-11-11 13:08:39.665809 : Added randomaccount to login.
+2018-11-11 13:08:57.460227 : Removed randomaccount from login.
+2018-11-11 13:12:10.251293 : Running main application
+2018-11-11 13:12:11.422558 : Cleaned Config file.
+2018-11-11 13:12:18.071376 : chris logged in
+2018-11-11 13:12:32.485159 : Added randomaccount to login.
+2018-11-11 13:13:23.265982 : Removed randomaccount from login.
+2018-11-11 13:13:50.558378 : Running main application
+2018-11-11 13:13:52.454926 : Cleaned Config file.
+2018-11-11 13:13:58.435694 : admin logged in
+2018-11-11 13:16:45.429232 : Running main application
+2018-11-11 13:16:46.514710 : Cleaned Config file.
+2018-11-11 13:16:53.273205 : chris logged in
+2018-11-11 13:17:21.343941 : Removed nathanaccount from login.
+2018-11-11 13:18:12.065301 : Added nathanaccount to login.
+2018-11-11 13:18:28.658613 : Added someaccount to login.
+2018-11-11 13:18:46.167734 : Removed someaccount from login.
+2018-11-11 13:21:43.959685 : Running main application
+2018-11-11 13:21:48.169948 : Cleaned Config file.
+2018-11-11 13:21:54.862928 : chris logged in
+2018-11-11 13:22:10.029629 : Added randomaccount to login.
+2018-11-11 13:27:51.557370 : Running main application
+2018-11-11 13:27:52.424908 : Cleaned Config file.
+2018-11-11 13:27:58.496348 : chris logged in
+2018-11-11 13:30:07.043777 : Running main application
+2018-11-11 13:30:07.934592 : Cleaned Config file.
+2018-11-11 13:30:13.943107 : admin logged in
+2018-11-11 13:30:24.332324 : Removed randomaccount from login.
+2018-11-11 13:32:28.606753 : Running main application
+2018-11-11 13:32:29.920685 : Cleaned Config file.
+2018-11-11 13:32:36.005897 : admin logged in
+2018-11-11 13:32:48.393675 : Added randomaccount to login.
+2018-11-11 13:33:59.787403 : Running main application
+2018-11-11 13:34:01.517721 : Cleaned Config file.
+2018-11-11 13:34:08.959144 : admin logged in
+2018-11-11 13:35:56.322458 : Running main application
+2018-11-11 13:35:57.183480 : Cleaned Config file.
+2018-11-11 13:36:02.722334 : admin logged in
+2018-11-11 13:36:18.339783 : Removed randomaccount from login.
+2018-11-11 13:36:43.645274 : Removed randomaccount from login.
+2018-11-11 13:37:03.809178 : Removed thisaccount from login.
+2018-11-11 13:38:27.204969 : Running main application
+2018-11-11 13:38:28.150049 : Cleaned Config file.
+2018-11-11 13:38:44.514831 : admin logged in
+2018-11-11 13:39:14.288702 : Removed randomaccount from login.
+2018-11-11 13:40:44.196417 : Running main application
+2018-11-11 13:40:48.543277 : Cleaned Config file.
+2018-11-11 13:40:56.538319 : chris logged in
+2018-11-11 13:41:16.286975 : Added CHRISaccount to login.
+2018-11-11 13:41:35.209817 : Removed CHRISaccount from login.
+2018-11-11 13:41:57.498690 : Added randomaccount to login.
+2018-11-11 13:42:16.812786 : Removed randomaccount from login.
+2018-11-11 13:42:37.284396 : Removed CHRISaccount from login.
+2018-11-11 13:43:40.442719 : Running main application
+2018-11-11 13:43:41.691213 : Cleaned Config file.
+2018-11-11 13:43:51.461274 : chris logged in
+2018-11-11 13:44:07.667107 : Removed randomaccount from login.
+2018-11-11 13:44:36.891125 : Removed CHRISaccount from login.
+2018-11-11 13:44:59.670868 : Running main application
+2018-11-11 13:45:00.577060 : Cleaned Config file.
+2018-11-11 13:45:07.914582 : chris logged in
+2018-11-11 13:45:21.021618 : Removed randomaccount from login.
+2018-11-11 13:50:39.341081 : Running main application
+2018-11-11 13:50:40.246883 : Cleaned Config file.
+2018-11-11 13:50:46.560913 : chris logged in
+2018-11-11 13:50:58.629211 : Removed randomaccount from login.
+2018-11-11 13:55:48.528946 : Running main application
+2018-11-11 13:55:49.373988 : Cleaned Config file.
+2018-11-11 13:55:55.651303 : chris logged in
+2018-11-11 13:56:07.335209 : Added randomaccount to login.
+2018-11-11 13:56:20.765664 : Removed randomaccount from login.
+2018-11-11 13:57:53.657000 : Running main application
+2018-11-11 13:57:54.590557 : Cleaned Config file.
+2018-11-11 13:58:06.736182 : chris logged in
+2018-11-11 13:58:23.188512 : Added nathanaccount to login.
+2018-11-11 13:58:42.729277 : Removed nathanaccount from login.
+2018-11-11 13:58:58.855624 : Added nathanaccount to login.
+2018-11-11 13:59:32.977740 : Added nathanaccount to login.
+2018-11-11 13:59:51.020791 : Added ryanaccount to login.
+2018-11-11 14:00:11.316447 : Added nathanaccount to login.
+2018-11-11 14:00:25.911263 : Added nathanaccount to login.
+2018-11-11 14:02:14.315975 : Running main application
+2018-11-11 14:02:38.862154 : chris logged in
+2018-11-11 14:03:01.809080 : Removed nathanaccount from login.
+2018-11-11 14:03:40.802950 : Added ryanaccount to login.
+2018-11-11 14:03:47.847486 : Running main application
+2018-11-11 14:03:49.103206 : Cleaned Config file.
+2018-11-11 14:04:03.036891 : admin logged in
+2018-11-11 14:04:19.973278 : Added ryanaccount to login.
+2018-11-11 14:04:37.393518 : Added ryanaccount to login.
+2018-11-11 14:04:46.712426 : Running main application
+2018-11-11 14:04:47.734533 : Cleaned Config file.
+2018-11-11 14:05:01.008399 : chris logged in
+2018-11-11 14:07:43.305474 : Running main application
+2018-11-11 14:07:44.482403 : Cleaned Config file.
+2018-11-11 14:07:50.827094 : chris logged in
+2018-11-11 14:08:05.942667 : Removed ryanaccount from login.
+2018-11-11 14:08:21.152387 : Added nathanaccount to login.
+2018-11-11 14:08:35.507345 : Added ryanaccount to login.
+2018-11-11 14:08:45.842836 : Running main application
+2018-11-11 14:08:46.908355 : Cleaned Config file.
+2018-11-11 14:09:10.574226 : chris logged in
+2018-11-11 14:09:49.188800 : Removed ryanaccount from login.
+2018-11-11 14:11:57.341225 : Running main application
+2018-11-11 14:12:00.521035 : Cleaned Config file.
+2018-11-11 14:12:06.592876 : chris logged in
+2018-11-11 14:12:35.878638 : Added ryanaccount to login.
+2018-11-11 14:12:56.477769 : Running main application
+2018-11-11 14:12:58.743837 : Cleaned Config file.
+2018-11-11 14:14:36.383263 : Running main application
+2018-11-11 14:14:37.516297 : Cleaned Config file.
+2018-11-11 14:18:06.541289 : chris logged in
+2018-11-11 14:25:04.527847 : Running main application
+2018-11-11 14:25:07.760547 : Cleaned Config file.
+2018-11-11 14:25:14.658877 : chris logged in
+2018-11-11 14:25:29.858104 : Added ryanaccount to login.
+2018-11-11 14:25:42.572437 : Added randomaccount to login.
+2018-11-11 14:25:59.772645 : Removed randomaccount from login.
+2018-11-11 14:26:13.830829 : Running main application
+2018-11-11 14:26:14.827903 : Cleaned Config file.
+2018-11-11 14:26:58.712434 : chris logged in
+2018-11-11 14:29:02.065303 : Running main application
+2018-11-11 14:29:03.061550 : Cleaned Config file.
+2018-11-11 14:29:27.216062 : Running main application
+2018-11-11 14:29:28.017000 : Cleaned Config file.
+2018-11-11 14:31:31.839830 : Running main application
+2018-11-11 14:31:32.775855 : Cleaned Config file.
+2018-11-11 14:34:20.049579 : Running main application
+2018-11-11 14:34:21.225456 : Cleaned Config file.
+2018-11-11 14:36:15.506596 : Running main application
+2018-11-11 14:36:16.400730 : Cleaned Config file.
+2018-11-11 14:39:00.072459 : Running main application
+2018-11-11 14:39:01.379345 : Cleaned Config file.
+2018-11-11 14:39:07.221566 : chris logged in
+2018-11-11 14:39:20.843605 : Removed ryanaccount from login.
+2018-11-11 14:39:59.202032 : Running main application
+2018-11-11 14:40:00.181366 : Cleaned Config file.
+2018-11-11 14:40:06.393780 : chris logged in
+2018-11-11 14:40:23.044597 : Added ryanaccount to login.
+2018-11-11 14:42:45.951748 : Running main application
+2018-11-11 14:42:46.794524 : Cleaned Config file.
+2018-11-11 14:44:30.795786 : Running main application
+2018-11-11 14:44:31.775593 : Cleaned Config file.
+2018-11-11 14:44:38.110246 : chris logged in
+2018-11-11 14:50:08.693083 : Running main application
+2018-11-11 14:50:14.028955 : Cleaned Config file.
+2018-11-11 14:50:20.132900 : chris logged in
+2018-11-11 14:50:37.243978 : Added ryanaccount to login.
+2018-11-11 14:52:21.771350 : Running main application
+2018-11-11 14:52:23.983353 : Cleaned Config file.
+2018-11-11 14:52:31.397251 : chris logged in
+2018-11-11 14:52:48.013151 : Added ryanaccount to login.
+2018-11-11 14:55:02.554407 : Running main application
+2018-11-11 14:55:03.557684 : Cleaned Config file.
+2018-11-11 14:55:09.206077 : chris logged in
+2018-11-11 14:55:22.741879 : Added ryanaccount to login.
+2018-11-11 14:58:13.272186 : Running main application
+2018-11-11 14:58:14.095112 : Cleaned Config file.
+2018-11-11 14:58:21.205215 : chris logged in
+2018-11-11 14:58:34.798023 : Added ryanaccount to login.
+2018-11-11 14:59:36.285684 : Running main application
+2018-11-11 14:59:37.272758 : Cleaned Config file.
+2018-11-11 14:59:43.202504 : chris logged in
+2018-11-11 14:59:57.934331 : Added ryanaccount to login.
+2018-11-11 15:00:18.632853 : ryan logged in
+2018-11-11 15:00:25.630387 : Running main application
+2018-11-11 15:00:26.592690 : Cleaned Config file.
+2018-11-11 15:00:32.818203 : ryan logged in

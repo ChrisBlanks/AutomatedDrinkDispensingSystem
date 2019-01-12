@@ -1,0 +1,7 @@
+id_number 7
+name tequila
+ingredients tequila
+picture_location /home/pi/PYTHON_PROJECTS/AutomatedDrinkDispensingSystem/AutomatedDrinkDispensingSystem/resources/drink_profiles/tequila/tequila.jpg
+isUrl False
+isActive 1
+Price 5.00

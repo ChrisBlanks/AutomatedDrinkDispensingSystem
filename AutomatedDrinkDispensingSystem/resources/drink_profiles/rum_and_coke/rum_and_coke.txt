@@ -1,0 +1,7 @@
+id_number 5
+name rum_and_coke
+ingredients Rum Coke
+picture_location /home/pi/PYTHON_PROJECTS/AutomatedDrinkDispensingSystem/AutomatedDrinkDispensingSystem/resources/drink_profiles/rum_and_coke/rum_and_coke.jpg
+isUrl False
+isActive 1
+Price 5.00

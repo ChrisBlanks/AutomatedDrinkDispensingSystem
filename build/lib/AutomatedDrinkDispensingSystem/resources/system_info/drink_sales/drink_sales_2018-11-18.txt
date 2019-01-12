@@ -1,0 +1,3 @@
+2018-11-18 16:52:39.658336 : 3 cuba libres were ordered.
+2018-11-18 16:52:48.529143 : 1 daiquiri(s) was ordered.
+2018-11-18 16:53:04.048696 : 1 tequila was ordered.

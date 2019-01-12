@@ -1,0 +1,7 @@
+id_number 120
+name test2
+ingredients nothing
+picture_location /home/pi/PYTHON_PROJECTS/AutomatedDrinkDispensingSystem/AutomatedDrinkDispensingSystem/resources/drink_profiles/test2/test2.jpg
+isUrl False
+isActive 0
+Price 2.00

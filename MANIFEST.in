@@ -1,2 +1,5 @@
 include *.txt
 recursive-include docs *.txt
+recursive-include AutomatedDrinkDispensingSystem/resources/gui_images/ *.txt *.png *.ico
+recursive-include AutomatedDrinkDispensingSystem/resources/drink_profiles/ *.txt *.jpg
+recursive-include AutomatedDrinkDispensingSystem/resources/system_info/ *.txt *.csv

@@ -1,0 +1,7 @@
+id_number 9
+name vodka_and_cranberry
+ingredients vodka cranberry juice
+picture_location /home/pi/PYTHON_PROJECTS/AutomatedDrinkDispensingSystem/AutomatedDrinkDispensingSystem/resources/drink_profiles/vodka_and_cranberry/vodka_and_cranberry.jpg
+isUrl False
+isActive 1
+Price 1.25
