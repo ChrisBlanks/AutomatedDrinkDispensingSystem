@@ -1,0 +1,181 @@
+2018-11-14 11:21:31.596813 : Running main application
+2018-11-14 11:21:36.474890 : Cleaned Config file.
+2018-11-14 11:21:42.627669 : chris logged in
+2018-11-14 16:36:28.018673 : Running main application
+2018-11-14 16:36:29.968324 : Cleaned Config file.
+2018-11-14 16:36:36.440507 : chris logged in
+2018-11-14 16:38:22.087468 : Running main application
+2018-11-14 16:38:24.169158 : Cleaned Config file.
+2018-11-14 16:38:30.028880 : chris logged in
+2018-11-14 16:40:03.858916 : Running main application
+2018-11-14 16:40:05.621469 : Cleaned Config file.
+2018-11-14 16:40:11.560481 : chris logged in
+2018-11-14 16:47:04.038536 : Running main application
+2018-11-14 16:47:06.759665 : Cleaned Config file.
+2018-11-14 16:47:12.280640 : chris logged in
+2018-11-14 16:47:34.395926 : Edited this drink: super water
+2018-11-14 16:47:49.297791 : Running main application
+2018-11-14 16:47:51.077376 : Cleaned Config file.
+2018-11-14 16:47:57.566948 : chris logged in
+2018-11-14 16:48:38.410099 : Edited this drink: dumb water
+2018-11-14 16:48:53.665611 : Running main application
+2018-11-14 16:48:55.016423 : Cleaned Config file.
+2018-11-14 16:49:02.786639 : chris logged in
+2018-11-14 21:37:19.971839 : Running main application
+2018-11-14 21:37:25.288149 : Cleaned Config file.
+2018-11-14 21:37:32.041503 : chris logged in
+2018-11-14 21:37:53.642607 : Edited this drink: test drink 2
+2018-11-14 21:38:13.916365 : chris logged in
+2018-11-14 21:38:25.280002 : Running main application
+2018-11-14 21:38:26.400025 : Cleaned Config file.
+2018-11-14 21:38:32.177446 : chris logged in
+2018-11-14 21:38:46.826462 : Edited this drink: test drink 2
+2018-11-14 21:39:02.989919 : Edited this drink: dumb water
+2018-11-14 21:39:14.037315 : Edited this drink: test drink 2
+2018-11-14 21:39:30.441454 : Edited this drink: vodka and cranberry
+2018-11-14 21:40:09.710238 : Running main application
+2018-11-14 21:40:10.610610 : Cleaned Config file.
+2018-11-14 21:40:16.756209 : chris logged in
+2018-11-14 21:43:07.787834 : Running main application
+2018-11-14 21:43:09.644881 : Cleaned Config file.
+2018-11-14 21:43:16.826541 : chris logged in
+2018-11-14 21:43:39.016423 : Edited this drink: test drink 2
+2018-11-14 21:43:50.157144 : Running main application
+2018-11-14 21:43:51.564835 : Cleaned Config file.
+2018-11-14 21:43:57.307164 : chris logged in
+2018-11-14 21:44:32.171487 : Edited this drink: test drink 2
+2018-11-14 21:46:38.537845 : Running main application
+2018-11-14 21:46:39.645696 : Cleaned Config file.
+2018-11-14 21:46:46.083401 : chris logged in
+2018-11-14 21:47:24.827859 : Edited this drink: test drink 2
+2018-11-14 21:49:38.571725 : Running main application
+2018-11-14 21:49:39.888256 : Cleaned Config file.
+2018-11-14 21:49:46.477073 : chris logged in
+2018-11-14 21:50:03.685956 : Edited this drink: test drink 2
+2018-11-14 21:52:03.671514 : Running main application
+2018-11-14 21:52:05.214267 : Cleaned Config file.
+2018-11-14 21:52:11.058683 : chris logged in
+2018-11-14 21:52:29.289155 : Edited this drink: test drink 2
+2018-11-14 21:53:07.849967 : Edited this drink: dumb water
+2018-11-14 21:53:37.155797 : chris logged in
+2018-11-14 21:53:58.200841 : Deleted this drink: test drink 2
+2018-11-14 21:54:27.635660 : Edited this drink: dumb water
+2018-11-14 21:54:45.941886 : Edited this drink: vodka and cranberry
+2018-11-14 21:55:31.658143 : chris logged in
+2018-11-14 21:56:14.730558 : Running main application
+2018-11-14 21:56:16.912658 : Cleaned Config file.
+2018-11-14 21:56:23.339048 : chris logged in
+2018-11-14 21:56:39.427664 : Edited this drink: vodka and cranberry
+2018-11-14 21:56:48.615459 : Edited this drink: vodka and cranberry
+2018-11-14 21:57:06.783257 : chris logged in
+2018-11-14 21:58:59.262238 : Running main application
+2018-11-14 21:59:00.147074 : Cleaned Config file.
+2018-11-14 21:59:06.963915 : chris logged in
+2018-11-14 21:59:23.342787 : Edited this drink: dumb water
+2018-11-14 21:59:59.630346 : Running main application
+2018-11-14 22:00:00.671264 : Cleaned Config file.
+2018-11-14 22:00:07.047184 : chris logged in
+2018-11-14 22:00:21.759999 : Edited this drink: dumb water
+2018-11-14 22:03:01.157090 : Running main application
+2018-11-14 22:03:05.302597 : Cleaned Config file.
+2018-11-14 22:03:13.442750 : chris logged in
+2018-11-14 22:03:26.955759 : Edited this drink: dumb water
+2018-11-14 22:05:26.756653 : Running main application
+2018-11-14 22:05:29.466670 : Cleaned Config file.
+2018-11-14 22:05:35.639392 : chris logged in
+2018-11-14 22:05:46.339153 : Edited this drink: dumb water
+2018-11-14 22:06:57.838952 : Running main application
+2018-11-14 22:06:59.806992 : Cleaned Config file.
+2018-11-14 22:07:06.623875 : ryan logged in
+2018-11-14 22:08:40.191850 : Running main application
+2018-11-14 22:08:42.482329 : Cleaned Config file.
+2018-11-14 22:08:51.890411 : chris logged in
+2018-11-14 22:09:15.263599 : Edited this drink: dumb water
+2018-11-14 22:11:41.414781 : Running main application
+2018-11-14 22:11:45.847950 : Cleaned Config file.
+2018-11-14 22:11:51.781378 : chris logged in
+2018-11-14 22:12:04.310078 : Edited this drink: dumb water
+2018-11-14 22:12:26.788652 : Running main application
+2018-11-14 22:12:28.506787 : Cleaned Config file.
+2018-11-14 22:12:37.609975 : chris logged in
+2018-11-14 22:12:49.330187 : Edited this drink: dumb water
+2018-11-14 22:13:13.711851 : Running main application
+2018-11-14 22:13:15.605271 : Cleaned Config file.
+2018-11-14 22:13:22.465686 : chris logged in
+2018-11-14 22:13:33.542037 : Edited this drink: dumb water
+2018-11-14 22:16:53.609763 : Running main application
+2018-11-14 22:16:57.513048 : Cleaned Config file.
+2018-11-14 22:17:04.452816 : chris logged in
+2018-11-14 22:17:26.457136 : Edited this drink: dumb water
+2018-11-14 22:20:12.855454 : Running main application
+2018-11-14 22:20:13.719040 : Cleaned Config file.
+2018-11-14 22:20:29.338559 : chris logged in
+2018-11-14 22:20:52.405101 : Edited this drink: dumb water
+2018-11-14 22:21:28.914331 : Edited this drink: dumb water
+2018-11-14 22:21:44.821464 : Edited this drink: dumb water
+2018-11-14 22:23:11.840007 : Edited this drink: vodka and cranberry
+2018-11-14 22:24:23.663013 : chris logged in
+2018-11-14 22:24:48.251543 : Edited this drink: vodka and cranberry
+2018-11-14 22:25:52.841630 : Edited this drink: rum and coke
+2018-11-14 22:28:00.106235 : Running main application
+2018-11-14 22:28:01.045419 : Cleaned Config file.
+2018-11-14 22:28:07.065372 : chris logged in
+2018-11-14 22:28:34.771031 : Edited this drink: vodka
+2018-11-14 22:30:46.343713 : Running main application
+2018-11-14 22:30:47.568717 : Cleaned Config file.
+2018-11-14 22:30:55.271831 : chris logged in
+2018-11-14 22:32:48.906539 : Running main application
+2018-11-14 22:32:50.167767 : Cleaned Config file.
+2018-11-14 22:32:55.887009 : chris logged in
+2018-11-14 22:37:46.350077 : Running main application
+2018-11-14 22:37:53.485182 : Cleaned Config file.
+2018-11-14 22:38:01.601306 : chris logged in
+2018-11-14 22:42:38.302553 : Running main application
+2018-11-14 22:42:39.237939 : Cleaned Config file.
+2018-11-14 22:42:45.522335 : chris logged in
+2018-11-14 22:42:57.999505 : Deleted this drink: test drink 2
+2018-11-14 22:47:57.379152 : Running main application
+2018-11-14 22:48:01.071662 : Cleaned Config file.
+2018-11-14 22:48:07.225660 : chris logged in
+2018-11-14 22:48:18.683879 : Deleted this drink: dumb water
+2018-11-14 22:49:12.587042 : chris logged in
+2018-11-14 22:49:31.769581 : Running main application
+2018-11-14 22:49:32.766228 : Cleaned Config file.
+2018-11-14 22:49:39.044487 : chris logged in
+2018-11-14 22:50:04.466975 : Edited this drink: water
+2018-11-14 22:50:21.221942 : Edited this drink: water
+2018-11-14 22:50:37.891877 : Running main application
+2018-11-14 22:50:38.831431 : Cleaned Config file.
+2018-11-14 22:50:44.871045 : chris logged in
+2018-11-14 22:50:53.186583 : Deleted this drink: water
+2018-11-14 22:50:53.225593 : Cleaned Config file.
+2018-11-14 22:51:30.985128 : Running main application
+2018-11-14 22:51:31.814142 : Cleaned Config file.
+2018-11-14 22:51:39.480088 : chris logged in
+2018-11-14 22:55:56.741912 : Running main application
+2018-11-14 22:56:00.129253 : Cleaned Config file.
+2018-11-14 22:56:06.774288 : chris logged in
+2018-11-14 22:59:40.667590 : Running main application
+2018-11-14 22:59:43.807412 : Cleaned Config file.
+2018-11-14 22:59:50.140345 : chris logged in
+2018-11-14 23:00:51.938263 : Running main application
+2018-11-14 23:00:55.722566 : Cleaned Config file.
+2018-11-14 23:01:02.901463 : chris logged in
+2018-11-14 23:03:21.666997 : Running main application
+2018-11-14 23:03:22.679545 : Cleaned Config file.
+2018-11-14 23:03:28.557108 : chris logged in
+2018-11-14 23:11:14.061160 : Running main application
+2018-11-14 23:11:15.978045 : Cleaned Config file.
+2018-11-14 23:11:22.356066 : chris logged in
+2018-11-14 23:11:34.343050 : Edited this drink: cuba_libre
+2018-11-14 23:11:50.642543 : Edited this drink: daiquiri
+2018-11-14 23:12:02.223117 : Edited this drink: kamikaze
+2018-11-14 23:12:12.502138 : Edited this drink: long_island_iced_tea
+2018-11-14 23:12:24.598073 : Edited this drink: naval_gimlet
+2018-11-14 23:12:35.979123 : Edited this drink: rum_and_coke
+2018-11-14 23:12:46.647791 : Edited this drink: screwdriver
+2018-11-14 23:12:54.707059 : Edited this drink: tequila
+2018-11-14 23:13:02.702790 : Edited this drink: vodka
+2018-11-14 23:15:56.078288 : Running main application
+2018-11-14 23:16:00.674400 : Cleaned Config file.
+2018-11-14 23:16:06.775296 : chris logged in

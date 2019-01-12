@@ -1,0 +1,7 @@
+2018-11-06 10:35:45.784114 : Running main application
+2018-11-06 10:35:48.047257 : Cleaned Config file.
+2018-11-06 10:35:54.984793 : chris logged in
+2018-11-06 13:38:09.104729 : Running main application
+2018-11-06 13:38:10.634997 : Cleaned Config file.
+2018-11-06 13:40:13.965592 : Lei logged in
+2018-11-06 13:46:13.964964 : Lei logged in

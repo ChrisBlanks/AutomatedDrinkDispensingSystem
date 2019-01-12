@@ -1,0 +1,18 @@
+2019-01-10 16:32:15.491229 : 2 kamikazes were ordered.
+2019-01-10 20:07:36.651830 : 4 screwdrivers were ordered.
+2019-01-10 20:07:48.245367 : 1 screwdriver was ordered.
+2019-01-10 20:08:41.081133 : 1 screwdriver was ordered.
+2019-01-10 20:08:47.047133 : 1 naval gimlet was ordered.
+2019-01-10 21:23:11.057974 : 1 screwdriver was ordered.
+2019-01-10 21:32:51.520038 : 1 screwdriver was ordered.
+2019-01-10 21:34:28.485348 : 1 screwdriver was ordered.
+2019-01-10 21:34:57.957010 : 1 kamikaze was ordered.
+2019-01-10 21:41:34.827169 : 1 kamikaze was ordered.
+2019-01-10 21:51:08.603379 : 1 kamikaze was ordered.
+2019-01-10 22:17:39.672039 : 2 tequilas were ordered.
+2019-01-10 22:40:12.996191 : 2 screwdrivers were ordered.
+2019-01-10 22:41:24.838154 : 1 kamikaze was ordered.
+2019-01-10 22:45:53.323321 : 1 kamikaze was ordered.
+2019-01-10 22:47:29.861421 : 1 screwdriver was ordered.
+2019-01-10 22:49:18.412778 : 2 tequilas were ordered.
+2019-01-10 23:26:11.381093 : 1 screwdriver was ordered.
