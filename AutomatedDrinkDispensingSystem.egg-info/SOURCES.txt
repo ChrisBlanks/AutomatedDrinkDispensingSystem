@@ -1,0 +1,26 @@
+CHANGES.txt
+LICENSE.txt
+MANIFEST.in
+README.txt
+setup.py
+AutomatedDrinkDispensingSystem.egg-info/PKG-INFO
+AutomatedDrinkDispensingSystem.egg-info/SOURCES.txt
+AutomatedDrinkDispensingSystem.egg-info/dependency_links.txt
+AutomatedDrinkDispensingSystem.egg-info/requires.txt
+AutomatedDrinkDispensingSystem.egg-info/top_level.txt
+automated-self-serving-system/AppWindow.py
+automated-self-serving-system/ApplicationUserEditor.py
+automated-self-serving-system/CustomerWindow.py
+automated-self-serving-system/DrinkProfile.py
+automated-self-serving-system/DrinkProfileManager.py
+automated-self-serving-system/EmbeddedKeyboard.py
+automated-self-serving-system/EmployeeWindow.py
+automated-self-serving-system/KeyboardWindow.py
+automated-self-serving-system/LogManager.py
+automated-self-serving-system/LoginWindow.py
+automated-self-serving-system/MainApp.py
+automated-self-serving-system/PeripheralDevice.py
+automated-self-serving-system/__init__.py
+automated-self-serving-system/Old scripts/__init__.py
+automated-self-serving-system/Old scripts/callback_functions.py
+automated-self-serving-system/Old scripts/main_application.py
