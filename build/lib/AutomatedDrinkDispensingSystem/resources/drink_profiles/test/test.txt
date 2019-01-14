@@ -5,4 +5,3 @@ picture_location /home/pi/PYTHON_PROJECTS/AutomatedDrinkDispensingSystem/Automat
 isUrl False
 isActive 1
 Price 3.00
-00

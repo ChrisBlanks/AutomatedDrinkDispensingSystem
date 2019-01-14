@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: AutomatedDrinkDispensingSystem
-Version: 0.0a3
+Version: 1.0a2
 Summary: UNKNOWN
 Home-page: https://github.com/ChrisBlanks/AutomatedDrinkDispensingSystem
 Author: Chris Blanks
@@ -18,4 +18,4 @@ Description: This project is a GUI (graphical user interface) application for co
         Note:
         This package requires pil.ImageTk.
         
-Platform: UNKNOWN
+Platform: Raspbian

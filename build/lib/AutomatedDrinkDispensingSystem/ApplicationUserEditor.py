@@ -119,7 +119,7 @@ class ApplicationUserEditor:
         if username == "" or password == "":
             self.deployIncompleteMessageBox() #if either empty, show warning
             return
-        if messagebox.askokcancel("Done","Are you sure?"):
+        if messagebox.askokcancel("Done","Are you sure?",parent=self.master):
             if button_type == "add":
                 user_type = ""   # when empty, user is regular user
                 if self.checkbut_state.get() == 1:
@@ -134,12 +134,12 @@ class ApplicationUserEditor:
 
     def deployIncompleteMessageBox(self):
         """Warns user about incomplete user login."""
-        messagebox.showwarning("Incomplete","Please fill all fields.")
+        messagebox.showwarning("Incomplete","Please fill all fields.",parent=self.top)
 
         
     def deployExitMessageBox(self):
         """Destroys window and brings back previous window."""
-        if messagebox.askokcancel("Quit","Are you sure?"):
+        if messagebox.askokcancel("Quit","Are you sure?",parent=self.master):
             self.master.destroy()
 
     

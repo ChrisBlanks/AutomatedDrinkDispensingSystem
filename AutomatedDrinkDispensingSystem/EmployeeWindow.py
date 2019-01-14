@@ -42,7 +42,7 @@ class EmployeeWindow(AppWindow):
         self.configureWindow()
         self.frame.grid()
         
-        self.createHelpMenu()
+        self.createHelpMenu(menu_name="Help")
         self.displayDrinkOptionsInGUI() #Method from AppWindow
 
         
@@ -164,6 +164,7 @@ class EmployeeWindow(AppWindow):
     def editUserLogins(self):
         """Displays current registered users. Allows for adding or deleting users."""
         user_editor_top = tk.Toplevel()
+        user_editor_top.attributes("-topmost",True)
         user_editor_top.tk.call("wm","iconphoto",user_editor_top._w,self.main_app.icon_img)
         user_editor_top.title("Application User Editor")
         self.user_editor =  ApplicationUserEditor(user_editor_top,self.main_app,self.size)
@@ -177,6 +178,7 @@ class EmployeeWindow(AppWindow):
     def showIPAddress(self):
         """Shows the current IP address in a top level window. """
         ip_window = tk.Toplevel()
+        ip_window.attributes("-topmost",True)
         ip_window.tk.call("wm","iconphoto",ip_window._w,self.main_app.icon_img)
         ip_window.title("IP Address")
         
@@ -187,7 +189,7 @@ class EmployeeWindow(AppWindow):
         
     def deployExitMessageBox(self):
         """Destroys employee window and brings up root window."""
-        if messagebox.askokcancel("Quit","Are you sure?"):
+        if messagebox.askokcancel("Quit","Are you sure?",parent=self.master):
             self.isAdminMode = False
             self.master.destroy()
             self.main_app.master.deiconify()

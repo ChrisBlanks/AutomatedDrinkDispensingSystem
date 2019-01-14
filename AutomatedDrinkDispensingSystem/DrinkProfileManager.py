@@ -111,8 +111,11 @@ class DrinkProfileManager:
         if self.delete_button != None:
             self.delete_button.grid_forget()
             
-        self.drink_selected = self.drinks.get(self.drinks.curselection())
-        index = self.drinks.index(self.drinks.curselection())
+        try:
+            self.drink_selected = self.drinks.get(self.drinks.curselection())
+            index = self.drinks.index(self.drinks.curselection())
+        except tk._tkinter.TclError:
+            return #suppresses empty listbox error
         
         if self.drink_selected == "Add A New Drink":
             self.createNewDrink()
@@ -230,10 +233,10 @@ class DrinkProfileManager:
     def selectAnImage(self):
         """Prompts the user to select an image for a drink &
         inserts it into the entry box for image location. """
-
         self.pic_path = filedialog.askopenfilename(initialdir="/home/pi/Pictures/"
                                                    ,title="Select Drink Image (jpeg or png)"
-                                                   ,filetypes=(("jpeg files","*.jpg"),("png files","*.png")))
+                                                   ,filetypes=(("jpeg files","*.jpg"),("png files","*.png"))
+                                                   ,parent=self.top)
         if self.pic_path == "":
             print("User canceled")
         elif ".jpg" in self.pic_path:
@@ -388,34 +391,34 @@ class DrinkProfileManager:
 
     def deploySuccesfulMessageBox(self):
         """Advises the user to finish making the new drink """
-        if messagebox.showinfo("Successful!","Press Ok to continue..."):
+        if messagebox.showinfo("Successful!","Press Ok to continue...",parent=self.top):
             self.top.destroy()
             self.main_app.employee_window.master.deiconify()
 
 
     def deployDeleteMessageBox(self,drink,index):
         """Advises the user to finish making the new drink """
-        if messagebox.askokcancel("Delete","Are you sure that you want to delete this drink?"):
+        if messagebox.askokcancel("Delete","Are you sure that you want to delete this drink?",parent=self.master):
             self.main_app.writeToLog("Deleted this drink: "+drink.name)
             self.deleteDrink(drink,index)
 
             
     def deployIncompleteMessageBox(self):
         """Advises the user to finish making the new drink """
-        if messagebox.showwarning("Incomplete","Please fill all fields."):
+        if messagebox.showwarning("Incomplete","Please fill all fields.",parent=self.top):
             pass
 
         
     def deployCancelMessageBox(self):
         """Prompts user before closing editor."""
-        if messagebox.askokcancel("Cancel","Are you sure? All progress will be lost."):
+        if messagebox.askokcancel("Cancel","Are you sure? All progress will be lost.",parent=self.top):
             self.top.destroy()
             self.main_app.employee_window.top.deiconify()
             
                 
     def deployExitMessageBox(self):
         """Prompts user before closing window."""
-        if messagebox.askokcancel("Quit","Are you sure?"):
+        if messagebox.askokcancel("Quit","Are you sure?",parent=self.master):
             self.main_app.employee_window.master.deiconify()
             self.main_app.employee_window.top.destroy()
             

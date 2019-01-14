@@ -9,7 +9,6 @@ Purpose: This script defines the Drink Class.
 
 import tkinter as tk
 from tkinter import messagebox
-import os
 from PIL import Image, ImageTk
 
 from EmbeddedKeyboard import EmbeddedKeyboard

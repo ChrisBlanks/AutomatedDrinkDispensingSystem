@@ -1,0 +1,8 @@
+2019-01-13 16:05:57.787751 : 1 cuba libre was ordered.
+2019-01-13 16:10:56.030014 : 1 cuba libre was ordered.
+2019-01-13 17:48:40.900743 : 1 cuba libre was ordered.
+2019-01-13 17:48:46.403397 : 1 cuba libre was ordered.
+2019-01-13 17:51:20.936616 : 1 cuba libre was ordered.
+2019-01-13 17:52:49.271021 : 1 cuba libre was ordered.
+2019-01-13 18:12:39.729818 : 1 daiquiri was ordered.
+2019-01-13 18:42:45.921830 : 3 daiquiris were ordered.

@@ -128,8 +128,11 @@ class LogManager():
         if index == None or index == "":
             return #don't do anything if no selection
         
-        self.selected_file = self.log_options.get(index)
-
+        try:
+            self.selected_file = self.log_options.get(index)
+        except tk._tkinter.TclError:
+            return #suppresses empty listbox error
+        
         type_path = None
         if self.current_type == "system":
             type_path = self.SYSTEM_LOG_PATH
@@ -181,7 +184,7 @@ class LogManager():
 
     def deployExitMessageBox(self):
         """Prompts user before closing window."""
-        if messagebox.askokcancel("Quit","Are you sure?"):
+        if messagebox.askokcancel("Quit","Are you sure?",parent=self.master):
             self.main_app.employee_window.log_top.destroy()
             self.main_app.employee_window.master.deiconify()
 

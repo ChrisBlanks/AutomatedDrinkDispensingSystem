@@ -46,7 +46,7 @@ class CustomerWindow(AppWindow):
         
     def deployExitMessageBox(self):
         pass
-        #if messagebox.askokcancel("Quit","Are you sure?"):
+        #if messagebox.askokcancel("Quit","Are you sure?",parent=self.master)):
         #    
             #self.master.destroy()
             #self.main_app.master.deiconify()

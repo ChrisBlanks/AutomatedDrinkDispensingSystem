@@ -5,7 +5,8 @@ import setuptools
 
 setuptools.setup(
     name="AutomatedDrinkDispensingSystem",
-    version="0.0a3",
+    version="1.0a2",
+    platforms= 'Raspbian',
     author="Chris Blanks",
     author_email="christopherablanks@gmail.com",
     url="https://github.com/ChrisBlanks/AutomatedDrinkDispensingSystem",

@@ -168,7 +168,8 @@ class AppWindow():
     def displayConfirmationMessageBox(self,mode="Customer",num_of_drinks=1):
         """Asks the user if they are sure about their drink selection """
         if mode == "Customer":
-            if messagebox.askokcancel("Confirmation","Are you sure that you want a "+self.current_drink.name+"?"):
+            if messagebox.askokcancel("Confirmation","Are you sure that you want a "+self.current_drink.name+"?",
+                                      parent=self.master):
                 print("Order is confirmed.")
                 print("One order of "+self.current_drink.name +" on the way.")
 
@@ -179,7 +180,8 @@ class AppWindow():
                 return False
         else:
             if messagebox.askokcancel("Confirmation",
-                                      "Are you sure that you want "+str(num_of_drinks)+" "+self.current_drink.name.title().replace("_"," ")+"(s) ?"):
+                                      "Are you sure that you want "+str(num_of_drinks)+" "+self.current_drink.name.title().replace("_"," ")+"(s) ?",
+                                      parent=self.master):
                 print("Order is confirmed.")
                 print( str(num_of_drinks)+" order(s) of "+self.current_drink.name +" on the way.")
                 if num_of_drinks == 1:
@@ -198,22 +200,23 @@ class AppWindow():
         self.displayDrinkOptionsInGUI()
 
 
-    def createHelpMenu(self):
+    def createHelpMenu(self,menu_name=""):
         """Defines a menu that offers information about the machine."""
-        info_menu = tk.Menu(self.parent_menu,tearoff=0)
-        self.parent_menu.add_cascade(label="Help",menu= info_menu)
+        help_menu = tk.Menu(self.parent_menu,tearoff=0)
+        self.parent_menu.add_cascade(label=menu_name, menu= help_menu)
 
-        #Will call the method defined in the child class
-        info_menu.add_separator()
-        info_menu.add_command(label="", command= self.secret)
-        info_menu.add_separator()
-        
-        info_menu.add_separator()
-        info_menu.add_command(label="How to operate", command= self.showOperationInstructions)
-        info_menu.add_separator()
-        
-        info_menu.add_command(label="Info About Contributors",command=self.showContributors)
-        info_menu.add_separator()
+        help_menu.add_separator()
+        help_menu.add_command(label="", command= self.secret) #allows exit out of customer window  
+        help_menu.add_separator()
+
+        #for employee window
+        if menu_name != "":
+            help_menu.add_separator()
+            help_menu.add_command(label="How to operate", command= self.showOperationInstructions)
+            help_menu.add_separator()
+            
+            help_menu.add_command(label="Info About Contributors",command=self.showContributors)
+            help_menu.add_separator()
 
         
     def secret(self):
@@ -248,10 +251,12 @@ class AppWindow():
         msg = " ".join(lines)
         
         top = tk.Toplevel()
+        
         top.tk.call("wm","iconphoto",top._w,self.main_app.icon_img)
         top.attributes('-topmost','true')
         top.title("How to Operate:")
         top.geometry("600x230")
+        
         
         scroll = tk.Scrollbar(top,orient= tk.VERTICAL)
         scroll.grid(row=0,column=1,sticky="ns")
@@ -266,6 +271,7 @@ class AppWindow():
         canvas.create_text((0,0),text=msg,anchor="nw") #top left and anchored to the right
         top.rowconfigure(0,weight=1)
         top.columnconfigure(0,weight=1)
+        
 
 
 

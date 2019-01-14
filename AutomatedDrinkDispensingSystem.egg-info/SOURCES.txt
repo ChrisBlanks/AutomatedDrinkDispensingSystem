@@ -24,8 +24,6 @@ AutomatedDrinkDispensingSystem.egg-info/top_level.txt
 AutomatedDrinkDispensingSystem/Old scripts/__init__.py
 AutomatedDrinkDispensingSystem/Old scripts/callback_functions.py
 AutomatedDrinkDispensingSystem/Old scripts/main_application.py
-AutomatedDrinkDispensingSystem/resources/__init__.py
-AutomatedDrinkDispensingSystem/resources/drink_profiles/__init_.py
 AutomatedDrinkDispensingSystem/resources/drink_profiles/cuba_libre/cuba_libre.jpg
 AutomatedDrinkDispensingSystem/resources/drink_profiles/cuba_libre/cuba_libre.txt
 AutomatedDrinkDispensingSystem/resources/drink_profiles/daiquiri/daiquiri.jpg
@@ -51,12 +49,10 @@ AutomatedDrinkDispensingSystem/resources/drink_profiles/vodka/vodka.txt
 AutomatedDrinkDispensingSystem/resources/drink_profiles/vodka_and_cranberry/vodka_and_cranberry.jpg
 AutomatedDrinkDispensingSystem/resources/drink_profiles/vodka_and_cranberry/vodka_and_cranberry.txt
 AutomatedDrinkDispensingSystem/resources/gui_images/Senior_Design_Logo.jpg
-AutomatedDrinkDispensingSystem/resources/gui_images/__init_.py
-AutomatedDrinkDispensingSystem/resources/gui_images/icon_credit
+AutomatedDrinkDispensingSystem/resources/gui_images/icon_credit.txt
 AutomatedDrinkDispensingSystem/resources/gui_images/martini.ico
 AutomatedDrinkDispensingSystem/resources/gui_images/martini.png
 AutomatedDrinkDispensingSystem/resources/gui_images/martini.xbm
-AutomatedDrinkDispensingSystem/resources/system_info/__init__.py
 AutomatedDrinkDispensingSystem/resources/system_info/config.txt
 AutomatedDrinkDispensingSystem/resources/system_info/drink_analytics.csv
 AutomatedDrinkDispensingSystem/resources/system_info/instructions_4_customer.txt
@@ -75,6 +71,7 @@ AutomatedDrinkDispensingSystem/resources/system_info/drink_sales/drink_sales_201
 AutomatedDrinkDispensingSystem/resources/system_info/drink_sales/drink_sales_2019-01-10.txt
 AutomatedDrinkDispensingSystem/resources/system_info/drink_sales/drink_sales_2019-01-11.txt
 AutomatedDrinkDispensingSystem/resources/system_info/drink_sales/drink_sales_2019-01-12.txt
+AutomatedDrinkDispensingSystem/resources/system_info/drink_sales/drink_sales_2019-01-13.txt
 AutomatedDrinkDispensingSystem/resources/system_info/log_files/log_on_2018-11-03.txt
 AutomatedDrinkDispensingSystem/resources/system_info/log_files/log_on_2018-11-04.txt
 AutomatedDrinkDispensingSystem/resources/system_info/log_files/log_on_2018-11-05.txt
@@ -105,6 +102,7 @@ AutomatedDrinkDispensingSystem/resources/system_info/log_files/log_on_2019-01-09
 AutomatedDrinkDispensingSystem/resources/system_info/log_files/log_on_2019-01-10.txt
 AutomatedDrinkDispensingSystem/resources/system_info/log_files/log_on_2019-01-11.txt
 AutomatedDrinkDispensingSystem/resources/system_info/log_files/log_on_2019-01-12.txt
+AutomatedDrinkDispensingSystem/resources/system_info/log_files/log_on_2019-01-13.txt
 AutomatedDrinkDispensingSystem/resources/system_info/shared_data/shared_data_2018-11-22.txt
 AutomatedDrinkDispensingSystem/resources/system_info/shared_data/shared_data_2018-11-23.txt
 AutomatedDrinkDispensingSystem/resources/system_info/shared_data/shared_data_2018-11-24.txt
@@ -118,3 +116,4 @@ AutomatedDrinkDispensingSystem/resources/system_info/shared_data/shared_data_201
 AutomatedDrinkDispensingSystem/resources/system_info/shared_data/shared_data_2019-01-10.txt
 AutomatedDrinkDispensingSystem/resources/system_info/shared_data/shared_data_2019-01-11.txt
 AutomatedDrinkDispensingSystem/resources/system_info/shared_data/shared_data_2019-01-12.txt
+AutomatedDrinkDispensingSystem/resources/system_info/shared_data/shared_data_2019-01-13.txt

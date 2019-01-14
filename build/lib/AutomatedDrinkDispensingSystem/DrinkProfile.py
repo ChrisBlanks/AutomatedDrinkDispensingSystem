@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Programmer: Chris Blanks
-Last Edited: 10/27/2018
+Last Edited: 1/12/2019
 Project: Automated Self-Serving System
 Purpose: This script defines the Drink Class.
 
@@ -64,20 +64,34 @@ class DrinkProfile:
 
     def getDrinkProfile(self):
         """Retrieves drink profile information from a subdirectory"""
-        with open(self.drink_txt_file,'r',encoding="ISO-8859-1") as file:
+        isNewPath = False
+        lines = []
+        
+        with open(self.drink_txt_file,'r+',encoding="ISO-8859-1") as file:
             line_count = 1
             for line in file:
                 line = line.encode('utf8').decode('iso-8859-1')
                 if line_count == 1:
                     self.id_number = line.split()[1]
                 if line_count == 2:
-                    print(line.split()[1])
                     self.name = line.split()[1].replace('_',' ')
                 if line_count == 3:
                     ingredient_list = line.split()
                     self.ingredients = ingredient_list[1:len(ingredient_list)]
                 if line_count == 4:
-                    self.pic_location = line.split()[1]
+                    pic_path = line.split()[1]
+                    paths = pic_path.split("/")
+                    cur_dir_paths = (self.MAIN_DIRECTORY_PATH).split("/")
+                    path_check_indx = len(cur_dir_paths)-1  #resources directory should always be longer
+                    if paths[:path_check_indx] == cur_dir_paths[:path_check_indx]:
+                        self.pic_location = line.split()[1]  #same beginning path, so keep
+                    else:
+                        print("Paths seem to be different.")
+                        if ".jpg" in pic_path:
+                            self.pic_location = (self.drink_txt_file).replace(".txt",".jpg")
+                            isNewPath = True
+                            
+                    
                 if line_count == 5:
                     self.isUrl = line.split()[1]
                 if line_count == 6:
@@ -86,9 +100,14 @@ class DrinkProfile:
                     self.price = line.split()[1]
 
                 line_count += 1
-
+                lines.append(line)
             if self.isUrl == "False":
                 self.pic_extension = os.path.splitext(self.pic_location)[1]
+        #if paths don't match up, rewrite old one
+        if isNewPath == True:
+            lines[3] = "picture_location " + self.pic_location + "\n"
+            with open(self.drink_txt_file,'w',encoding="ISO-8859-1") as file:
+                file.writelines(lines)
 
 
     def createDrinkProfile(self,desired_pic_path=None):
@@ -128,9 +147,7 @@ class DrinkProfile:
         
         self.isNewDrink = False
         
-        #go back to main directory
-        os.chdir("..")
-        os.chdir("..")
+        os.chdir(self.MAIN_DIRECTORY_PATH)
 
     
     def editDrinkProfile(self):

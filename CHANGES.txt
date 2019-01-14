@@ -1,3 +1,12 @@
 v0.0a1, 1/12/2019 -- Alpha version release.
 v0.0a2  1/12/2019 -- Restructured package structure & made source code more environment independent.
 v0.0a3  1/12/2019 -- Fixed error with resources.
+v0.0a4  1/12/2019 -- Fixed more errors with resources.
+v0.0a5  1/12/2019 -- Added error correction with image file paths.
+v0.1a1  1/12/2019 -- Fixed portability issues.
+v0.1a2  1/13/2019 -- Removed reliance of os.getcwd() to resolve path issues.
+v0.1a3  1/13/2019 -- Resolved bugs with messageboxes.
+v0.1a4  1/13/2019 -- Resolved issue with loading drink profiles from file system.
+v1.0a1  1/13/2019 -- Resolved __init_.py problem
+v1.0a2  1/13/2019 -- Resolved a bug.
+	
