@@ -1,1 +1,10 @@
 2019-02-12 21:56:57.147301 : 2 tests were ordered.
+2019-02-12 23:23:46.259015 : 1 tequila was ordered.
+2019-02-12 23:24:16.391560 : 1 tequila was ordered.
+2019-02-12 23:25:14.677749 : 1 vodka and cranberry was ordered.
+2019-02-12 23:28:46.962972 : 1 cuba libre was ordered.
+2019-02-12 23:44:38.122108 : 1 vodka and cranberry was ordered.
+2019-02-12 23:46:22.228077 : 1 naval gimlet was ordered.
+2019-02-12 23:49:45.178452 : 1 rum and coke was ordered.
+2019-02-12 23:51:38.053067 : 1 tequila was ordered.
+2019-02-12 23:52:10.403448 : 1 tequila was ordered.

@@ -59,8 +59,6 @@ class AppWindow():
             if column_position > 4:
                 row_position = row_position + 2 #goes to next set of rows
                 column_position = 0 #resets column position to fit all buttons
-            print(drink.name)
-            print(drink.pic_location)
             drink_img = Image.open(drink.pic_location)
             drink_img = drink_img.resize((200,200),Image.ANTIALIAS)
             drink_photo = ImageTk.PhotoImage(drink_img)
@@ -157,26 +155,64 @@ class AppWindow():
         """Starts the buying process for the customer mode."""
         self.isOrdered = self.displayConfirmationMessageBox()
         if self.isOrdered:
-            pass
+
+            """
+            ###### Basic Logic for when the bill acceptor is included###### 
+
+            prompt_string = "Please, pay $" +self.current_drink.price+ " for the drink:\n>>"
+            payment = float(input(prompt_string))
+            print(payment)
+            if payment >= float(self.current_drink.price):
+                print("Order is confirmed.")
+                print("Your change is: $"+ str(payment - float(self.current_drink.price) ) )
+                print("One order of "+self.current_drink.name +" on the way.")
+
+                msg = "1 "+ self.current_drink.name + " was ordered."
+                self.main_app_instance.writeToDrinkSalesLog(msg)
+            """
+
+            isPaidFor = messagebox.askokcancel("Payment",
+                "Insert cash into bill acceptor and press okay to finish order.\n$" +self.current_drink.price ) 
+
+            if isPaidFor:
+                print("Going to wait screen.")
+                self.clearDrinkProfile()
+                self.setupWaitScreen()
+            else:
+                messagebox.showinfo("Payment","Payment process was cancelled.")
+            
 
 			
     def startEmployeeOrderEvent(self,num_of_drinks):
         """Starts the ordering process for the employee mode."""
         self.isOrdered = self.displayConfirmationMessageBox("Employee",num_of_drinks)
         if self.isOrdered:
-            pass
+            print("Going to wait screen")
+            self.clearDrinkProfile()
+            self.setupWaitScreen()
 
-			
+
+	
+    def setupWaitScreen(self):
+        """Creates and displays the elements of the wait screen."""
+        self.waitLabel = ttk.Label(self.frame,text="Waiting...")
+        self.waitLabel.pack(fill=tk.X,side=tk.TOP)
+        
+        img = Image.open(self.main_app_instance.WAIT_SCREEN_IMG_PATH)
+        img = img.resize((500,500),Image.ANTIALIAS)
+        tk_photo = ImageTk.PhotoImage(img)
+        
+        self.wait_screen_img_reference = tk_photo #keeping a reference allows photo to display
+        
+        img_item = ttk.Label(self.frame,image=tk_photo)
+        img_item.pack(fill=tk.X,side=tk.BOTTOM)
+
+
     def displayConfirmationMessageBox(self,mode="Customer",num_of_drinks=1):
         """Asks the user if they are sure about their drink selection """
         if mode == "Customer":
             if messagebox.askokcancel("Confirmation","Are you sure that you want a "+self.current_drink.name+"?",
                                       parent=self.master):
-                print("Order is confirmed.")
-                print("One order of "+self.current_drink.name +" on the way.")
-
-                msg = "1 "+ self.current_drink.name + " was ordered."
-                self.main_app_instance.writeToDrinkSalesLog(msg)
                 return True
             else:
                 return False
@@ -195,8 +231,15 @@ class AppWindow():
             else:
                 return False
             
-   
+    
+    def clearDrinkProfile(self):
+        """Clears window of current drink profile."""
+        for element in self.drink_profile_elements:
+            element.grid_forget()
+
+
     def resetDrinkOptions(self):
+        """Clears window of current drink profile and puts all drink options on window. """
         for element in self.drink_profile_elements:
             element.grid_forget()
         self.displayDrinkOptionsInGUI()

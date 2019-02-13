@@ -103,3 +103,17 @@
 2019-02-12 22:51:56.608810 : admin logged in
 2019-02-12 22:52:22.654445 : Deleted this drink: test
 2019-02-12 22:52:22.655521 : Cleaned Config file.
+2019-02-12 23:22:35.833477 : Running main application
+2019-02-12 23:22:35.974915 : Cleaned Config file.
+2019-02-12 23:22:50.692576 : chris logged in
+2019-02-12 23:28:31.528714 : Running main application
+2019-02-12 23:28:31.676783 : Cleaned Config file.
+2019-02-12 23:43:41.787078 : Running main application
+2019-02-12 23:43:41.921286 : Cleaned Config file.
+2019-02-12 23:45:52.515190 : Running main application
+2019-02-12 23:45:52.654429 : Cleaned Config file.
+2019-02-12 23:49:23.677188 : Running main application
+2019-02-12 23:49:23.819559 : Cleaned Config file.
+2019-02-12 23:51:23.104844 : Running main application
+2019-02-12 23:51:23.247572 : Cleaned Config file.
+2019-02-12 23:51:33.101640 : chris logged in

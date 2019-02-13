@@ -57,11 +57,16 @@ def runMainApplication():
 class MainApp:
     #class member variables
     MAIN_DIRECTORY_PATH = main_path
+    
     DRINK_PROFILE_DIRECTORY_PATH = MAIN_DIRECTORY_PATH + "/resources/drink_profiles"
     SYSTEM_INFO_PATH = MAIN_DIRECTORY_PATH + "/resources/system_info"
+    GUI_IMAGES_PATH = MAIN_DIRECTORY_PATH + "/resources/gui_images"
+    
+    WAIT_SCREEN_IMG_PATH = GUI_IMAGES_PATH + "/drink_pour.jpg"
     CONFIG_FILE_PATH = SYSTEM_INFO_PATH + "/config.txt"
     USER_LOGIN_FILE_PATH= SYSTEM_INFO_PATH + "/user_login.txt"
     ENCRYPTION_KEY_FILE_PATH = SYSTEM_INFO_PATH+ "/key.txt"
+
 
 
     drink_names = []             #keeps a record of drink names
