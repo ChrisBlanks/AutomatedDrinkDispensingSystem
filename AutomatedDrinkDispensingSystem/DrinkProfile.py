@@ -84,7 +84,7 @@ class DrinkProfile:
                     cur_dir_paths = (self.MAIN_DIRECTORY_PATH).split("/")
                     path_check_indx = len(cur_dir_paths)-1  #resources directory should always be longer
                     if paths[:path_check_indx] == cur_dir_paths[:path_check_indx]:
-                        self.pic_location = line.split()[1]  #same beginning path, so keep
+                        self.pic_location = pic_path  
                     else:
                         print("Paths seem to be different.")
                         if ".jpg" in pic_path:

@@ -59,6 +59,8 @@ class AppWindow():
             if column_position > 4:
                 row_position = row_position + 2 #goes to next set of rows
                 column_position = 0 #resets column position to fit all buttons
+            print(drink.name)
+            print(drink.pic_location)
             drink_img = Image.open(drink.pic_location)
             drink_img = drink_img.resize((200,200),Image.ANTIALIAS)
             drink_photo = ImageTk.PhotoImage(drink_img)

@@ -93,7 +93,7 @@ class MainApp:
         self.active_drink_objects = self.getDrinks()      #returns a list of drink_objects for later use
 
         self.createMainWindow()
-        self.selectWindow()
+        #self.selectWindow()
 
         self.retrieveConfigurationInformation()
         self.cleanOldDrinksFromConfig()
@@ -501,9 +501,11 @@ class MainApp:
         try:
             os.chdir(self.SYSTEM_INFO_PATH+"/shared_data")
             subprocess.call(["sudo", "python", "-m", "SimpleHTTPServer","80"])
-        except PermissionError as err:
+        except: 
             print("Port is already open.") #printed in the abyss
-            print(err)
+            e = sys.exc_info()[0]
+            print(e)
+
 
         os.chdir(self.MAIN_DIRECTORY_PATH)
 

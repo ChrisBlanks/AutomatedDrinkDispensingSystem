@@ -19,7 +19,7 @@ import os
 #my classes
 from DrinkProfile import DrinkProfile
 from EmbeddedKeyboard import EmbeddedKeyboard
-
+from AppWindow import AppWindow
 
 class DrinkProfileManager:
     def __init__(self,master,main_app,admin_mode):
@@ -233,7 +233,7 @@ class DrinkProfileManager:
     def selectAnImage(self):
         """Prompts the user to select an image for a drink &
         inserts it into the entry box for image location. """
-        self.pic_path = filedialog.askopenfilename(initialdir="/home/pi/Pictures/"
+        self.pic_path = filedialog.askopenfilename(initialdir="/home"
                                                    ,title="Select Drink Image (jpeg or png)"
                                                    ,filetypes=(("jpeg files","*.jpg"),("png files","*.png"))
                                                    ,parent=self.top)
@@ -257,6 +257,7 @@ class DrinkProfileManager:
         self.new_drink.price = self.price_entry.get()
         self.new_drink.isActive = self.active_entry.get()
         
+        self.new_drink.name = (self.new_drink.name).replace(" ","_") #prevents spaces in drink profile names
         if self.new_drink.name == "" or self.new_drink.id_number == "" or self.new_drink.ingredients == "" or \
            pic_path == "" or self.new_drink.price == "" or self.new_drink.isActive == "":
             self.deployIncompleteMessageBox()  #if any empty, show warning#if any empty, show warning
@@ -276,8 +277,11 @@ class DrinkProfileManager:
         self.new_drink.createDrinkProfile(pic_path)
         
         self.main_app.all_drinks.append(self.new_drink)
+        self.main_app.active_drink_objects.append(self.new_drink)
         self.main_app.writeToLog("Created new drink: "+self.new_drink.name)
         self.deploySuccesfulMessageBox()
+        self.main_app.employee_window.resetDrinkOptions()
+        
 
 
     def deleteDrink(self,drink,index):
@@ -286,10 +290,12 @@ class DrinkProfileManager:
         drinkTrash = drink
         for el in self.main_app.active_drink_objects:
             if el.name == drinkTrash.name:
+                self.main_app.active_drink_objects.remove(drink)
                 self.main_app.all_drinks.remove(drink)
                 del drink
         self.drinks.delete(index)
         self.main_app.cleanOldDrinksFromConfig()
+        self.main_app.employee_window.resetDrinkOptions()
 
         
     def saveChanges(self):

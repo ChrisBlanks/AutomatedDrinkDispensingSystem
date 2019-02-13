@@ -1,7 +1,0 @@
-id_number 50
-name test2
-ingredients nothing at all
-picture_location /home/pi/PYTHON_PROJECTS/AutomatedDrinkDispensingSystem/AutomatedDrinkDispensingSystem/resources/drink_profiles/test2/test2.jpg
-isUrl False
-isActive 0
-Price 3.00

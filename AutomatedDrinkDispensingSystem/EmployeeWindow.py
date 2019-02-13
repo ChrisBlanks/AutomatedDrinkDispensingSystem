@@ -20,7 +20,6 @@ from ApplicationUserEditor import ApplicationUserEditor
 class EmployeeWindow(AppWindow):
     
     
-
     def __init__(self,main_app_instance, isAdminMode = False):
         AppWindow.__init__(self,main_app_instance)
         
@@ -45,7 +44,7 @@ class EmployeeWindow(AppWindow):
         self.createHelpMenu(menu_name="Help")
         self.displayDrinkOptionsInGUI() #Method from AppWindow
 
-        
+
     def configureWindow(self):
         """Sets window geometry and limits."""
         self.master.geometry("{0}x{1}+0+0".format(self.master.winfo_screenwidth()
