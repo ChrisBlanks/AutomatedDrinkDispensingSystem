@@ -9,21 +9,16 @@ Purpose: This script defines the Peripheral Device class.
 
 class PeripheralDevice:
     def __init__(self, main_app_instance):
+        """Initializes device information for main application. 
+        Behavior is defined in the derived classes."""
+        
         self.main_app = main_app_instance
-        self.name_of_device = None
-        self.state = None
-        self.buffer = None
-        self.communication_method = None
-        self.pin_number = None
+        
+        #DEVICE INFO
+        self.name = None                #string
+        self.state = None               #either off, enabled, processing
+        self.pin_number = None          #gpio pin on PI if used
+        self.buffer = None              #passes data through this variable
+        self.buffer_data_type = None    #data type of buffer
 
-    def reportStateToMainApp(self):
-        pass
 
-    def storeData(self):
-        pass
-
-    def startCommunication(self):
-        pass
-
-    def terminateCommunication(self):
-        pass

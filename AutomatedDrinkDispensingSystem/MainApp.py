@@ -37,12 +37,15 @@ import DrinkProfile as     dp_class
 from LoginWindow    import LoginWindow
 from KeyboardWindow import KeyboardWindow
 
+#Devices
+from EmployeeSwitch import EmployeeSwitch
+
 
 def runMainApplication():
     """Initializes the application and all of its features."""
     root = tk.Tk()                                              #initiliazes the tk interpreter
     root.title("Automated Drink Dispensing System")
-
+    
     icon_img = tk.Image("photo",file= icon_path)  # found image online; created by RoundIcons
     root.tk.call("wm","iconphoto",root._w,icon_img)             #sets the application icon
 
@@ -66,7 +69,9 @@ class MainApp:
     CONFIG_FILE_PATH = SYSTEM_INFO_PATH + "/config.txt"
     USER_LOGIN_FILE_PATH= SYSTEM_INFO_PATH + "/user_login.txt"
     ENCRYPTION_KEY_FILE_PATH = SYSTEM_INFO_PATH+ "/key.txt"
-
+    
+    #DEVICE CONFIGURATION
+    DELAY = 5000         # button input will be checked every 5 seconds
 
 
     drink_names = []             #keeps a record of drink names
@@ -96,7 +101,9 @@ class MainApp:
             self.createDefaultUserLoginFile()             #creates a new user login file
 
         self.active_drink_objects = self.getDrinks()      #returns a list of drink_objects for later use
-
+        
+        self.createDevices() #creates device instances for later use
+        
         self.createMainWindow()
         #self.selectWindow()
 
@@ -104,11 +111,14 @@ class MainApp:
         self.cleanOldDrinksFromConfig()
 
 
-    def selectWindow(self):
+    def selectWindow(self,selection):
         """Determines what window is open."""
-        #input mode until GPIO pin is setup to trigger employee mode
-        selection = int(input("\nPress 1 to enter employee mode.\n>>"))
-
+        if hasattr(self, 'employee_top_lvl'):
+            self.employee_top_lvl.destroy()  #destroys old windows
+            
+        if hasattr(self, 'customer_top_lvl'):
+            self.customer_top_lvl.destroy()  #destroys old windows
+            
         if selection == 1:
             self.isEmployeeMode = True
             self.launchLoginWindow()
@@ -513,6 +523,21 @@ class MainApp:
 
 
         os.chdir(self.MAIN_DIRECTORY_PATH)
+
+
+    
+    def createDevices(self):
+        """Instantiates all devices."""
+        self.switch = EmployeeSwitch(self)  #pass main app instance
+        print(self.switch.name + ": " + self.switch.state)
+        self.checkButtonState()
+    
+        
+    def checkButtonState(self):
+        """Recursively calls itself to check button state."""
+        self.switch.checkButtonInput()   #check pin input
+        self.master.after(self.DELAY,self.checkButtonState)
+
 
 
 if __name__ == "__main__":
