@@ -4,9 +4,13 @@
 Programmer: Chris Blanks
 Last Edited: Feb 2019
 Project: Automated Self-Serving System
-Purpose: This script defines the EmployeeSwitch class, which reads input
-from the GPIO pins of the raspberry pi and controls whether employee mode
-is switched on.
+Purpose: This script defines the PulsePin class, which reads the pulsating
+output of a MEI bill acceptor. The output from the bill acceptor is formed
+by a open-collector circuit, so this requires a pull-up resistor on the 
+RasPi input, attaching the ground wire of the bill acceptor to the Raspi's ground,
+and reading a falling edge to find out how much money has been
+inserted into the bill acceptor. Also a software debounce was used to reduce
+false-positives.
 """
 
 import RPi.GPIO as GPIO
