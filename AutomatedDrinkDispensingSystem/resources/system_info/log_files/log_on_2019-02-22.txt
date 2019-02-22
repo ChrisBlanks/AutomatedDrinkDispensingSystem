@@ -1,0 +1,6 @@
+2019-02-22 16:51:56.954778 : Running main application
+2019-02-22 16:52:33.277677 : Running main application
+2019-02-22 16:52:33.749134 : Cleaned Config file.
+2019-02-22 16:53:40.005411 : chris logged in
+2019-02-22 17:06:19.957779 : Running main application
+2019-02-22 17:06:20.365849 : Cleaned Config file.

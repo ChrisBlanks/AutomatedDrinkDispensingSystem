@@ -37,8 +37,9 @@ import DrinkProfile as     dp_class
 from LoginWindow    import LoginWindow
 from KeyboardWindow import KeyboardWindow
 
-#Devices
+#Periphal Device classes
 from EmployeeSwitch import EmployeeSwitch
+from PulsePin import PulsePin
 
 
 def runMainApplication():
@@ -50,7 +51,8 @@ def runMainApplication():
     root.tk.call("wm","iconphoto",root._w,icon_img)             #sets the application icon
 
     main_app = MainApp(root,icon_img)                           #creates an instance of the MainApp with the interpreter as master
-
+    # add "peripheral_device_enable=" to argument list with a value to enable peripheral devices
+    
     style = ttk.Style()
     current_theme = style.theme_use('clam')                     #sets up the clam style for all ttk widgets
 
@@ -71,7 +73,7 @@ class MainApp:
     ENCRYPTION_KEY_FILE_PATH = SYSTEM_INFO_PATH+ "/key.txt"
     
     #DEVICE CONFIGURATION
-    DELAY = 5000         # button input will be checked every 5 seconds
+    DELAY = 2000         # button input will be polled every 2 seconds
 
 
     drink_names = []             #keeps a record of drink names
@@ -82,7 +84,7 @@ class MainApp:
     data_demo_key = True
 
 
-    def __init__(self,master,icon_img):
+    def __init__(self,master,icon_img,peripheral_device_enable=None):
         self.master = master
         self.master.configure(background="LightCyan3")
         self.screen_width = self.master.winfo_screenwidth()
@@ -102,7 +104,8 @@ class MainApp:
 
         self.active_drink_objects = self.getDrinks()      #returns a list of drink_objects for later use
         
-        self.createDevices() #creates device instances for later use
+        if peripheral_device_enable != None:
+            self.createDevices() #creates device instances for later use
         
         self.createMainWindow()
         #self.selectWindow()
@@ -528,10 +531,16 @@ class MainApp:
     
     def createDevices(self):
         """Instantiates all devices."""
+        
         self.switch = EmployeeSwitch(self)  #pass main app instance
-        print(self.switch.name + ": " + self.switch.state)
+        print("\n"+self.switch.name + ": " + self.switch.state)
         self.checkButtonState()
-    
+        
+        self.pulse_pin = PulsePin(self) 
+        print(self.pulse_pin.name + ": " + self.pulse_pin.state)
+        
+        print("\n")
+
         
     def checkButtonState(self):
         """Recursively calls itself to check button state."""

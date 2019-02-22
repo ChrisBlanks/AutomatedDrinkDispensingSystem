@@ -10,12 +10,13 @@ is switched on.
 
 from gpiozero import Button
 
+#my modules
 from PeripheralDevice import PeripheralDevice
 
 
 class EmployeeSwitch(PeripheralDevice):
-	def __init__(self,main_app):
-		super().__init__(main_app)
+	def __init__(self,main_app_instance):
+		super().__init__(main_app_instance)
 		self.name = "switch"
 		self.state = "enabled"
 		self.pin_number = 17	# GPIO pin 17
