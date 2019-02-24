@@ -27,7 +27,7 @@ class EmployeeSwitch(PeripheralDevice):
 	def checkButtonInput(self):
 		"""Sets up a button on GPIO7 & runs the react(). """
 		
-		if self.button.is_pressed:
+		if self.button.is_pressed and self.main_app.BUTTON_ENABLE:
 			self.switchToEmployeeMode()
 	
 		

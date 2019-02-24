@@ -4,6 +4,10 @@ Programmer: Chris Blanks
 Last Edited: 1/13/2019
 Project: Automated Self-Serving System
 Purpose: This script defines the MainApp class that runs the desktop application.
+Note:
+    >This script takes a command line argument now
+        >When a "1" is sent, peripheral devices are enabled. They are disabled by
+        default 
 """
 
 import os
@@ -49,14 +53,17 @@ def runMainApplication():
     
     icon_img = tk.Image("photo",file= icon_path)  # found image online; created by RoundIcons
     root.tk.call("wm","iconphoto",root._w,icon_img)             #sets the application icon
-
-    main_app = MainApp(root,icon_img)                           #creates an instance of the MainApp with the interpreter as master
-    # add "peripheral_device_enable=" to argument list with a value to enable peripheral devices
+    
+    enableDevices = None
+    if len(sys.argv) > 1 and str(sys.argv[1]) == "enable":
+        enableDevices = True #if true is sent as a command line arg then enable devices
+    
+    main_app = MainApp(root,icon_img,enableDevices) 
     
     style = ttk.Style()
-    current_theme = style.theme_use('clam')                     #sets up the clam style for all ttk widgets
+    current_theme = style.theme_use('clam')  #sets up the clam style for all ttk widgets
 
-    root.mainloop()                                             #starts loop for displaying content
+    root.mainloop()                          #starts loop for displaying content
 
 
 class MainApp:
@@ -73,8 +80,9 @@ class MainApp:
     ENCRYPTION_KEY_FILE_PATH = SYSTEM_INFO_PATH+ "/key.txt"
     
     #DEVICE CONFIGURATION
+    BUTTON_ENABLE = True
     DELAY = 2000         # button input will be polled every 2 seconds
-
+    AMOUNT_PAID = 0  # keeps track of how much a customer has paid; $0
 
     drink_names = []             #keeps a record of drink names
 
@@ -150,6 +158,9 @@ class MainApp:
 
     def relaunchWindow(self,window):
         """ Relaunches the selected window."""
+        
+        self.BUTTON_ENABLE = True #enable button before entering a mode
+        
         if window == "customer":
             self.isEmployeeMode = False
             self.master.withdraw()

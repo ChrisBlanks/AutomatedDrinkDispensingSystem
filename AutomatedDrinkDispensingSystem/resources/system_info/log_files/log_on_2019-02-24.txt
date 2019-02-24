@@ -1,0 +1,35 @@
+2019-02-24 10:32:33.379310 : Running main application
+2019-02-24 10:32:34.115262 : Cleaned Config file.
+2019-02-24 10:32:52.769231 : admin logged in
+2019-02-24 10:33:43.391513 : Running main application
+2019-02-24 10:33:43.874790 : Cleaned Config file.
+2019-02-24 10:35:54.107011 : chris logged in
+2019-02-24 11:39:27.045632 : Running main application
+2019-02-24 11:39:27.480060 : Cleaned Config file.
+2019-02-24 11:40:53.830311 : Running main application
+2019-02-24 11:40:54.297138 : Cleaned Config file.
+2019-02-24 11:43:17.396754 : Running main application
+2019-02-24 11:43:17.865322 : Cleaned Config file.
+2019-02-24 11:45:22.567503 : chris logged in
+2019-02-24 11:49:45.634762 : chris logged in
+2019-02-24 11:49:57.489197 : Edited this drink: cuba libre
+2019-02-24 11:50:06.241002 : Edited this drink: daiquiri
+2019-02-24 11:50:12.912930 : Edited this drink: rum and coke
+2019-02-24 11:50:19.713141 : Edited this drink: screwdriver
+2019-02-24 11:50:25.393735 : Edited this drink: tequila
+2019-02-24 11:50:31.775793 : Edited this drink: long island iced tea
+2019-02-24 11:50:37.968873 : Edited this drink: naval gimlet
+2019-02-24 11:50:45.840941 : Edited this drink: vodka and cranberry
+2019-02-24 11:50:52.033442 : Edited this drink: vodka
+2019-02-24 11:50:59.168462 : Edited this drink: kamikaze
+2019-02-24 11:51:50.685037 : Running main application
+2019-02-24 11:51:51.151859 : Cleaned Config file.
+2019-02-24 11:57:49.297465 : Running main application
+2019-02-24 11:57:49.770275 : Cleaned Config file.
+2019-02-24 11:58:05.713497 : chris logged in
+2019-02-24 11:59:43.997813 : Edited this drink: long island iced tea
+2019-02-24 12:07:45.758708 : Running main application
+2019-02-24 12:07:46.228892 : Cleaned Config file.
+2019-02-24 12:09:21.481433 : Running main application
+2019-02-24 12:09:21.962010 : Cleaned Config file.
+2019-02-24 12:10:52.701756 : admin logged in

@@ -55,4 +55,10 @@ class PulsePin(PeripheralDevice):
 		"""Callback function for what to do when the falling edge is triggered """
 		self.pulse_count +=1
 		print("pulse count = " +str(self.pulse_count))
+		
+	def disablePulseEvent(self):
+		"""Disables detection of falling edge."""
+		print("Disable pulse detection.")
+		GPIO.remove_event_detect(self.PULSE_PIN)
+		
 

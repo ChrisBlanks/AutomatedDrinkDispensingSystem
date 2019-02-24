@@ -170,16 +170,29 @@ class AppWindow():
                 msg = "1 "+ self.current_drink.name + " was ordered."
                 self.main_app_instance.writeToDrinkSalesLog(msg)
             """
-
+            self.main_app_instance.pulse_pin.detectPulseEvent() #enable detection of money
             isPaidFor = messagebox.askokcancel("Payment",
                 "Insert cash into bill acceptor and press okay to finish order.\n$" +self.current_drink.price ) 
 
             if isPaidFor:
+                self.main_app.AMOUNT_PAID = self.main_app_instance.pulse_pin.pulse_count
+                
+                while self.main_app.AMOUNT_PAID < float(self.current_drink.price) :
+                    owe = float(self.current_drink.price) - self.main_app.AMOUNT_PAID 
+                    msg = "You owe: %.2f" % owe
+                    self.main_app.AMOUNT_PAID = self.main_app_instance.pulse_pin.pulse_count
+                    messagebox.showinfo("Remaining Payment",msg)
+                
+                messagebox.showinfo("Payment Received","Drink process will start now.")
+                self.main_app_instance.BUTTON_ENABLE = False  #disable employee switch will making a drink
+                
                 print("Going to wait screen.")
+                self.main_app_instance.pulse_pin.pulse_count = 0  #reset pulse count once full payment is received.
+                self.main_app.AMOUNT_PAID = 0 
                 self.clearDrinkProfile()
                 self.setupWaitScreen()
             else:
-                messagebox.showinfo("Payment","Payment process was cancelled.")
+                messagebox.showinfo("Payment","Payment was not received, so process was cancelled.")
             
 
 			
