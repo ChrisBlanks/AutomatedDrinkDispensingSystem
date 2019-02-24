@@ -44,6 +44,7 @@ from KeyboardWindow import KeyboardWindow
 #Periphal Device classes
 from EmployeeSwitch import EmployeeSwitch
 from PulsePin import PulsePin
+from Camera import Camera
 
 
 def runMainApplication():
@@ -159,7 +160,9 @@ class MainApp:
     def relaunchWindow(self,window):
         """ Relaunches the selected window."""
         
-        self.BUTTON_ENABLE = True #enable button before entering a mode
+        if hasattr(self, 'switch'):
+            self.BUTTON_ENABLE = True #enable button before entering a mode
+            self.switch.state = "enabled"
         
         if window == "customer":
             self.isEmployeeMode = False
@@ -549,6 +552,9 @@ class MainApp:
         
         self.pulse_pin = PulsePin(self) 
         print(self.pulse_pin.name + ": " + self.pulse_pin.state)
+        
+        self.camera = Camera(self)
+        print(self.camera.name + ": " + self.camera.state)
         
         print("\n")
 

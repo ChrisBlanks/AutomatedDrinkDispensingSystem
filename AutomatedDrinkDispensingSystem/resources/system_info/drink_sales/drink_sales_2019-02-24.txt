@@ -1,0 +1,6 @@
+2019-02-24 14:47:51.169038 : 2 daiquiris were ordered.
+2019-02-24 14:56:34.733116 : 1 cuba libre was ordered.
+2019-02-24 15:06:14.275033 : 4 daiquiris were ordered.
+2019-02-24 15:15:08.871716 : 3 daiquiris were ordered.
+2019-02-24 15:24:56.676652 : 3 daiquiris were ordered.
+2019-02-24 15:28:44.725628 : 1 cuba libre was ordered.

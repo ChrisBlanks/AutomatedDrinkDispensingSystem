@@ -16,11 +16,13 @@ from PIL import Image
 from PIL import ImageTk
 import math
 
+#my modules
+from Camera import Camera
 
 class AppWindow():
     background_color = "LightCyan3"
     bg_color_other = "mint cream"
-    var = 10
+    var = 5
     
     def __init__(self,main_app):
         """Provides basic functionality to each window of the main application."""
@@ -155,44 +157,38 @@ class AppWindow():
         """Starts the buying process for the customer mode."""
         self.isOrdered = self.displayConfirmationMessageBox()
         if self.isOrdered:
+            if hasattr(self.main_app_instance, 'pulse_pin'):
+                self.main_app_instance.pulse_pin.detectPulseEvent() #enable detection of money
+                isPaidFor = messagebox.askokcancel("Payment",
+                    "Insert cash into bill acceptor and press okay to finish order.\n$" +self.current_drink.price,parent=self.master ) 
 
-            """
-            ###### Basic Logic for when the bill acceptor is included###### 
-
-            prompt_string = "Please, pay $" +self.current_drink.price+ " for the drink:\n>>"
-            payment = float(input(prompt_string))
-            print(payment)
-            if payment >= float(self.current_drink.price):
-                print("Order is confirmed.")
-                print("Your change is: $"+ str(payment - float(self.current_drink.price) ) )
-                print("One order of "+self.current_drink.name +" on the way.")
-
-                msg = "1 "+ self.current_drink.name + " was ordered."
-                self.main_app_instance.writeToDrinkSalesLog(msg)
-            """
-            self.main_app_instance.pulse_pin.detectPulseEvent() #enable detection of money
-            isPaidFor = messagebox.askokcancel("Payment",
-                "Insert cash into bill acceptor and press okay to finish order.\n$" +self.current_drink.price ) 
-
-            if isPaidFor:
-                self.main_app.AMOUNT_PAID = self.main_app_instance.pulse_pin.pulse_count
-                
-                while self.main_app.AMOUNT_PAID < float(self.current_drink.price) :
-                    owe = float(self.current_drink.price) - self.main_app.AMOUNT_PAID 
-                    msg = "You owe: %.2f" % owe
+                if isPaidFor:
                     self.main_app.AMOUNT_PAID = self.main_app_instance.pulse_pin.pulse_count
-                    messagebox.showinfo("Remaining Payment",msg)
+                    
+                    while self.main_app.AMOUNT_PAID < float(self.current_drink.price) :
+                        owe = float(self.current_drink.price) - self.main_app.AMOUNT_PAID 
+                        msg = "You owe: $%.2f" % owe
+                        self.main_app.AMOUNT_PAID = self.main_app_instance.pulse_pin.pulse_count
+                        messagebox.showinfo("Remaining Payment",msg,parent=self.master)
+                        
+                    messagebox.showinfo("Payment Received","Drink process will start now.",parent=self.master)
+                    
+                    self.main_app_instance.BUTTON_ENABLE = False  #disable employee switch will making a drink
+                    self.main_app_instance.switch.state = "off"
+                    
+                    print("Going to wait screen.")
+                    self.main_app_instance.pulse_pin.pulse_count = 0  #reset pulse count once full payment is received.
+                    self.main_app.AMOUNT_PAID = 0 
+                    
+                    self.main_app_instance.pulse_pin.disablePulseEvent()
+                    self.main_app_instance.pulse_pin.state = "off"
                 
-                messagebox.showinfo("Payment Received","Drink process will start now.")
-                self.main_app_instance.BUTTON_ENABLE = False  #disable employee switch will making a drink
-                
-                print("Going to wait screen.")
-                self.main_app_instance.pulse_pin.pulse_count = 0  #reset pulse count once full payment is received.
-                self.main_app.AMOUNT_PAID = 0 
-                self.clearDrinkProfile()
-                self.setupWaitScreen()
-            else:
-                messagebox.showinfo("Payment","Payment was not received, so process was cancelled.")
+
+                else:
+                    messagebox.showinfo("Payment","Payment was not received, so process was cancelled.",parent=self.master)
+            
+            self.clearDrinkProfile()
+            self.setupWaitScreen()
             
 
 			
@@ -211,14 +207,26 @@ class AppWindow():
         self.waitLabel = ttk.Label(self.frame,text="Waiting...")
         self.waitLabel.pack(fill=tk.X,side=tk.TOP)
         
-        img = Image.open(self.main_app_instance.WAIT_SCREEN_IMG_PATH)
-        img = img.resize((500,500),Image.ANTIALIAS)
-        tk_photo = ImageTk.PhotoImage(img)
+        if hasattr(self.main_app_instance, 'switch'):
+            self.img_item = ttk.Label(self.frame)
+            self.main_app_instance.camera.startThreading(self.img_item)
         
-        self.wait_screen_img_reference = tk_photo #keeping a reference allows photo to display
+            ###A way to end the infinite loop since I am waiting to implement drink process protocol
+            kill = input("Enter any value to end this thread")
+            if kill:
+                self.main_app_instance.camera.onExit() #stops camera on last frame
+        else:
+            img = Image.open(self.main_app_instance.WAIT_SCREEN_IMG_PATH)
+            img = img.resize((500,500),Image.ANTIALIAS)
+            tk_photo = ImageTk.PhotoImage(img)
+            
+            self.wait_screen_img_reference = tk_photo #keeping a reference allows photo to display
+            
+            img_item = ttk.Label(self.frame,image=tk_photo)
+            img_item.pack(fill=tk.X,side=tk.BOTTOM)
+
+
         
-        img_item = ttk.Label(self.frame,image=tk_photo)
-        img_item.pack(fill=tk.X,side=tk.BOTTOM)
 
 
     def displayConfirmationMessageBox(self,mode="Customer",num_of_drinks=1):
@@ -330,13 +338,3 @@ class AppWindow():
         top.rowconfigure(0,weight=1)
         top.columnconfigure(0,weight=1)
         
-
-
-
-
-
-
-
-
-        
-
