@@ -81,7 +81,8 @@ class MainApp:
     CONFIG_FILE_PATH = SYSTEM_INFO_PATH + "/config.txt"
     USER_LOGIN_FILE_PATH= SYSTEM_INFO_PATH + "/user_login.txt"
     ENCRYPTION_KEY_FILE_PATH = SYSTEM_INFO_PATH+ "/key.txt"
-    CASCADE_PATH = OTHER_PATH + "/haarcascade_frontalface_default.xml"
+    CASCADES_PATH = OTHER_PATH + "/haar_cascade_files"
+     
     
     #DEVICE CONFIGURATION
     BUTTON_ENABLE = True
@@ -93,7 +94,7 @@ class MainApp:
     isEmployeeMode= False        #controls what is displayed in employee mode
     isValidLogin = False         #controls whethere a user is given access to employee mode
     isWithoutLogin = False       #controls whether a new user login file is created
-    data_demo_key = True
+    data_demo_key = True         #toggles between pre-made shared data messages
 
 
     def __init__(self,master,icon_img,peripheral_device_enable=None):

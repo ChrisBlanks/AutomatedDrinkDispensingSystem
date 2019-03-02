@@ -1,3 +1,15 @@
 2019-03-02 00:07:10.952098 : 5 cuba libres were ordered.
 2019-03-02 00:09:25.346913 : 3 cuba libres were ordered.
 2019-03-02 00:11:47.617109 : 2 cuba libres were ordered.
+2019-03-02 09:54:08.186095 : 2 daiquiris were ordered.
+2019-03-02 10:13:00.925936 : 1 daiquiri was ordered.
+2019-03-02 10:25:07.607817 : 2 rum and cokes were ordered.
+2019-03-02 10:26:09.703385 : 1 naval gimlet was ordered.
+2019-03-02 10:32:29.027859 : 1 daiquiri was ordered.
+2019-03-02 10:39:25.778545 : 1 daiquiri was ordered.
+2019-03-02 11:12:03.401020 : 2 rum and cokes were ordered.
+2019-03-02 11:15:23.273424 : 5 daiquiris were ordered.
+2019-03-02 11:19:30.809227 : 5 tequilas were ordered.
+2019-03-02 11:22:04.784762 : 3 rum and cokes were ordered.
+2019-03-02 11:23:27.341074 : 2 screwdrivers were ordered.
+2019-03-02 11:33:21.528625 : 2 daiquiris were ordered.

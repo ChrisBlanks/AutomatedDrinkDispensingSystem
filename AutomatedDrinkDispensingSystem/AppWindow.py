@@ -212,9 +212,9 @@ class AppWindow():
             self.main_app_instance.camera.startThreading(self.img_item)
         
             ###A way to end the infinite loop since I am waiting to implement drink process protocol
-            kill = input("Enter any value to end this thread")
-            if kill:
-                self.main_app_instance.camera.onExit() #stops camera on last frame
+            #kill = input("Enter any value to end this thread")
+            #if kill:
+            #    self.main_app_instance.camera.onExit() #stops camera on last frame
         else:
             img = Image.open(self.main_app_instance.WAIT_SCREEN_IMG_PATH)
             img = img.resize((500,500),Image.ANTIALIAS)
