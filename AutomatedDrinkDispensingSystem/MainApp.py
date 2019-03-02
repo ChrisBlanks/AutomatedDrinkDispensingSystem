@@ -70,15 +70,18 @@ def runMainApplication():
 class MainApp:
     #class member variables
     MAIN_DIRECTORY_PATH = main_path
+    RESOURCES_PATH = main_path + "/resources"
     
-    DRINK_PROFILE_DIRECTORY_PATH = MAIN_DIRECTORY_PATH + "/resources/drink_profiles"
-    SYSTEM_INFO_PATH = MAIN_DIRECTORY_PATH + "/resources/system_info"
-    GUI_IMAGES_PATH = MAIN_DIRECTORY_PATH + "/resources/gui_images"
+    DRINK_PROFILE_DIRECTORY_PATH = RESOURCES_PATH + "/drink_profiles"
+    SYSTEM_INFO_PATH = RESOURCES_PATH + "/system_info"
+    GUI_IMAGES_PATH = RESOURCES_PATH + "/gui_images"
+    OTHER_PATH = RESOURCES_PATH + "/other"
     
     WAIT_SCREEN_IMG_PATH = GUI_IMAGES_PATH + "/drink_pour.jpg"
     CONFIG_FILE_PATH = SYSTEM_INFO_PATH + "/config.txt"
     USER_LOGIN_FILE_PATH= SYSTEM_INFO_PATH + "/user_login.txt"
     ENCRYPTION_KEY_FILE_PATH = SYSTEM_INFO_PATH+ "/key.txt"
+    CASCADE_PATH = OTHER_PATH + "/haarcascade_frontalface_default.xml"
     
     #DEVICE CONFIGURATION
     BUTTON_ENABLE = True

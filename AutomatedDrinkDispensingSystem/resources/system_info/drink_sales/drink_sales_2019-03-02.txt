@@ -1,0 +1,3 @@
+2019-03-02 00:07:10.952098 : 5 cuba libres were ordered.
+2019-03-02 00:09:25.346913 : 3 cuba libres were ordered.
+2019-03-02 00:11:47.617109 : 2 cuba libres were ordered.

@@ -1,0 +1,4 @@
+2019-03-01 20:59:40.372207 : 3 daiquiris were ordered.
+2019-03-01 21:04:19.368509 : 5 rum and cokes were ordered.
+2019-03-01 22:35:30.691753 : 2 cuba libres were ordered.
+2019-03-01 23:18:49.115652 : 2 cuba libres were ordered.

@@ -33,6 +33,8 @@ class Camera(PeripheralDevice):
 		self.buffer = None  #will pass images through this variable            
 		self.buffer_data_type = "ImageTk's PhotoImages"
 		
+		self.face_cascade = cv2.CascadeClassifier(self.main_app.CASCADE_PATH)
+		
 	
 	def startThreading(self,video_tk_label):
 		"""Starts thread for reading camera input. Takes video_tk_label arg
@@ -66,6 +68,21 @@ class Camera(PeripheralDevice):
 				#cv2 makes images use BGR color space by default, but
 				#need RGB for Image objects
 				self.buffer = cv2.cvtColor(self.frame,cv2.COLOR_BGR2RGB) 
+				
+				###### Detects faces here #######
+				gray = cv2.cvtColor(self.frame,cv2.COLOR_BGR2GRAY)
+				faces = self.face_cascade.detectMultiScale(
+					gray,
+					scaleFactor=1.1,
+					minNeighbors=5,
+					minSize=(30,30),
+					flags=cv2.CASCADE_SCALE_IMAGE
+				)
+				
+				for (x,y,w,h,) in faces:
+					cv2.rectangle(self.buffer,(x,y),(x+w,y+h),(0,255,0),2) #draw a green rectangle for each face
+				################################# 
+				
 				self.buffer = Image.fromarray(self.buffer) #convets Mat object to Image
 				self.buffer = ImageTk.PhotoImage(self.buffer) #image is now TK compatible
 				
