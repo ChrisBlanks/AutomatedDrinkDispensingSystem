@@ -70,18 +70,18 @@ def runMainApplication():
 class MainApp:
     #class member variables
     MAIN_DIRECTORY_PATH = main_path
-    RESOURCES_PATH = main_path + "/resources"
+    RESOURCES_PATH = "{}/resources".format(MAIN_DIRECTORY_PATH)
     
-    DRINK_PROFILE_DIRECTORY_PATH = RESOURCES_PATH + "/drink_profiles"
-    SYSTEM_INFO_PATH = RESOURCES_PATH + "/system_info"
-    GUI_IMAGES_PATH = RESOURCES_PATH + "/gui_images"
-    OTHER_PATH = RESOURCES_PATH + "/other"
+    DRINK_PROFILE_DIRECTORY_PATH = "{}/drink_profiles".format(RESOURCES_PATH)
+    SYSTEM_INFO_PATH = "{}/system_info".format(RESOURCES_PATH)
+    GUI_IMAGES_PATH = "{}/gui_images".format(RESOURCES_PATH)
+    OTHER_PATH = "{}/other".format(RESOURCES_PATH)
     
-    WAIT_SCREEN_IMG_PATH = GUI_IMAGES_PATH + "/drink_pour.jpg"
-    CONFIG_FILE_PATH = SYSTEM_INFO_PATH + "/config.txt"
-    USER_LOGIN_FILE_PATH= SYSTEM_INFO_PATH + "/user_login.txt"
-    ENCRYPTION_KEY_FILE_PATH = SYSTEM_INFO_PATH+ "/key.txt"
-    CASCADES_PATH = OTHER_PATH + "/haar_cascade_files"
+    WAIT_SCREEN_IMG_PATH = "{}/drink_pour.jpg".format(GUI_IMAGES_PATH)
+    CONFIG_FILE_PATH = "{}/config.txt".format(SYSTEM_INFO_PATH)
+    USER_LOGIN_FILE_PATH= "{}/user_login.txt".format(SYSTEM_INFO_PATH)
+    ENCRYPTION_KEY_FILE_PATH = "{}/key.txt".format(SYSTEM_INFO_PATH)
+    CASCADES_PATH = "{}/haar_cascade_files".format(OTHER_PATH)
      
     
     #DEVICE CONFIGURATION
@@ -147,8 +147,8 @@ class MainApp:
     def createMainWindow(self):
         """Displays main window elements. """
         self.master.geometry(self.geometry_string)
-        print("\nWindow Size(Width): "+str(self.master.winfo_screenwidth()))
-        print("Window Size(Width): "+str(self.master.winfo_screenheight()))
+        print("\nWindow Size(Width): {}".format( self.master.winfo_screenwidth() ) )
+        print("Window Size(Width): {}".format( self.master.winfo_screenheight() ) )
 
         self.main_title = ttk.Label(self.master,text="Selection Window")
         self.main_title.pack()
@@ -237,7 +237,7 @@ class MainApp:
             else:
                 text_file_index= 1
 
-            drink = dp_class.DrinkProfile(path_builder +"/"+ os.listdir(path_builder)[text_file_index],self.MAIN_DIRECTORY_PATH)
+            drink = dp_class.DrinkProfile("{}/{}".format(path_builder, os.listdir(path_builder)[text_file_index]),self.MAIN_DIRECTORY_PATH)
 
             if drink.isActive == "1":
                 drink.name = (drink.name).replace(" ","_")
@@ -313,18 +313,16 @@ class MainApp:
 
     def writeToLog(self, message):
         """Writes messages into the log.txt file."""
-        self.todays_log = self.SYSTEM_INFO_PATH+"/log_files/log_on_"+str(datetime.date.today())+".txt"
+        self.todays_log = "{}/log_files/log_on_{}.txt".format(self.SYSTEM_INFO_PATH, str( datetime.date.today() ) )
         with open(self.todays_log,"a+") as log:
-            full_msg = str(datetime.datetime.now()) +" : " + message
-            log.write(full_msg + "\n")
+            log.write("{} : {}\n".format( str( datetime.datetime.now() ) , message))
 
 
     def writeToDrinkSalesLog(self, message):
         """Writes time-stamped sales info into a log for each day."""
-        self.todays_drink_sales = self.SYSTEM_INFO_PATH+"/drink_sales/drink_sales_"+str(datetime.date.today())+".txt"
-        with open(self.todays_drink_sales,"a") as log:
-            full_msg = str(datetime.datetime.now()) +" : " + message
-            log.write(full_msg + "\n")
+        self.todays_drink_sales = "{}/drink_sales/drink_sales_{}.txt".format(self.SYSTEM_INFO_PATH , str( datetime.date.today() ) )
+        with open(self.todays_drink_sales,"a+") as log:
+            log.write("{} : {}\n".format( str( datetime.datetime.now() ) , message))
 
 
     def addUserToLogin(self,user_type,username,password):
@@ -343,7 +341,7 @@ class MainApp:
                         file.write(temp+b"\n")
                         next_line = False
                     if "ADMIN USER" in line:
-                        temp = username +" "+ password
+                        temp = "{} {}".format(username,password)
                         temp = self.cipher_suite.encrypt(temp.encode(encoding='UTF-8'))
                         next_line = True
                     if "END" in line:
@@ -361,7 +359,7 @@ class MainApp:
                         line = self.cipher_suite.encrypt(line.encode(encoding='UTF-8'))
                         file.write(line+b"\n") #write REGULAR USER and add a new line
 
-                        new_login = username +" "+ password
+                        new_login = "{} {}".format(username,password)
                         new_encrypt = self.cipher_suite.encrypt(new_login.encode(encoding='UTF-8'))
                         file.write(new_encrypt+b"\n") #write new login and a new line before next line
                         continue
@@ -374,8 +372,7 @@ class MainApp:
                     line = self.cipher_suite.encrypt(line.encode(encoding='UTF-8'))
                     file.write(line+b"\n")
 
-        msg = "Added "+username+ " account to login."
-        self.writeToLog(msg)
+        self.writeToLog("Added {} account to login.".format(username) )
 
 
     def deleteUserFromLogin(self, username, password):
@@ -398,13 +395,11 @@ class MainApp:
                     line = self.cipher_suite.encrypt(line.encode(encoding='UTF-8'))
                     file.write(line+b"\n")
                 else:
-                    print("Found "+ login_combo+ " in this line: " + line) #skips over line if login_combo is in it
-                    pass
-
-        msg = "Removed "+username+ " account from login."
-        self.writeToLog(msg)
-
-
+                    print("Found {} in this line: {}".format(login_combo, line)) #skips over line if login_combo is in it
+        
+        self.writeToLog("Removed {} account from login.".format(username) )
+ 
+        
     def setupUserEncryption(self):
         """Creates an encryption key if one is not already made """
         #if there's a key file, then acquire key from encryption
@@ -455,7 +450,7 @@ class MainApp:
     def getIPAddress(self):
         host_info = check_output(['hostname','-I'])
         ip_address = host_info.split()[0].decode('ascii')
-        print("IP: "+ip_address+"\n")
+        print( "IP: {}\n".format(ip_address) )
         return ip_address
 
 
@@ -467,7 +462,7 @@ class MainApp:
         now = time.strftime("%H:%M:%S")
         print(now) #keeps track of write time
 
-        self.todays_shared_data= self.SYSTEM_INFO_PATH+"/shared_data/shared_data_"+str(datetime.date.today())+".txt"
+        self.todays_shared_data= "{}/shared_data/shared_data_{}.txt".format(self.SYSTEM_INFO_PATH, str( datetime.date.today() ) )
         with open(self.todays_shared_data,"w") as shared_log:
 
 
@@ -551,14 +546,14 @@ class MainApp:
         """Instantiates all devices."""
         
         self.switch = EmployeeSwitch(self)  #pass main app instance
-        print("\n"+self.switch.name + ": " + self.switch.state)
+        print("\n{} : {}".format(self.switch.name,self.switch.state))
         self.checkButtonState()
         
         self.pulse_pin = PulsePin(self) 
-        print(self.pulse_pin.name + ": " + self.pulse_pin.state)
+        print("\n{} : {}".format(self.pulse_pin.name,self.pulse_pin.state))
         
         self.camera = Camera(self)
-        print(self.camera.name + ": " + self.camera.state)
+        print("\n{} : {}".format(self.camera.name,self.camera.state) )
         
         print("\n")
 
