@@ -49,7 +49,7 @@ class Camera(PeripheralDevice):
 		the Picamera's video output."""
 		
 		self.vs = VideoStream(usePiCamera=1).start() #video stream object
-		self.MAX_WIDTH = 400  #sets max width of frames
+		self.MAX_WIDTH = 500  #sets max width of frames
 		
 		self.frame = None
 		self.panel = None
@@ -76,7 +76,7 @@ class Camera(PeripheralDevice):
 				#need RGB for Image objects
 				self.buffer = cv2.cvtColor(self.frame,cv2.COLOR_BGR2RGB) 
 				
-				UF.detectFace(self.frame,self.buffer,self.face_cascade)
+				UF.drawEars(self.frame,self.buffer,self.face_cascade)
 				
 				self.buffer = Image.fromarray(self.buffer) #convets Mat object to Image
 				self.buffer = ImageTk.PhotoImage(self.buffer) #image is now TK compatible

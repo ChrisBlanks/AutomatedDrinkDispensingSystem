@@ -57,6 +57,7 @@ class AppWindow():
         column_position = 0
         row_position = 0
         self.drink_option_references = []
+        
         for drink in self.main_app.active_drink_objects:
             if column_position > 4:
                 row_position = row_position + 2 #goes to next set of rows
@@ -102,7 +103,8 @@ class AppWindow():
             item[1].grid_forget()
 
         #must be discarded, so that grid widgets can be put in self.frame
-        self.canvas.pack_forget()   
+        self.canvas.pack_forget()  
+        self.canvas_frame.pack_forget() 
         self.scrollbar.pack_forget()
 
 
@@ -111,7 +113,7 @@ class AppWindow():
         self.drink_profile_elements = []
         
         img = Image.open(self.current_drink.pic_location)
-        img = img.resize((500,400),Image.ANTIALIAS)
+        img = img.resize((500,400),Image.ANTIALIAS) 
         tk_photo = ImageTk.PhotoImage(img)
         self.img_item_reference = tk_photo #keeping a reference allows photo to display
         
@@ -197,6 +199,7 @@ class AppWindow():
         self.isOrdered = self.displayConfirmationMessageBox("Employee",num_of_drinks)
         if self.isOrdered:
             print("Going to wait screen")
+            print(self.frame.winfo_children())
             self.clearDrinkProfile()
             self.setupWaitScreen()
 
@@ -204,11 +207,14 @@ class AppWindow():
 	
     def setupWaitScreen(self):
         """Creates and displays the elements of the wait screen."""
-        self.waitLabel = ttk.Label(self.frame,text="Waiting...")
+        self.wait_frame = tk.Frame(self.master,height=500,width=500,bg=self.background_color)
+        self.frame.grid_forget()
+        
+        self.waitLabel = ttk.Label(self.wait_frame,text="Waiting...",anchor=tk.CENTER)
         self.waitLabel.pack(fill=tk.X,side=tk.TOP)
         
         if hasattr(self.main_app_instance, 'switch'):
-            self.img_item = ttk.Label(self.frame)
+            self.img_item = ttk.Label(self.wait_frame)
             self.main_app_instance.camera.startThreading(self.img_item)
         
             ###A way to end the infinite loop since I am waiting to implement drink process protocol
@@ -222,10 +228,10 @@ class AppWindow():
             
             self.wait_screen_img_reference = tk_photo #keeping a reference allows photo to display
             
-            img_item = ttk.Label(self.frame,image=tk_photo)
+            img_item = ttk.Label(self.wait_frame,image=tk_photo)
             img_item.pack(fill=tk.X,side=tk.BOTTOM)
 
-
+        self.wait_frame.pack(fill=tk.X)
         
 
 

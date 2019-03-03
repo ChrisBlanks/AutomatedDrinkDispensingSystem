@@ -26,10 +26,8 @@ Notes:
 import cv2
 import math
 
-def detectFace(in_frame,out_frame,classifier ):
-	"""Detects faces in an input frame (a.k.a in_frame), and draws a rectangle
-	centered at the detected area on to the corresponding coordinates in the output
-	frame (a.k.a out_frame)"""
+def drawEars(in_frame,out_frame,classifier ):
+	"""Detects faces in an input frame (a.k.a in_frame), and draws bunny ears on a person's head"""
 	gray = cv2.cvtColor(in_frame,cv2.COLOR_BGR2GRAY) #convert original BGR to Grayscale
 	
 	faces = classifier.detectMultiScale(
@@ -45,33 +43,63 @@ def detectFace(in_frame,out_frame,classifier ):
 	# [ [1st_point 2nd_point width height ] [2nd rectangle dectected] ... ]
 
 	for (x,y,w,h,) in faces:
+		
+		"""
 		cv2.rectangle(out_frame,(x,y),(x+w,y+h),(0,0,255),2) 
-		center = ( int(x+w/2) , int(y + h/2) )  #needs to be an integer
-		cv2.circle(out_frame,center,int(h/2),(0,0,255),2) 
-		#centers circle on rect & makes radius the same height as square
+		center = ( int(x+w/2) , int(y + h/2) ) 
+		radius = int(h/2)
+		radius = int(math.sqrt((w*w) + (h*h) ) /2)
+		cv2.circle(out_frame,center,radius,(0,0,255),2) 
+		centers circle on rect & makes radius the same height as square
+		"""
 		
-		#calculate new points around edge of circle
 		x_center = int(x+ w/2) 
-		y_center = int(x+ h/2)
+		y_center = int(y+ h/2)
 		
-		theta = math.radians(30) #30 degrees -> pi/6
+		radius = int(math.sqrt((w*w) + (h*h) ) /2) 
+		#radius of circle that future shapes will be residing on 
 		
-		# add center offset to calculated value of x and y
+		theta = math.radians(30) #determines ear position on circle edge
+		
+		#Points (x2,y2) & (x3,y3) will define the centers of the following shapes
 		# adding an offset of -90 degrees to account for (0,0) being in the top left
-		y2 = y_center + ((h/2)* math.sin(theta -90) )
-		y3 = y_center + ((h/2)* math.sin(-1*theta - 90) )
-		x2 = y_center + ((h/2)* math.cos(theta -90) )
-		x3 = y_center + ((h/2)* math.cos(-1*theta - 90) )
+		y2 = y_center + (radius* math.sin(theta - math.radians(90) ) )
+		y3 = y_center + (radius* math.sin(-1*theta - math.radians(90) ) )
+		
+		x2 = x_center + (radius* math.cos(theta - math.radians(90) ) )
+		x3 = x_center + (radius* math.cos(-1*theta - math.radians(90) ) )
 		
 		if y2 < 0 or y3 < 0  or x2 < 0 or x3 < 0:
 			pass #can't plot negative coodinates
 		else:
+			
+			"""
 			center_2 = (int(x2),int(y2))
 			center_3 = (int(x3),int(y3))
 			
 			cv2.circle(out_frame,center_2,10,(255,255,255),2)
 			cv2.circle(out_frame,center_3,10,(255,255,255),2)
-		
-	
+			"""
+			
+			#will shift shapes closer to the top of the frame
+			center_4 = (int(x2),int(y2 -25))
+			center_5 = (int(x3),int(y3 -25))
+			
+			DEGREES = 15  #degrees of tilt of ellipse
+			AXES_LENGTHS = (10,30)  # defines a big ellipse to make a bunny ear
+			AXES_LENGTHS_2 = (4,18)  # defines a smaller ellipse to make the inner ear
+			ARC_START = 0
+			ARC_END = 360   #draws a full ellipse when from 0 to 360
+			W_COLOR = (255,255,255)  #white color
+			P_COLOR = (255,228,225)  #pink color (apparently misty rose)
+			FILL = -1 #passing a negative number fills the ellipse
+			
+			#creates bunny ears around the top of someone's head
+			#tilt the ellipses away from each other 
+			cv2.ellipse(out_frame,center_4,AXES_LENGTHS,DEGREES,ARC_START,ARC_END,W_COLOR,FILL)
+			cv2.ellipse(out_frame,center_5,AXES_LENGTHS,-1*DEGREES,ARC_START,ARC_END,W_COLOR,FILL) #rotate other direction
+			
+			cv2.ellipse(out_frame,center_4,AXES_LENGTHS_2,DEGREES,ARC_START,ARC_END,P_COLOR,FILL)
+			cv2.ellipse(out_frame,center_5,AXES_LENGTHS_2,-1*DEGREES,ARC_START,ARC_END,P_COLOR,FILL) #rotate other direction
 
 

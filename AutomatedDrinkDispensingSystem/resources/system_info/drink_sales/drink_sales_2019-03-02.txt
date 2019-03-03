@@ -25,3 +25,45 @@
 2019-03-02 13:51:30.863248 : 1 daiquiri was ordered.
 2019-03-02 13:52:16.496714 : 1 daiquiri was ordered.
 2019-03-02 13:57:04.781884 : 1 screwdriver was ordered.
+2019-03-02 20:25:51.871044 : 1 daiquiri was ordered.
+2019-03-02 20:33:13.091845 : 1 rum and coke was ordered.
+2019-03-02 20:37:47.298234 : 1 tequila was ordered.
+2019-03-02 20:50:12.059100 : 1 tequila was ordered.
+2019-03-02 20:55:25.527120 : 2 screwdrivers were ordered.
+2019-03-02 20:57:32.197788 : 1 tequila was ordered.
+2019-03-02 20:59:48.403351 : 1 kamikaze was ordered.
+2019-03-02 21:01:04.066248 : 1 kamikaze was ordered.
+2019-03-02 21:02:18.242904 : 1 screwdriver was ordered.
+2019-03-02 21:02:56.674145 : 1 tequila was ordered.
+2019-03-02 21:06:38.525414 : 1 tequila was ordered.
+2019-03-02 21:09:56.874765 : 3 long island iced teas were ordered.
+2019-03-02 21:13:01.162569 : 2 daiquiris were ordered.
+2019-03-02 21:16:18.117051 : 1 cuba libre was ordered.
+2019-03-02 21:20:51.009065 : 1 rum and coke was ordered.
+2019-03-02 21:26:50.075719 : 1 rum and coke was ordered.
+2019-03-02 21:33:15.308311 : 1 cuba libre was ordered.
+2019-03-02 21:37:30.114817 : 1 tequila was ordered.
+2019-03-02 21:39:32.405628 : 3 kamikazes were ordered.
+2019-03-02 21:43:51.046396 : 1 daiquiri was ordered.
+2019-03-02 21:47:21.928997 : 1 rum and coke was ordered.
+2019-03-02 21:48:29.303729 : 1 daiquiri was ordered.
+2019-03-02 21:49:37.207956 : 1 cuba libre was ordered.
+2019-03-02 21:50:43.943853 : 1 daiquiri was ordered.
+2019-03-02 21:51:20.937052 : 1 cuba libre was ordered.
+2019-03-02 21:52:29.735691 : 1 daiquiri was ordered.
+2019-03-02 21:54:07.880928 : 1 daiquiri was ordered.
+2019-03-02 21:57:40.632978 : 1 rum and coke was ordered.
+2019-03-02 21:59:03.670792 : 1 rum and coke was ordered.
+2019-03-02 22:01:42.343740 : 1 cuba libre was ordered.
+2019-03-02 22:04:31.110047 : 2 rum and cokes were ordered.
+2019-03-02 22:05:55.846656 : 3 rum and cokes were ordered.
+2019-03-02 22:15:18.788131 : 1 rum and coke was ordered.
+2019-03-02 22:18:37.924687 : 4 daiquiris were ordered.
+2019-03-02 22:21:34.420240 : 2 rum and cokes were ordered.
+2019-03-02 22:29:59.809636 : 2 daiquiris were ordered.
+2019-03-02 22:33:08.910597 : 1 daiquiri was ordered.
+2019-03-02 22:36:04.734381 : 2 tequilas were ordered.
+2019-03-02 22:38:13.469286 : 4 vodkas were ordered.
+2019-03-02 22:40:57.163841 : 1 daiquiri was ordered.
+2019-03-02 22:46:24.296904 : 5 rum and cokes were ordered.
+2019-03-02 23:16:56.789282 : 4 daiquiris were ordered.
