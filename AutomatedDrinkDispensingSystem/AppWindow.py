@@ -15,6 +15,7 @@ import tkinter as tk
 from PIL import Image
 from PIL import ImageTk
 import math
+import time
 
 #my modules
 from Camera import Camera
@@ -31,6 +32,8 @@ class AppWindow():
 
     def displayDrinkOptionsInGUI(self):
         """Displays each drink button/image/label in the GUI."""
+        
+        #Scrollable Canvas config
         num_of_drinks = len(self.main_app.active_drink_objects)
         necessary_rows = math.ceil(num_of_drinks/5) #5 drinks fill up a row in the window
         width_of_bar = 25    #scrollbar width
@@ -42,6 +45,7 @@ class AppWindow():
         
         self.canvas = tk.Canvas(self.frame,width=canvas_width,height=canvas_height,bg = self.background_color,
                                 scrollregion=(0,0,scroll_width,scroll_height))
+                                
         self.scrollbar = tk.Scrollbar(self.frame,width=width_of_bar,orient= tk.VERTICAL)
         self.scrollbar.pack(side=tk.LEFT,fill=tk.Y)
 
@@ -189,6 +193,7 @@ class AppWindow():
                 else:
                     messagebox.showinfo("Payment","Payment was not received, so process was cancelled.",parent=self.master)
             
+            self.isOrdered = False #reset value
             self.clearDrinkProfile()
             self.setupWaitScreen()
             
@@ -199,10 +204,10 @@ class AppWindow():
         self.isOrdered = self.displayConfirmationMessageBox("Employee",num_of_drinks)
         if self.isOrdered:
             print("Going to wait screen")
-            print(self.frame.winfo_children())
+            self.main_app_instance.BUTTON_ENABLE = False  #disable employee switch will making a drink
+            self.main_app_instance.switch.state = "off"
             self.clearDrinkProfile()
             self.setupWaitScreen()
-
 
 	
     def setupWaitScreen(self):
@@ -213,14 +218,10 @@ class AppWindow():
         self.waitLabel = ttk.Label(self.wait_frame,text="Waiting...",anchor=tk.CENTER)
         self.waitLabel.pack(fill=tk.X,side=tk.TOP)
         
-        if hasattr(self.main_app_instance, 'switch'):
+        if hasattr(self.main_app_instance, 'camera') and self.main_app_instance.isTestingMode == False:
             self.img_item = ttk.Label(self.wait_frame)
             self.main_app_instance.camera.startThreading(self.img_item)
         
-            ###A way to end the infinite loop since I am waiting to implement drink process protocol
-            #kill = input("Enter any value to end this thread")
-            #if kill:
-            #    self.main_app_instance.camera.onExit() #stops camera on last frame
         else:
             img = Image.open(self.main_app_instance.WAIT_SCREEN_IMG_PATH)
             img = img.resize((500,500),Image.ANTIALIAS)
@@ -228,12 +229,55 @@ class AppWindow():
             
             self.wait_screen_img_reference = tk_photo #keeping a reference allows photo to display
             
-            img_item = ttk.Label(self.wait_frame,image=tk_photo)
-            img_item.pack(fill=tk.X,side=tk.BOTTOM)
+            self.img_item = ttk.Label(self.wait_frame,image=tk_photo,anchor=tk.CENTER)
+            self.img_item.pack(fill=tk.X,side=tk.BOTTOM)
 
         self.wait_frame.pack(fill=tk.X)
         
-
+        #pause before final screen
+        dummy = input("Please, enter a value before continuing.\n>>")
+        
+        if hasattr(self.main_app_instance, 'camera') and self.main_app_instance.isTestingMode == False:
+            self.main_app_instance.camera.onExit() #turn off camera if used
+        
+        while(self.main_app_instance.camera.state == "enabled"):
+            pass #wait until camera is off before going to next screen
+        
+        self.setupDeliveryScreen() #go to final screen of drink making process
+    
+    
+    def setupDeliveryScreen(self):
+        """Goes to final screen."""
+        self.waitLabel.pack_forget() #don't need text label anymore
+        self.img_item.pack_forget()  # or past image
+        
+        self.delivery_img = ttk.Label(self.wait_frame,anchor=tk.CENTER)
+        
+        img = Image.open(self.main_app_instance.DELIVERY_SCREEN_IMG_PATH)
+        img = img.resize((500,500),Image.ANTIALIAS)
+        tk_photo = ImageTk.PhotoImage(img)
+            
+        self.delivery_img_reference = tk_photo 
+        
+        self.delivery_img.configure(image=tk_photo)
+        self.delivery_img.pack(fill=tk.X,side=tk.BOTTOM)
+        dummy = input("Enter anything to continue.\n>>")
+        
+        #setup drink options again after drink has been picked up
+        
+        self.delivery_img.pack_forget()
+        self.wait_frame.pack_forget()
+        
+        self.frame = tk.Frame(self.master)
+        self.frame.configure(bg= AppWindow.background_color)
+        self.frame.grid() 
+        
+        #Re-enable employee switch
+        self.main_app_instance.BUTTON_ENABLE = True 
+        self.main_app_instance.switch.state = "enabled"
+        
+        self.displayDrinkOptionsInGUI()
+        
 
     def displayConfirmationMessageBox(self,mode="Customer",num_of_drinks=1):
         """Asks the user if they are sure about their drink selection """

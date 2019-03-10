@@ -34,7 +34,7 @@ class Camera(PeripheralDevice):
 		
 		#PeripheralDevice info
 		self.name = "camera"
-		self.state = "enabled"               
+		self.state = "off" #not on until threading starts              
 		self.pin_number = None         
 		self.buffer = None  #will pass images through this variable            
 		self.buffer_data_type = "ImageTk's PhotoImages"
@@ -49,6 +49,7 @@ class Camera(PeripheralDevice):
 		the Picamera's video output."""
 		
 		self.vs = VideoStream(usePiCamera=1).start() #video stream object
+		self.state = "enabled"
 		self.MAX_WIDTH = 500  #sets max width of frames
 		
 		self.frame = None
@@ -76,7 +77,9 @@ class Camera(PeripheralDevice):
 				#need RGB for Image objects
 				self.buffer = cv2.cvtColor(self.frame,cv2.COLOR_BGR2RGB) 
 				
-				UF.drawEars(self.frame,self.buffer,self.face_cascade)
+				#UF.drawEars(self.frame,self.buffer,self.face_cascade)
+				UF.drawMask(self.frame,self.buffer,self.face_cascade)
+				
 				
 				self.buffer = Image.fromarray(self.buffer) #convets Mat object to Image
 				self.buffer = ImageTk.PhotoImage(self.buffer) #image is now TK compatible
@@ -101,4 +104,5 @@ class Camera(PeripheralDevice):
 		print("Exiting...")
 		self.stopEvent.set() #when set, the continuous loop in callback stops
 		self.vs.stop() #stop video stream
+		self.state = "off"
 

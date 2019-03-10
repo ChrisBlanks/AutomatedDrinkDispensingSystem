@@ -5,18 +5,21 @@ Last Edited: 1/13/2019
 Project: Automated Self-Serving System
 Purpose: This script defines the MainApp class that runs the desktop application.
 Note:
-    >This script takes a command line argument now
-        >When a "1" is sent, peripheral devices are enabled. They are disabled by
-        default 
+    >This script takes command line arguments now
+        >two arguments must be sent
+            > when "enable" is sent as 1st arg, all peripheral devices are enabled
+            > when "testing" is sent as the 2nd arg, the camera is not used
 """
 
 import os
 import sys
 
 #allows all scripts to be disocoverable on system path
+#Note: can use os.sep to create dynamic paths 
 main_path = (os.path.abspath(__file__)).replace("/MainApp.py","")
-icon_path = main_path +"/resources/gui_images/martini.png"
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+icon_path = "{}/resources/gui_images/martini.png".format(main_path)
+
 
 #Standard library imports
 import tkinter as tk
@@ -56,10 +59,18 @@ def runMainApplication():
     root.tk.call("wm","iconphoto",root._w,icon_img)             #sets the application icon
     
     enableDevices = None
-    if len(sys.argv) > 1 and str(sys.argv[1]) == "enable":
-        enableDevices = True #if true is sent as a command line arg then enable devices
+    isTestingMode = False
     
-    main_app = MainApp(root,icon_img,enableDevices) 
+    #checks command line arguments
+    if len(sys.argv) > 1:
+        if str(sys.argv[1]) == "enable":
+            enableDevices = True #if true is sent as a command line arg then enable devices
+    
+    if len(sys.argv) > 2:    
+        if str(sys.argv[2]) == "testing":
+            isTestingMode = True #if true, certain features are not enabled
+    
+    main_app = MainApp(root,icon_img,enableDevices,isTestingMode) 
     
     style = ttk.Style()
     current_theme = style.theme_use('clam')  #sets up the clam style for all ttk widgets
@@ -78,6 +89,8 @@ class MainApp:
     OTHER_PATH = "{}/other".format(RESOURCES_PATH)
     
     WAIT_SCREEN_IMG_PATH = "{}/drink_pour.jpg".format(GUI_IMAGES_PATH)
+    DELIVERY_SCREEN_IMG_PATH = "{}/pick_up_drink.jpg".format(GUI_IMAGES_PATH)
+    
     CONFIG_FILE_PATH = "{}/config.txt".format(SYSTEM_INFO_PATH)
     USER_LOGIN_FILE_PATH= "{}/user_login.txt".format(SYSTEM_INFO_PATH)
     ENCRYPTION_KEY_FILE_PATH = "{}/key.txt".format(SYSTEM_INFO_PATH)
@@ -97,7 +110,7 @@ class MainApp:
     data_demo_key = True         #toggles between pre-made shared data messages
 
 
-    def __init__(self,master,icon_img,peripheral_device_enable=None):
+    def __init__(self,master,icon_img,peripheral_device_enable=None, isTestingMode=False):
         self.master = master
         self.master.configure(background="LightCyan3")
         self.screen_width = self.master.winfo_screenwidth()
@@ -117,8 +130,11 @@ class MainApp:
 
         self.active_drink_objects = self.getDrinks()      #returns a list of drink_objects for later use
         
+        
         if peripheral_device_enable != None:
             self.createDevices() #creates device instances for later use
+        
+        self.isTestingMode = isTestingMode
         
         self.createMainWindow()
         #self.selectWindow()

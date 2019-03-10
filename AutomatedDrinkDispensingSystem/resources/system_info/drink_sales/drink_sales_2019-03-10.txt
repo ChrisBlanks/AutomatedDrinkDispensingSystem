@@ -1,0 +1,28 @@
+2019-03-10 10:01:55.884795 : 2 daiquiris were ordered.
+2019-03-10 11:07:41.944374 : 1 screwdriver was ordered.
+2019-03-10 11:17:30.288165 : 1 daiquiri was ordered.
+2019-03-10 11:18:23.967710 : 2 rum and cokes were ordered.
+2019-03-10 11:38:26.712820 : 1 daiquiri was ordered.
+2019-03-10 11:41:09.736052 : 1 daiquiri was ordered.
+2019-03-10 11:42:54.264951 : 1 rum and coke was ordered.
+2019-03-10 12:48:26.425141 : 1 rum and coke was ordered.
+2019-03-10 12:49:24.008903 : 1 vodka and cranberry was ordered.
+2019-03-10 12:51:32.712086 : 1 rum and coke was ordered.
+2019-03-10 12:52:59.221175 : 1 daiquiri was ordered.
+2019-03-10 12:58:55.985980 : 1 daiquiri was ordered.
+2019-03-10 13:00:15.121116 : 1 daiquiri was ordered.
+2019-03-10 13:00:51.071930 : 2 daiquiris were ordered.
+2019-03-10 13:07:22.222929 : 5 rum and cokes were ordered.
+2019-03-10 13:07:39.597872 : 3 daiquiris were ordered.
+2019-03-10 13:08:23.852546 : 3 screwdrivers were ordered.
+2019-03-10 13:21:15.881966 : 1 daiquiri was ordered.
+2019-03-10 13:22:16.743900 : 1 rum and coke was ordered.
+2019-03-10 13:22:47.831770 : 4 screwdrivers were ordered.
+2019-03-10 13:23:04.551130 : 1 daiquiri was ordered.
+2019-03-10 13:24:55.830938 : 1 daiquiri was ordered.
+2019-03-10 13:28:47.973291 : 1 daiquiri was ordered.
+2019-03-10 13:34:46.979398 : 1 daiquiri was ordered.
+2019-03-10 13:35:28.146879 : 3 daiquiris were ordered.
+2019-03-10 13:42:11.170174 : 1 daiquiri was ordered.
+2019-03-10 13:43:58.576185 : 5 screwdrivers were ordered.
+2019-03-10 13:45:35.392914 : 4 cuba libres were ordered.

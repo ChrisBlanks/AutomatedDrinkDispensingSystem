@@ -25,6 +25,8 @@ Notes:
 
 import cv2
 import math
+import random as rd
+
 
 def drawEars(in_frame,out_frame,classifier ):
 	"""Detects faces in an input frame (a.k.a in_frame), and draws bunny ears on a person's head"""
@@ -45,6 +47,8 @@ def drawEars(in_frame,out_frame,classifier ):
 	for (x,y,w,h,) in faces:
 		
 		"""
+		#original bounding rectangle and circle
+		
 		cv2.rectangle(out_frame,(x,y),(x+w,y+h),(0,0,255),2) 
 		center = ( int(x+w/2) , int(y + h/2) ) 
 		radius = int(h/2)
@@ -74,6 +78,8 @@ def drawEars(in_frame,out_frame,classifier ):
 		else:
 			
 			"""
+			#circles used for experimentation
+			
 			center_2 = (int(x2),int(y2))
 			center_3 = (int(x3),int(y3))
 			
@@ -103,3 +109,38 @@ def drawEars(in_frame,out_frame,classifier ):
 			cv2.ellipse(out_frame,center_5,AXES_LENGTHS_2,-1*DEGREES,ARC_START,ARC_END,P_COLOR,FILL) #rotate other direction
 
 
+
+def drawMask(in_frame,out_frame,classifier ):
+	"""Detects faces in an input frame (a.k.a in_frame), and draws
+	superimposed multicolored mask on face."""
+	gray = cv2.cvtColor(in_frame,cv2.COLOR_BGR2GRAY) #convert original BGR to Grayscale
+	
+	faces = classifier.detectMultiScale(
+		gray,  #CV_8U or cv 8 bit unsigned type
+		scaleFactor=1.1,  #how much image size is reduced at each image scale
+		minNeighbors=5,   #how many neighbors each candidate rectangle should have
+		minSize=(30,30),  #min pssible object size ; no max specified
+		flags=cv2.CASCADE_SCALE_IMAGE
+	)
+	
+	overlay = out_frame.copy() #make a copy of output frame
+	
+	for (x,y,w,h,) in faces:
+		center = ( int(x+w/2) , int(y + h/2) ) 
+		radius = int(h/2)
+		
+		cv2.circle(overlay,center,radius,
+		(rd.randint(0,255),rd.randint(0,255),rd.randint(0,255)),-1) 
+		
+		cv2.addWeighted(overlay,0.4,out_frame,1- 0.4, 0, out_frame)
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
