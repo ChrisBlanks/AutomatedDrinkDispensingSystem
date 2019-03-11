@@ -4,6 +4,11 @@ Last Edited: March 2019
 Project: Automated Self-Serving System
 Purpose: This script defines miscellaneous utility functions that don't need to be in a class.
 Notes:
+	- Any function with 'draw' in its name can be dynamically selected by 
+	the Camera object and executed
+		>these functions must have this format for their arguments:
+			def foo(input_frame, output_frame, classifier_used)
+			
 	- a cvRectangle has the following data members:
 		> img : image for the rectangle to be drawn on
 	 	> pt1 : vertex of rectangle
@@ -60,7 +65,7 @@ def drawEars(in_frame,out_frame,classifier ):
 		x_center = int(x+ w/2) 
 		y_center = int(y+ h/2)
 		
-		radius = int(math.sqrt((w*w) + (h*h) ) /2) 
+		radius = int(math.sqrt((w*w) + (h*h) ) /2) #half of hypotenuse will give a good radius
 		#radius of circle that future shapes will be residing on 
 		
 		theta = math.radians(30) #determines ear position on circle edge
@@ -110,9 +115,12 @@ def drawEars(in_frame,out_frame,classifier ):
 
 
 
-def drawMask(in_frame,out_frame,classifier ):
+def drawRainbowMask(in_frame,out_frame,classifier ):
 	"""Detects faces in an input frame (a.k.a in_frame), and draws
 	superimposed multicolored mask on face."""
+	
+	#the addWeighted() &  Mat.copy() functions are pretty slow
+	
 	gray = cv2.cvtColor(in_frame,cv2.COLOR_BGR2GRAY) #convert original BGR to Grayscale
 	
 	faces = classifier.detectMultiScale(
@@ -132,15 +140,145 @@ def drawMask(in_frame,out_frame,classifier ):
 		cv2.circle(overlay,center,radius,
 		(rd.randint(0,255),rd.randint(0,255),rd.randint(0,255)),-1) 
 		
-		cv2.addWeighted(overlay,0.4,out_frame,1- 0.4, 0, out_frame)
+		#does the weighted sum of two matrices
+		# args: input, alpha, input2, beta, gamma, output
+		#basically doing a cross-dissolve here
+		cv2.addWeighted(overlay,0.4,out_frame,1- 0.4, 0, out_frame) 
+		#superimposes the copied image on the output image
 		
 		
+def drawGlassesForEyes(in_frame,out_frame,face_classifier, eyes_classifier):	
+	"""Draws glasses on the face of the user."""
+	gray = cv2.cvtColor(in_frame,cv2.COLOR_BGR2GRAY) #convert original BGR to Grayscale
+	
+	faces = face_classifier.detectMultiScale(
+		gray,  #CV_8U or cv 8 bit unsigned type
+		scaleFactor=1.1,  #how much image size is reduced at each image scale
+		minNeighbors=5,   #how many neighbors each candidate rectangle should have
+		minSize=(30,30),  #min pssible object size ; no max specified
+		flags=cv2.CASCADE_SCALE_IMAGE
+	)
+	
+	for (x,y,w,h) in faces:
+		roi_gray= gray[y:y+h,x:x+h] #index the cells that make up the detected face
+		roi_out = out_frame[y:y+h,x:x+h] #same size for output frame
 		
+		glasses_color = (rd.randint(0,255),rd.randint(0,255),rd.randint(0,255))
 		
+		eyes = eyes_classifier.detectMultiScale(roi_gray,1.1,3) #detects eyes
 		
+		candidate_points = [] #list of points around perimeter of eye circles 
+		radii_rank = []
+		count = 0
+		for(eye_x,eye_y,eye_w,eye_h) in eyes:
+			center = (int(eye_x+ eye_w/2), int(eye_y+ eye_h/2))
+			radius = int(math.sqrt( (eye_w*eye_w) + (eye_h*eye_h) ) /2)
+			
+			cv2.circle(roi_out,center,radius,glasses_color,2) 
+			
+			#get two points that are diametrically opposed
+			#the sin(0) or sin(180) should be zero, but added in for completion
+			theta_180 = math.radians(180) #convert degrees to radians
+			
+			candidate_1 = (radius*math.cos(0) + int(eye_x+ eye_w/2),
+							radius*math.sin(0) + int(eye_y+ eye_h/2) )
+			
+			candidate_2 = (radius*math.cos(theta_180) + int(eye_x+ eye_w/2),
+							radius*math.sin(theta_180) + int(eye_y+ eye_h/2) )
+			
+			#creates a way of determining the largest detected eyes
+			radii_rank.append((count,radius))
+			"""
+			if radii_rank == None:
+				radii_rank.append((count,radius)) #1st circle is initially the biggest
+			else:
+				#count will start at 1
+				if radii_rank[count-1][1] > radius:
+					radii_rank.append((count,radius))
+					#if old is greater than new, then put new behind old
+				else:
+					#switch them
+					temp = radii_rank[count-1]
+					radii_rank[count-1] = (count,radius)
+					radii_rank[count-1] = temp		
+			"""			
+			candidate_points.append((candidate_1,candidate_2)) #add points as a tuple 
+			count += 1
 		
-		
-		
+		#need at least two eyes to draw glasses
+		#only one person will get glasses (as of now)
+		if len(eyes) > 1:
+
+			pos = [] #stores position of two largest circles for indexing candidate_points
+			#run two times to get two largest circles
+			for i in range(2):
+				largest = None
+				for k in range(len(radii_rank)):
+					if k == 0:
+						largest = radii_rank[k] #initial is largest
+					else: 
+						#check the rest against the largest
+						if radii_rank[k][1] > largest[1] :
+							largest = radii_rank[k]			
+				#should have the largest radii by here
+				pos.append(largest[0]) #save which circle is the biggest
+				radii_rank.remove(largest) #remove largest, so that the second largest can be found
+			
+			big_candidates = candidate_points[pos[0]] #largest eye detected
+			small_candidates = candidate_points[pos[1]] #2nd largest eye detected
+			
+			first_dist = abs(big_candidates[0][0] - small_candidates[1][0])
+			second_dist = abs(big_candidates[1][0] - small_candidates[0][0])
+			
+			#draw a line between the shorter distances
+			#offset for lines of eye glasses frame that goes to ears
+			offset_y = -30
+			offset_x = -30
+			
+			if first_dist > second_dist:
+				# point 1 bet
+				x1 = int(big_candidates[1][0])
+				y1 = int(big_candidates[1][1])
+				
+				x2 = int(small_candidates[0][0])
+				y2 = int(small_candidates[0][1])
+				
+				outer1 = (int(big_candidates[0][0]),
+				int(big_candidates[0][1]))
+				
+				outer2= (int(small_candidates[1][0]),
+				int(small_candidates[1][1]))
+										
+				offset1 = (int(big_candidates[0][0] -offset_x),
+				int(big_candidates[0][1] +offset_y))
+				
+				offset2= (int(small_candidates[1][0] +offset_x),
+				int(small_candidates[1][1] +offset_y))
+			else:
+				x1 = int(big_candidates[0][0])
+				y1 = int(big_candidates[0][1])
+				
+				y2 = int(small_candidates[1][1])
+				x2 = int(small_candidates[1][0])
+				
+				outer1 = (int(big_candidates[0][0]),
+				int(big_candidates[0][1]))
+				
+				outer2= (int(small_candidates[1][0]),
+				int(small_candidates[1][1]))
+							
+				offset1 = (int(big_candidates[1][0] -offset_x),
+				int(big_candidates[1][1] +offset_y))
+				
+				offset2= (int(small_candidates[0][0] +offset_x),
+				int(small_candidates[0][1]+ offset_y))
+			
+			#draw a line between the circles
+			cv2.line(roi_out,(x1,y1),(x2,y2),glasses_color,2)
+			
+			#line for ear part of frames
+			cv2.line(roi_out,outer1,offset1,glasses_color,2)
+			cv2.line(roi_out,outer2,offset2,glasses_color,2)
 		
 		
 		

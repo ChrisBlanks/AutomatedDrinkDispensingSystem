@@ -13,6 +13,8 @@ import os
 import time
 import threading
 import datetime
+import random 
+
 import tkinter as tk
 
 #3rd Party
@@ -28,7 +30,9 @@ from PeripheralDevice import PeripheralDevice
 
 
 class Camera(PeripheralDevice):
-
+	
+	ALIAS_NAME = "UF"  #concatenated with strings of functions
+	
 	def __init__(self,main_app_instance):
 		super().__init__(main_app_instance)
 		
@@ -39,8 +43,11 @@ class Camera(PeripheralDevice):
 		self.buffer = None  #will pass images through this variable            
 		self.buffer_data_type = "ImageTk's PhotoImages"
 		
-		self.face_xml_path = self.main_app.CASCADES_PATH + "/haarcascade_frontalface_default.xml"
+		self.face_xml_path = "{}/haarcascade_frontalface_default.xml".format(self.main_app.CASCADES_PATH)
+		self.eyes_xml_path = "{}/haarcascade_eye.xml".format(self.main_app.CASCADES_PATH)
+		
 		self.face_cascade = cv2.CascadeClassifier(self.face_xml_path) #takes about 0.2 seconds to complete
+		self.eyes_cascade = cv2.CascadeClassifier(self.eyes_xml_path)  #another performance hit.. oh no!
 		
 	
 	def startThreading(self,video_tk_label):
@@ -55,6 +62,23 @@ class Camera(PeripheralDevice):
 		self.frame = None
 		self.panel = None
 		self.thread = None #video will have to run a separate thread
+		
+		draw_funcs = [] #will store name of functions as strings
+		format_str = "{}.{}(self.frame,self.buffer,self.face_cascade)"
+		format_str2 = "{}.{}(self.frame,self.buffer,self.face_cascade,self.eyes_cascade)"
+		
+		[draw_funcs.append( dir(UF)[j] ) for j in range(0, len(dir(UF))-1) if "draw" in dir(UF)[j] ]
+		#searches for any items in UtilityFuncs that has "draw" in its name
+		
+		face_funcs = [format_str.format(self.ALIAS_NAME,item) for item in draw_funcs if "Eyes" not in item]
+		eye_funcs = [format_str2.format(self.ALIAS_NAME,item) for item in draw_funcs if "Eyes" in item]
+		
+		all_funcs = face_funcs + eye_funcs 
+		#after doing separate formatting, select one for the current filter 
+		
+		selection = random.randint(0,len(all_funcs)-1)
+		self.current_filter = all_funcs[selection]
+		print("\nFilter function to execute is: {}\n".format(self.current_filter))
 		
 		self.stopEvent = threading.Event() #controls exit behavior of GUI
 		self.thread = threading.Thread(target=self.updateFrame,kwargs={'tk_label': video_tk_label})
@@ -77,8 +101,7 @@ class Camera(PeripheralDevice):
 				#need RGB for Image objects
 				self.buffer = cv2.cvtColor(self.frame,cv2.COLOR_BGR2RGB) 
 				
-				#UF.drawEars(self.frame,self.buffer,self.face_cascade)
-				UF.drawMask(self.frame,self.buffer,self.face_cascade)
+				exec(self.current_filter) #executes the function in the string
 				
 				
 				self.buffer = Image.fromarray(self.buffer) #convets Mat object to Image
