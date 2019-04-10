@@ -1,0 +1,8 @@
+2019-03-20 13:14:51.567132 : 1 kamikaze was ordered.
+2019-03-20 13:16:23.608462 : 1 vodka was ordered.
+2019-03-20 13:18:55.866962 : 1 rum and coke was ordered.
+2019-03-20 13:26:16.711008 : 1 blanks drink was ordered.
+2019-03-20 13:27:18.021377 : 3 blanks drinks were ordered.
+2019-03-20 13:30:47.351457 : 1 blanks drink was ordered.
+2019-03-20 16:20:22.036487 : 3 daiquiris were ordered.
+2019-03-20 16:25:32.800060 : 3 naval gimlets were ordered.

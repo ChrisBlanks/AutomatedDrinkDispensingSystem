@@ -18,11 +18,13 @@ class LoginWindow:
 
     #class member variables
     failed_attempt_limit = 3
-    background_color = "LightCyan3"
+    
     
     def __init__(self, main_app_instance):
         self.main_app = main_app_instance
         self.main_app.master.withdraw()
+        
+        self.background_color = self.main_app.MASTER_BACKGROUND_COLOR
         
         self.master = self.main_app.login_top_lvl
         self.master.configure(bg= self.background_color)

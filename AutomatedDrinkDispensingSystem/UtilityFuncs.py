@@ -188,20 +188,7 @@ def drawGlassesForEyes(in_frame,out_frame,face_classifier, eyes_classifier):
 			
 			#creates a way of determining the largest detected eyes
 			radii_rank.append((count,radius))
-			"""
-			if radii_rank == None:
-				radii_rank.append((count,radius)) #1st circle is initially the biggest
-			else:
-				#count will start at 1
-				if radii_rank[count-1][1] > radius:
-					radii_rank.append((count,radius))
-					#if old is greater than new, then put new behind old
-				else:
-					#switch them
-					temp = radii_rank[count-1]
-					radii_rank[count-1] = (count,radius)
-					radii_rank[count-1] = temp		
-			"""			
+		
 			candidate_points.append((candidate_1,candidate_2)) #add points as a tuple 
 			count += 1
 		

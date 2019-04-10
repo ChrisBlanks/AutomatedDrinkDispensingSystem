@@ -20,20 +20,21 @@ from ApplicationUserEditor import ApplicationUserEditor
 class EmployeeWindow(AppWindow):
     
     
+    
     def __init__(self,main_app_instance, isAdminMode = False):
         AppWindow.__init__(self,main_app_instance)
-        
+        self.main_app = main_app_instance
         self.master = main_app_instance.employee_top_lvl
-        self.master.configure(bg= AppWindow.background_color)
+        self.master.configure(background= self.main_app.MASTER_BACKGROUND_COLOR)
         self.size= [self.master.winfo_screenwidth() , self.master.winfo_screenheight() ]
         
         self.frame = tk.Frame(self.master)
-        self.frame.configure(bg= AppWindow.background_color)
+        self.frame.configure(bg= self.main_app.MASTER_BACKGROUND_COLOR)
             
         self.parent_menu = tk.Menu(self.frame)
         self.master.config(menu= self.parent_menu)
         
-        self.main_app = main_app_instance
+        
         self.operation_instructions_file_path = self.main_app.SYSTEM_INFO_PATH +"/instructions_4_employee.txt"
         
         self.isAdminMode = isAdminMode
@@ -43,6 +44,8 @@ class EmployeeWindow(AppWindow):
         
         self.createHelpMenu(menu_name="Help")
         self.displayDrinkOptionsInGUI() #Method from AppWindow
+        
+        
 
 
     def configureWindow(self):
@@ -72,6 +75,8 @@ class EmployeeWindow(AppWindow):
         self.admin_menu.add_command(label="Edit User Logins" ,command= self.editUserLogins)
         self.admin_menu.add_separator()
         self.admin_menu.add_command(label="Show IP Address" ,command= self.showIPAddress)
+        self.admin_menu.add_separator()
+        self.admin_menu.add_command(label="Change background color" ,command= self.switchBackgroundColor)
         
 
     
@@ -84,11 +89,26 @@ class EmployeeWindow(AppWindow):
         self.options_menu.add_command(label="Launch Drink Profile Manager" ,command= self.launchDrinkProfileManager)
         self.options_menu.add_separator()
         self.options_menu.add_command(label="Show IP Address" ,command= self.showIPAddress)
+        self.options_menu.add_separator()
+        self.options_menu.add_command(label="Change background color" ,command= self.switchBackgroundColor)
+
+
+    def switchBackgroundColor(self):
+        self.main_app.color_index += 1 #increment color index
+        
+        if self.main_app.color_index > len(self.main_app.colors) - 1:
+                self.main_app.color_index = 0 #reset index
+        
+        self.main_app.MASTER_BACKGROUND_COLOR = self.main_app.colors[self.main_app.color_index]
+        print(self.main_app.colors[self.main_app.color_index])
+        self.main_app.master.configure(background=self.main_app.MASTER_BACKGROUND_COLOR)
+        self.main_app.master.update_idletasks()
+        #should write this to a file eventually
 
 
     def launchDrinkProfileManager(self):
         """Allows the employee to add, edit, or delete drink profiles."""
-        self.top = tk.Toplevel(self.master)
+        self.top = tk.Toplevel(self.master,background=self.main_app.MASTER_BACKGROUND_COLOR)
         self.top.tk.call("wm","iconphoto",self.top._w,self.main_app.icon_img) 
         self.top.title("Drink Profile Manager")
         self.top.geometry(self.main_app.geometry_string)
@@ -101,7 +121,7 @@ class EmployeeWindow(AppWindow):
 
 
     def launchLogManger(self):
-        self.log_top = tk.Toplevel(self.master)
+        self.log_top = tk.Toplevel(self.master,background=self.main_app.MASTER_BACKGROUND_COLOR)
         self.log_top.tk.call("wm","iconphoto",self.log_top._w,self.main_app.icon_img) 
         self.log_top.title("Log Manager")
         self.log_top.geometry(self.main_app.geometry_string)
@@ -162,7 +182,7 @@ class EmployeeWindow(AppWindow):
 
     def editUserLogins(self):
         """Displays current registered users. Allows for adding or deleting users."""
-        user_editor_top = tk.Toplevel()
+        user_editor_top = tk.Toplevel(background=self.main_app.MASTER_BACKGROUND_COLOR)
         user_editor_top.attributes("-topmost",True)
         user_editor_top.tk.call("wm","iconphoto",user_editor_top._w,self.main_app.icon_img)
         user_editor_top.title("Application User Editor")
@@ -176,13 +196,15 @@ class EmployeeWindow(AppWindow):
 
     def showIPAddress(self):
         """Shows the current IP address in a top level window. """
-        ip_window = tk.Toplevel()
+        ip_window = tk.Toplevel(background=self.main_app.MASTER_BACKGROUND_COLOR,width="300")
         ip_window.attributes("-topmost",True)
         ip_window.tk.call("wm","iconphoto",ip_window._w,self.main_app.icon_img)
         ip_window.title("IP Address")
         
         ip_address = str(self.main_app.ip_address)
-        ip_label = tk.Label(ip_window,text=ip_address,font=("Georgia","20","bold"),fg="red")
+        ip_label = tk.Label(ip_window,text=ip_address,font=("Georgia","20","bold"),
+        fg="red",background=self.main_app.MASTER_BACKGROUND_COLOR)
+        
         ip_label.grid()
 
         

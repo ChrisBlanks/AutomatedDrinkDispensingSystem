@@ -58,19 +58,17 @@ def runMainApplication():
     icon_img = tk.Image("photo",file= icon_path)  # found image online; created by RoundIcons
     root.tk.call("wm","iconphoto",root._w,icon_img)             #sets the application icon
     
-    enableDevices = None
-    isTestingMode = False
+    enableDevices = False
     
     #checks command line arguments
     if len(sys.argv) > 1:
-        if str(sys.argv[1]) == "enable":
-            enableDevices = True #if true is sent as a command line arg then enable devices
+        print(sys.argv)
+        for arg in sys.argv:
+            if arg == "enable":
+                enableDevices = True #if true is sent as a command line arg then enable devices
+
     
-    if len(sys.argv) > 2:    
-        if str(sys.argv[2]) == "testing":
-            isTestingMode = True #if true, certain features are not enabled
-    
-    main_app = MainApp(root,icon_img,enableDevices,isTestingMode) 
+    main_app = MainApp(root,icon_img,enableDevices) 
     
     style = ttk.Style()
     current_theme = style.theme_use('clam')  #sets up the clam style for all ttk widgets
@@ -79,6 +77,7 @@ def runMainApplication():
 
 
 class MainApp:
+    
     #class member variables
     MAIN_DIRECTORY_PATH = main_path
     RESOURCES_PATH = "{}/resources".format(MAIN_DIRECTORY_PATH)
@@ -95,7 +94,7 @@ class MainApp:
     USER_LOGIN_FILE_PATH= "{}/user_login.txt".format(SYSTEM_INFO_PATH)
     ENCRYPTION_KEY_FILE_PATH = "{}/key.txt".format(SYSTEM_INFO_PATH)
     CASCADES_PATH = "{}/haar_cascade_files".format(OTHER_PATH)
-     
+    MASTER_BACKGROUND_COLOR = "LightCyan3"
     
     #DEVICE CONFIGURATION
     BUTTON_ENABLE = True
@@ -109,14 +108,17 @@ class MainApp:
     isWithoutLogin = False       #controls whether a new user login file is created
     data_demo_key = True         #toggles between pre-made shared data messages
 
-
-    def __init__(self,master,icon_img,peripheral_device_enable=None, isTestingMode=False):
+    #potential background colors    
+    colors = ['LightCyan3','AntiqueWhite1','DarkOliveGreen1','plum2','spring green','green yellow','SteelBlue1']
+    
+    
+    def __init__(self,master,icon_img,peripheral_device_enable=False):
         self.master = master
-        self.master.configure(background="LightCyan3")
+        self.master.configure(background=self.MASTER_BACKGROUND_COLOR)
         self.screen_width = self.master.winfo_screenwidth()
         self.screen_height = self.master.winfo_screenheight()
         self.geometry_string = str(self.screen_width)+"x"+ str(self.screen_height)
-
+        self.color_index = 0 #color_index aids in selecting a new background color for the app
         self.icon_img = icon_img                          #included for use in children windows
 
         self.ip_address = self.getIPAddress()             #retrieves current wlan0 IP address
@@ -130,11 +132,9 @@ class MainApp:
 
         self.active_drink_objects = self.getDrinks()      #returns a list of drink_objects for later use
         
-        
-        if peripheral_device_enable != None:
+        self.device_enable = peripheral_device_enable
+        if self.device_enable:
             self.createDevices() #creates device instances for later use
-        
-        self.isTestingMode = isTestingMode
         
         self.createMainWindow()
         #self.selectWindow()
@@ -198,21 +198,21 @@ class MainApp:
 
     def createCustomerWindow(self):
         """Creates separate customer window."""
-        self.customer_top_lvl = tk.Toplevel(self.master)
+        self.customer_top_lvl = tk.Toplevel(self.master,background=self.MASTER_BACKGROUND_COLOR)
         self.customer_top_lvl.tk.call("wm","iconphoto",self.customer_top_lvl._w,self.icon_img)
         self.customer_window = CustomerWindow(self)
 
 
     def createEmployeeWindow(self,isAdminMode):
         """Creates separate employee window """
-        self.employee_top_lvl = tk.Toplevel(self.master)
+        self.employee_top_lvl = tk.Toplevel(self.master,background=self.MASTER_BACKGROUND_COLOR)
         self.employee_top_lvl.tk.call("wm","iconphoto",self.employee_top_lvl._w,self.icon_img)
         self.employee_window = EmployeeWindow(self,isAdminMode)
 
 
     def launchLoginWindow(self):
         """Launches login window when employee mode is selected."""
-        self.login_top_lvl = tk.Toplevel(self.master)
+        self.login_top_lvl = tk.Toplevel(self.master,background=self.MASTER_BACKGROUND_COLOR)
         self.login_top_lvl.tk.call("wm","iconphoto",self.login_top_lvl._w,self.icon_img)
         self.login_window = LoginWindow(self)
 
@@ -220,7 +220,7 @@ class MainApp:
     def launchKeyboardWindow(self):
         """Launches a top level window that contains a keyboard that can deliver
         input to processes that need it."""
-        self.keyboard_top_lvl = tk.Toplevel(self.master)
+        self.keyboard_top_lvl = tk.Toplevel(self.master,background=self.MASTER_BACKGROUND_COLOR)
         self.keyboard_window = KeyboardWindow(self)
 
 

@@ -1,0 +1,19 @@
+2019-03-20 13:14:30.421259 : Running main application
+2019-03-20 13:14:31.679897 : Cleaned Config file.
+2019-03-20 13:14:41.507889 : admin logged in
+2019-03-20 13:18:39.807041 : Running main application
+2019-03-20 13:18:40.791489 : Cleaned Config file.
+2019-03-20 13:18:51.039056 : admin logged in
+2019-03-20 13:25:25.265632 : Created new drink: blanks_drink
+2019-03-20 13:26:00.746263 : admin logged in
+2019-03-20 13:28:00.636541 : chris logged in
+2019-03-20 13:28:54.484723 : Added nathan account to login.
+2019-03-20 13:30:21.823574 : Running main application
+2019-03-20 13:30:22.557349 : Cleaned Config file.
+2019-03-20 13:30:37.451047 : admin logged in
+2019-03-20 13:35:22.181710 : Running main application
+2019-03-20 13:35:23.596502 : Cleaned Config file.
+2019-03-20 13:35:56.665042 : admin logged in
+2019-03-20 16:22:45.969557 : Running main application
+2019-03-20 16:22:46.973088 : Cleaned Config file.
+2019-03-20 16:22:58.061778 : chris logged in

@@ -1,0 +1,56 @@
+2019-04-09 22:51:13.942042 : Running main application
+2019-04-09 22:51:34.125760 : Running main application
+2019-04-09 22:51:34.840386 : Cleaned Config file.
+2019-04-09 22:51:42.659913 : admin logged in
+2019-04-09 22:55:24.607091 : Running main application
+2019-04-09 22:55:25.320016 : Cleaned Config file.
+2019-04-09 22:55:34.671240 : admin logged in
+2019-04-09 22:57:57.576023 : Running main application
+2019-04-09 22:57:58.301378 : Cleaned Config file.
+2019-04-09 22:58:05.598788 : admin logged in
+2019-04-09 22:58:42.123581 : admin logged in
+2019-04-09 22:59:22.167644 : Running main application
+2019-04-09 22:59:22.901433 : Cleaned Config file.
+2019-04-09 22:59:29.278034 : admin logged in
+2019-04-09 23:03:48.748453 : Running main application
+2019-04-09 23:03:49.472291 : Cleaned Config file.
+2019-04-09 23:04:05.003570 : admin logged in
+2019-04-09 23:08:45.301152 : Running main application
+2019-04-09 23:08:46.022112 : Cleaned Config file.
+2019-04-09 23:10:11.084851 : admin logged in
+2019-04-09 23:12:50.189886 : Created new drink: placeholder
+2019-04-09 23:14:06.553770 : Created new drink: hello_world
+2019-04-09 23:14:31.466958 : admin logged in
+2019-04-09 23:25:10.569011 : admin logged in
+2019-04-09 23:29:09.386448 : Running main application
+2019-04-09 23:29:10.119307 : Cleaned Config file.
+2019-04-09 23:29:16.042736 : admin logged in
+2019-04-09 23:30:29.303942 : Created new drink: chris
+2019-04-09 23:31:22.679792 : admin logged in
+2019-04-09 23:38:21.525389 : Running main application
+2019-04-09 23:38:22.256830 : Cleaned Config file.
+2019-04-09 23:38:31.752257 : admin logged in
+2019-04-09 23:41:40.212255 : Created new drink: Bloanks
+2019-04-09 23:42:10.164365 : admin logged in
+2019-04-09 23:42:48.897045 : Deleted this drink: hello world
+2019-04-09 23:42:48.901679 : Cleaned Config file.
+2019-04-09 23:42:53.971827 : Deleted this drink: placeholder
+2019-04-09 23:42:53.982193 : Cleaned Config file.
+2019-04-09 23:43:06.528957 : Deleted this drink: Bloanks
+2019-04-09 23:43:06.532562 : Cleaned Config file.
+2019-04-09 23:43:11.968727 : Deleted this drink: chris
+2019-04-09 23:43:11.972540 : Cleaned Config file.
+2019-04-09 23:43:17.185984 : Deleted this drink: blanks drink
+2019-04-09 23:43:17.197600 : Cleaned Config file.
+2019-04-09 23:44:07.762481 : Created new drink: new_drink
+2019-04-09 23:44:35.203286 : admin logged in
+2019-04-09 23:44:57.728443 : Edited this drink: new drink
+2019-04-09 23:46:35.596168 : Running main application
+2019-04-09 23:46:36.323035 : Cleaned Config file.
+2019-04-09 23:46:46.741043 : admin logged in
+2019-04-09 23:49:07.440373 : Running main application
+2019-04-09 23:49:08.162768 : Cleaned Config file.
+2019-04-09 23:49:16.788025 : admin logged in
+2019-04-09 23:56:16.715077 : Running main application
+2019-04-09 23:56:17.433945 : Cleaned Config file.
+2019-04-09 23:56:24.962217 : admin logged in

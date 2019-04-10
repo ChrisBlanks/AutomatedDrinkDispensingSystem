@@ -20,15 +20,15 @@ import time
 #my modules
 from Camera import Camera
 
+
 class AppWindow():
-    background_color = "LightCyan3"
-    bg_color_other = "mint cream"
-    var = 5
+    var = 5  #number of attempts at secret button
     
     def __init__(self,main_app):
         """Provides basic functionality to each window of the main application."""
         self.main_app_instance = main_app
-        pass
+        self.background_color = self.main_app_instance.MASTER_BACKGROUND_COLOR
+
 
     def displayDrinkOptionsInGUI(self):
         """Displays each drink button/image/label in the GUI."""
@@ -127,7 +127,10 @@ class AppWindow():
         name_of_drink = ttk.Label(self.frame,text=(self.current_drink.name).title())
         name_of_drink.grid(row=1,column=0)
         
+        print(self.current_drink.ingredients)
         text_builder =" ".join(self.current_drink.ingredients).replace(' ',', ').replace('_',' ')
+        print(text_builder)
+        
         ingredient_text = ttk.Label(self.frame,text="Ingredients: " + text_builder)
         ingredient_text.grid(row=0,column = 1,columnspan=10,sticky="n")
 
@@ -204,8 +207,12 @@ class AppWindow():
         self.isOrdered = self.displayConfirmationMessageBox("Employee",num_of_drinks)
         if self.isOrdered:
             print("Going to wait screen")
-            self.main_app_instance.BUTTON_ENABLE = False  #disable employee switch will making a drink
-            self.main_app_instance.switch.state = "off"
+            
+            if self.main_app_instance.device_enable :
+                self.main_app_instance.BUTTON_ENABLE = False  
+                self.main_app_instance.switch.state = "off"
+                #turn off employee switch, so that the drink making process won't be interrupted
+                
             self.clearDrinkProfile()
             self.setupWaitScreen()
 
@@ -218,7 +225,7 @@ class AppWindow():
         self.waitLabel = ttk.Label(self.wait_frame,text="Waiting...",anchor=tk.CENTER)
         self.waitLabel.pack(fill=tk.X,side=tk.TOP)
         
-        if hasattr(self.main_app_instance, 'camera') and self.main_app_instance.isTestingMode == False:
+        if hasattr(self.main_app_instance, 'camera'):
             self.img_item = ttk.Label(self.wait_frame)
             self.main_app_instance.camera.startThreading(self.img_item)
         
@@ -237,11 +244,11 @@ class AppWindow():
         #pause before final screen
         dummy = input("Please, enter a value before continuing.\n>>")
         
-        if hasattr(self.main_app_instance, 'camera') and self.main_app_instance.isTestingMode == False:
+        if hasattr(self.main_app_instance, 'camera'):
             self.main_app_instance.camera.onExit() #turn off camera if used
         
-        while(self.main_app_instance.camera.state == "enabled"):
-            pass #wait until camera is off before going to next screen
+            while(self.main_app_instance.camera.state == "enabled"):
+                pass #wait until camera is off before going to next screen
         
         self.setupDeliveryScreen() #go to final screen of drink making process
     
@@ -269,12 +276,13 @@ class AppWindow():
         self.wait_frame.pack_forget()
         
         self.frame = tk.Frame(self.master)
-        self.frame.configure(bg= AppWindow.background_color)
+        self.frame.configure(background= self.background_color)
         self.frame.grid() 
-        
-        #Re-enable employee switch
-        self.main_app_instance.BUTTON_ENABLE = True 
-        self.main_app_instance.switch.state = "enabled"
+       
+        if self.main_app_instance.device_enable :
+            #Re-enable employee switch
+            self.main_app_instance.BUTTON_ENABLE = True 
+            self.main_app_instance.switch.state = "enabled"
         
         self.displayDrinkOptionsInGUI()
         

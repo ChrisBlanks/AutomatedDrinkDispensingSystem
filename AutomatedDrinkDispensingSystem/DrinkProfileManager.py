@@ -21,6 +21,7 @@ from DrinkProfile import DrinkProfile
 from EmbeddedKeyboard import EmbeddedKeyboard
 from AppWindow import AppWindow
 
+
 class DrinkProfileManager:
     def __init__(self,master,main_app,admin_mode):
         self.master = master
@@ -263,6 +264,11 @@ class DrinkProfileManager:
             self.deployIncompleteMessageBox()  #if any empty, show warning#if any empty, show warning
             return
         
+        # Processing of ingredients
+        temp_edit = self.new_drink.ingredients.replace(","," ") #get rid of commas
+        self.new_drink.ingredients = temp_edit 
+        #must be a space delimited string when creating a new drink profile
+        
         #limited for right now
         if ".jpg" in pic_path:
             self.new_drink.pic_extension = ".jpg"
@@ -276,10 +282,16 @@ class DrinkProfileManager:
            
         self.new_drink.createDrinkProfile(pic_path)
         
+        self.new_drink.ingredients = temp_edit.split(" ") 
+        #split into a list by space delimiters for correct format in drink profile display
+        
         self.main_app.all_drinks.append(self.new_drink)
         self.main_app.active_drink_objects.append(self.new_drink)
         self.main_app.writeToLog("Created new drink: "+self.new_drink.name)
         self.deploySuccesfulMessageBox()
+        
+        
+        self.main_app.active_drink_objects = self.main_app.getDrinks()
         self.main_app.employee_window.resetDrinkOptions()
         
 

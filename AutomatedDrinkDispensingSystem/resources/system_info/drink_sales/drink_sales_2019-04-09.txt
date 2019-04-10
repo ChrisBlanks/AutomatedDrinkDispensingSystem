@@ -1,0 +1,9 @@
+2019-04-09 22:51:58.109711 : 1 kamikaze was ordered.
+2019-04-09 22:55:39.081080 : 3 daiquiris were ordered.
+2019-04-09 22:58:10.392561 : 3 daiquiris were ordered.
+2019-04-09 22:58:54.103483 : 2 naval gimlets were ordered.
+2019-04-09 22:59:42.775115 : 1 vodka was ordered.
+2019-04-09 23:00:03.094366 : 1 long island iced tea was ordered.
+2019-04-09 23:00:10.150796 : 1 cuba libre was ordered.
+2019-04-09 23:42:21.136162 : 1 Bloanks was ordered.
+2019-04-09 23:46:53.614862 : 1 screwdriver was ordered.
