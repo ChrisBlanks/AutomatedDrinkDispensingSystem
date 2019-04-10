@@ -37,7 +37,9 @@ class DrinkProfileManager:
         
     def configureWindow(self):
         """Sets window geometry and exit before launching profile manager."""
-        self.master.configure(width=self.main_app.screen_width,height=self.main_app.screen_height)
+        self.master.configure(width=self.main_app.screen_width,
+        height=self.main_app.screen_height,background=self.main_app.MASTER_BACKGROUND_COLOR)
+        
         self.main_app.employee_window.top.protocol("WM_DELETE_WINDOW",self.deployExitMessageBox)
         self.createProfileManagerMainWindow()
 

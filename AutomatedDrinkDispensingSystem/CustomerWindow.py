@@ -19,11 +19,11 @@ class CustomerWindow(AppWindow):
         self.main_app = main_app_instance
         self.operation_instructions_file_path = self.main_app.SYSTEM_INFO_PATH +"/instructions_4_customer.txt"
         self.master = self.main_app.customer_top_lvl
-        self.master.configure(bg= AppWindow.background_color)
+        self.master.configure(bg= self.main_app.MASTER_BACKGROUND_COLOR)
         
         self.frame = tk.Frame(self.master)
         self.frame.grid()
-        self.frame.configure(bg= AppWindow.background_color)
+        self.frame.configure(bg= self.main_app.MASTER_BACKGROUND_COLOR)
 
         self.parent_menu = tk.Menu(self.frame)
         self.master.config(menu= self.parent_menu)

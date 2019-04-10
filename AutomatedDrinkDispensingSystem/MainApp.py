@@ -114,6 +114,12 @@ class MainApp:
     
     def __init__(self,master,icon_img,peripheral_device_enable=False):
         self.master = master
+        
+        stored_color = self.retrieveBackgroundColor()
+        if stored_color != self.MASTER_BACKGROUND_COLOR:
+            print("Change in background color")
+            self.MASTER_BACKGROUND_COLOR = stored_color
+        
         self.master.configure(background=self.MASTER_BACKGROUND_COLOR)
         self.screen_width = self.master.winfo_screenwidth()
         self.screen_height = self.master.winfo_screenheight()
@@ -143,6 +149,16 @@ class MainApp:
         self.cleanOldDrinksFromConfig()
 
 
+    
+    def retrieveBackgroundColor(self):
+        """Reads background color file for last saved background value."""
+        path= "{}/background_color.txt".format(self.SYSTEM_INFO_PATH)
+        with open(path ,"r") as file:
+            color = file.read()
+        
+        return color
+
+    
     def selectWindow(self,selection):
         """Determines what window is open."""
         if hasattr(self, 'employee_top_lvl'):

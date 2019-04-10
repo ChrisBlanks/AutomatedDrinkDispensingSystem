@@ -95,13 +95,17 @@ class EmployeeWindow(AppWindow):
 
     def switchBackgroundColor(self):
         self.main_app.color_index += 1 #increment color index
-        
         if self.main_app.color_index > len(self.main_app.colors) - 1:
-                self.main_app.color_index = 0 #reset index
+            self.main_app.color_index = 0 #reset index
         
         self.main_app.MASTER_BACKGROUND_COLOR = self.main_app.colors[self.main_app.color_index]
         print(self.main_app.colors[self.main_app.color_index])
         self.main_app.master.configure(background=self.main_app.MASTER_BACKGROUND_COLOR)
+        
+        path= "{}/background_color.txt".format(self.main_app.SYSTEM_INFO_PATH)
+        with open(path ,"w") as file:
+            file.write(self.main_app.colors[self.main_app.color_index])
+                
         self.main_app.master.update_idletasks()
         #should write this to a file eventually
 
