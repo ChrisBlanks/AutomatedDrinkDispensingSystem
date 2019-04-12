@@ -1,0 +1,182 @@
+new session -- $1
+pulse count:1
+pulse count:2
+pulse count:3
+pulse count:4
+pulse count:5
+pulse count:6
+
+new session -- $ 5
+pulse count:1
+pulse count:2
+pulse count:3
+pulse count:4
+pulse count:5
+pulse count:6
+pulse count:7
+pulse count:8
+
+new session -- $20
+pulse count:1
+pulse count:2
+pulse count:3
+pulse count:4
+pulse count:5
+pulse count:6
+pulse count:7
+pulse count:8
+pulse count:9
+pulse count:10
+pulse count:11
+pulse count:12
+pulse count:13
+pulse count:14
+pulse count:15
+pulse count:16
+pulse count:17
+pulse count:18
+pulse count:19
+pulse count:20
+pulse count:21
+pulse count:22
+pulse count:23
+pulse count:24
+pulse count:25
+pulse count:26
+pulse count:27
+pulse count:28
+pulse count:29
+pulse count:32
+pulse count:33
+pulse count:34
+pulse count:35
+
+new session -- $1
+pulse count:1
+pulse count:2
+pulse count:3
+pulse count:4
+
+new session -- $1
+pulse count:1
+pulse count:2
+pulse count:3
+pulse count:4
+
+new session  -- $1
+pulse count:1
+pulse count:2
+
+new session  -- $1
+pulse count:1
+pulse count:2
+pulse count:3
+pulse count:4
+pulse count:5
+pulse count:6
+
+new session -- $ 5
+pulse count:1
+pulse count:2
+pulse count:3
+pulse count:4
+pulse count:5
+pulse count:6
+pulse count:7
+pulse count:8
+pulse count:9
+pulse count:10
+pulse count:11
+pulse count:12
+pulse count:13
+
+new session -- $ 5
+pulse count:1
+pulse count:2
+pulse count:3
+pulse count:4
+pulse count:5
+pulse count:6
+pulse count:7
+pulse count:8
+pulse count:9
+
+new session -- $ 20
+pulse count:1
+pulse count:2
+pulse count:3
+pulse count:4
+pulse count:5
+pulse count:6
+pulse count:7
+pulse count:8
+pulse count:9
+pulse count:10
+pulse count:11
+pulse count:12
+pulse count:13
+pulse count:14
+pulse count:15
+pulse count:16
+pulse count:17
+pulse count:18
+pulse count:19
+pulse count:20
+pulse count:21
+pulse count:22
+pulse count:23
+
+new session -- $20
+pulse count:1
+pulse count:2
+pulse count:3
+pulse count:4
+pulse count:5
+pulse count:6
+pulse count:7
+pulse count:8
+pulse count:9
+pulse count:10
+pulse count:11
+pulse count:12
+pulse count:13
+pulse count:14
+pulse count:15
+pulse count:16
+pulse count:17
+pulse count:18
+pulse count:19
+pulse count:20
+pulse count:21
+pulse count:22
+pulse count:23
+pulse count:24
+pulse count:25
+pulse count:26
+pulse count:27
+pulse count:28
+pulse count:29
+pulse count:30
+
+new session -- $20
+pulse count:1
+pulse count:2
+pulse count:3
+pulse count:4
+pulse count:5
+pulse count:6
+pulse count:7
+pulse count:8
+pulse count:9
+pulse count:10
+pulse count:11
+pulse count:12
+pulse count:13
+pulse count:14
+pulse count:15
+pulse count:16
+pulse count:17
+pulse count:18
+pulse count:19
+pulse count:20
+pulse count:21

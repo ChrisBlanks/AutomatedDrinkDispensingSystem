@@ -1,0 +1,15 @@
+List of packages/modules:
+
+	modules
+		tkinter
+		pillow
+		cryptography
+		imutils  #module made by a tutorial guy
+		
+	packages
+		opencv-python
+		libcblas-dev
+		libatlas-base-dev
+		libjasper-dev
+		libqtgui4
+		libqt4-test

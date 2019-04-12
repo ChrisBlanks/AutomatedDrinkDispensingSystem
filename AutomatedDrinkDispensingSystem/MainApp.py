@@ -48,6 +48,7 @@ from KeyboardWindow import KeyboardWindow
 from EmployeeSwitch import EmployeeSwitch
 from PulsePin import PulsePin
 from Camera import Camera
+from EmbeddedBoard import EmbeddedBoard
 
 
 def runMainApplication():
@@ -141,6 +142,7 @@ class MainApp:
         self.device_enable = peripheral_device_enable
         if self.device_enable:
             self.createDevices() #creates device instances for later use
+            self.writeDrinkDataToEmbeddedBoard()
         
         self.createMainWindow()
         #self.selectWindow()
@@ -587,6 +589,10 @@ class MainApp:
         self.camera = Camera(self)
         print("\n{} : {}".format(self.camera.name,self.camera.state) )
         
+        self.embedded_board = EmbeddedBoard(self)
+        print("\n{} : {}".format(self.embedded_board.name,self.embedded_board.state) )
+        
+        
         print("\n")
 
         
@@ -594,7 +600,16 @@ class MainApp:
         """Recursively calls itself to check button state."""
         self.switch.checkButtonInput()   #check pin input
         self.master.after(self.DELAY,self.checkButtonState)
-
+    
+        
+    def writeDrinkDataToEmbeddedBoard(self):
+        """Acquire drink information for file and send to EmbeddedBoard device
+        for future use."""
+        #with open("embedded_data.txt") as file:
+        #   
+        #data = ""
+        #self.embedded_board.writeToEmbeddedBoard(data)
+        pass
 
 
 if __name__ == "__main__":

@@ -21,7 +21,7 @@ class EmployeeSwitch(PeripheralDevice):
 		self.state = "enabled"
 		self.pin_number = 17	# GPIO pin 17
 		
-		self.button = Button(17)  #assign pin 17 to button object
+		self.button = Button(self.pin_number)  #assign pin 17 to button object
 
 
 	def checkButtonInput(self):

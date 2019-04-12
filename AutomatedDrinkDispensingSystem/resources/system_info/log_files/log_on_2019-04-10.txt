@@ -109,3 +109,5 @@
 2019-04-10 10:51:21.340875 : Cleaned Config file.
 2019-04-10 10:51:28.094524 : admin logged in
 2019-04-10 10:52:14.410957 : admin logged in
+2019-04-10 11:55:18.650887 : Running main application
+2019-04-10 11:55:19.997470 : Cleaned Config file.
