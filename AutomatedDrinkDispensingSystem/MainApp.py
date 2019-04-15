@@ -60,16 +60,19 @@ def runMainApplication():
     root.tk.call("wm","iconphoto",root._w,icon_img)             #sets the application icon
     
     enableDevices = False
+    enableEmbedBoard = False
     
     #checks command line arguments
     if len(sys.argv) > 1:
-        print(sys.argv)
+        print("CLI args:",sys.argv)
         for arg in sys.argv:
             if arg == "enable":
                 enableDevices = True #if true is sent as a command line arg then enable devices
+            if arg == "embed_en":
+                enableEmbedBoard = True
 
     
-    main_app = MainApp(root,icon_img,enableDevices) 
+    main_app = MainApp(root,icon_img,enableDevices,enableEmbedBoard) 
     
     style = ttk.Style()
     current_theme = style.theme_use('clam')  #sets up the clam style for all ttk widgets
@@ -94,7 +97,10 @@ class MainApp:
     CONFIG_FILE_PATH = "{}/config.txt".format(SYSTEM_INFO_PATH)
     USER_LOGIN_FILE_PATH= "{}/user_login.txt".format(SYSTEM_INFO_PATH)
     ENCRYPTION_KEY_FILE_PATH = "{}/key.txt".format(SYSTEM_INFO_PATH)
+    DRINK_MENU_FILE_PATH = "{}/drink_menu.txt".format(SYSTEM_INFO_PATH)
     CASCADES_PATH = "{}/haar_cascade_files".format(OTHER_PATH)
+    
+    
     MASTER_BACKGROUND_COLOR = "LightCyan3"
     
     #DEVICE CONFIGURATION
@@ -113,7 +119,7 @@ class MainApp:
     colors = ['LightCyan3','AntiqueWhite1','DarkOliveGreen1','plum2','spring green','green yellow','SteelBlue1']
     
     
-    def __init__(self,master,icon_img,peripheral_device_enable=False):
+    def __init__(self,master,icon_img,peripheral_device_enable=False,embedded_board_enable=False):
         self.master = master
         
         stored_color = self.retrieveBackgroundColor()
@@ -140,9 +146,16 @@ class MainApp:
         self.active_drink_objects = self.getDrinks()      #returns a list of drink_objects for later use
         
         self.device_enable = peripheral_device_enable
+        self.embedded_board_enable = embedded_board_enable
+        
+        #check args
         if self.device_enable:
             self.createDevices() #creates device instances for later use
-            self.writeDrinkDataToEmbeddedBoard()
+            self.initializeDrinkMenuOnEmbeddedBoard(self)
+        elif self.embedded_board_enable:
+            #if other devices off & want to still test embedded board
+            self.embedded_board = EmbeddedBoard(self)
+            self.embedded_board.initializeDrinkMenuOnBoard()
         
         self.createMainWindow()
         #self.selectWindow()
@@ -591,9 +604,8 @@ class MainApp:
         
         self.embedded_board = EmbeddedBoard(self)
         print("\n{} : {}".format(self.embedded_board.name,self.embedded_board.state) )
-        
-        
         print("\n")
+        
 
         
     def checkButtonState(self):
@@ -602,14 +614,12 @@ class MainApp:
         self.master.after(self.DELAY,self.checkButtonState)
     
         
-    def writeDrinkDataToEmbeddedBoard(self):
+    def initializeDrinkMenuOnEmbeddedBoard(self):
         """Acquire drink information for file and send to EmbeddedBoard device
         for future use."""
-        #with open("embedded_data.txt") as file:
-        #   
-        #data = ""
-        #self.embedded_board.writeToEmbeddedBoard(data)
-        pass
+        print("Starting initialization of drink menu")
+        self.embedded_board.pollPinUntilLow()
+        self.embedded_board.initializeDrinkMenuOnBoard()
 
 
 if __name__ == "__main__":

@@ -214,9 +214,25 @@ class AppWindow():
                 #turn off employee switch, so that the drink making process won't be interrupted
                 
             self.clearDrinkProfile()
-            self.setupWaitScreen()
+            
 
-	
+            self.setupWaitScreen()
+            if hasattr(self.main_app_instance, 'embedded_board'):
+                self.sendDrinkOrderToEmbeddedBoard(num_of_drinks)
+                
+
+    def sendDrinkOrderToEmbeddedBoard(self,drink_quantity):
+        """Sends the actual data to the embedded board """
+        self.main_app_instance.embedded_board.pollPinUntilLow()
+        
+        DRINK_ID = int(self.current_drink.id_number)
+        QUANT = int(drink_quantity)
+        
+        data_sequence = [DRINK_ID,QUANT,0,0,0,0,0,0,0,0,0]
+        self.main_app_instance.embedded_board.orderDrink()
+
+
+    
     def setupWaitScreen(self):
         """Creates and displays the elements of the wait screen."""
         self.wait_frame = tk.Frame(self.master,height=500,width=500,bg=self.background_color)
