@@ -14,3 +14,7 @@
 2019-04-15 15:25:15.547068 : 1 naval gimlet was ordered.
 2019-04-15 15:25:28.652048 : 1 long island iced tea was ordered.
 2019-04-15 15:28:54.138144 : 1 new drink was ordered.
+2019-04-15 15:43:15.638181 : 4 rum and cokes were ordered.
+2019-04-15 15:45:29.398679 : 2 rum and cokes were ordered.
+2019-04-15 15:46:01.252771 : 2 vodkas were ordered.
+2019-04-15 15:48:46.965472 : 2 naval gimlets were ordered.

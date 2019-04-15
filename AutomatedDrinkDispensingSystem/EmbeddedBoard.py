@@ -111,7 +111,7 @@ class EmbeddedBoard(PeripheralDevice):
 					#Writing the recipe
 					try:
 						bus.write_i2c_block_data(self.I2C_SLAVE_ADDRESS,self.RECIPE_MAKER_ADDRESS+j,DATA)
-						#time.sleep(self.TRANSMIT_DELAY) #takes floats
+						time.sleep(self.TRANSMIT_DELAY) #takes floats
 					except OSError:
 						print("Error: Not able to write data at recipe stage.")
 				   
@@ -132,7 +132,7 @@ class EmbeddedBoard(PeripheralDevice):
 		if data_sequence is None:
 			# Test data
 			DRINK_ID = 1 
-			DATA =[DRINK_ID,5,0,0,0,0,0,0,0,0,0]
+			DATA =[DRINK_ID,5,0,0,0,0,0,0,0,0]
 		else:
 			DATA = data_sequence 
 		
