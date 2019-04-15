@@ -618,7 +618,6 @@ class MainApp:
         """Acquire drink information for file and send to EmbeddedBoard device
         for future use."""
         print("Starting initialization of drink menu")
-        self.embedded_board.pollPinUntilLow()
         self.embedded_board.initializeDrinkMenuOnBoard()
 
 
