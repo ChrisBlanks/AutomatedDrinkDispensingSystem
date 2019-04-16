@@ -15,6 +15,7 @@ class ApplicationUserEditor:
     def __init__(self,master,main_app,size):
         self.master = master
         self.main_app = main_app
+        self.background_color = self.main_app.MASTER_BACKGROUND_COLOR
         
         self.width = size[0]
         self.height = size[1]
@@ -47,9 +48,12 @@ class ApplicationUserEditor:
 
     def addWindowElements(self):
         self.user_list_label = tk.Label(self.master,text="Current Users:",
-                                  font=self.font)
+                                  font=self.font,bg=self.background_color)
         self.user_list_label.grid(row=0,column=0)
-        self.users_in_gui = tk.Label(self.master,text=self.users,font=self.font)
+        
+        self.users_in_gui = tk.Label(self.master,text=self.users,font=self.font,
+                                bg=self.background_color)
+                                
         self.users_in_gui.grid(row=1,column=0)
 
         self.add_button = tk.Button(self.master,text="Add",bg="green",
@@ -61,20 +65,24 @@ class ApplicationUserEditor:
         
 
     def launchEditorWindow(self,button_type,title):
-        self.top = tk.Toplevel(self.master)
+        self.top = tk.Toplevel(self.master,bg=self.background_color)
         self.top.tk.call("wm","iconphoto",self.top._w,self.main_app.icon_img) 
         self.top.title(title)
         self.top.geometry("{0}x{1}+0+0".format(self.width,self.height))
 
-        self.frame = tk.Frame(self.top)
+        self.frame = tk.Frame(self.top,bg=self.background_color)
         
-        username_label = tk.Label(self.frame,text="Username",font=self.font)
+        username_label = tk.Label(self.frame,text="Username",font=self.font,
+        bg=self.background_color)
+        
         username_label.grid(row=0,column = 0)
         self.user_name_entry = tk.Entry(self.frame,width=138)
         self.user_name_entry.grid(row=0,column=1)
         
-        pass_label = tk.Label(self.frame,text="Password",font=self.font)
+        pass_label = tk.Label(self.frame,text="Password",font=self.font,
+        bg=self.background_color)
         pass_label.grid(row=1,column = 0)
+        
         self.pass_entry = tk.Entry(self.frame,width=138)
         self.pass_entry.grid(row=1,column=1)
         
@@ -87,7 +95,7 @@ class ApplicationUserEditor:
 
         entries = [self.user_name_entry,self.pass_entry]
         
-        keyboard_canvas = tk.Canvas(self.frame,width=350,height=350)
+        keyboard_canvas = tk.Canvas(self.frame,width=350,height=350,bg=self.background_color)
         embed_keyboard = EmbeddedKeyboard(keyboard_canvas,entries)
         keyboard_canvas.grid(column=1,sticky="s")
         self.frame.grid()
@@ -106,7 +114,9 @@ class ApplicationUserEditor:
                               command=lambda x="add": self.deployDoneMessageBox(x))
 
         self.checkbut_state = tk.IntVar()
-        self.admin_check = tk.Checkbutton(self.frame,text="Admin user?",variable=self.checkbut_state)
+        self.admin_check = tk.Checkbutton(self.frame,text="Admin user?",
+                                        variable=self.checkbut_state,bg=self.background_color)
+        
         self.admin_check.grid(row=0,column=2)
         self.done.grid(row=1,column=2,sticky="nsew",rowspan=2)
 

@@ -367,13 +367,13 @@ class AppWindow():
         
     def showContributors(self):
         """Lists contributors of the project in a top level window's message box."""
-        top = tk.Toplevel()
+        top = tk.Toplevel(bg=self.background_color)
         top.tk.call("wm","iconphoto",top._w,self.main_app.icon_img)
         top.attributes('-topmost','true')
         top.title("Contributors:")
         top.geometry("350x280")
         
-        self.contributors_msg = tk.Message(top)
+        self.contributors_msg = tk.Message(top,bg=self.background_color)
         msg= """Nathan Bane:\nEmbedded Systems Design\n\nChris Blanks:\nSoftware Design
 \nRyan Valente:\nMechanical Design\n\n University of Maryland Eastern Shore\n\nContact >>> Cablanks@umes.edu
 \nIcon Creator: RoundIcons\nhttps://www.flaticon.com/authors/roundicons"""
@@ -388,7 +388,7 @@ class AppWindow():
         
         msg = " ".join(lines)
         
-        top = tk.Toplevel()
+        top = tk.Toplevel(bg=self.background_color)
         
         top.tk.call("wm","iconphoto",top._w,self.main_app.icon_img)
         top.attributes('-topmost','true')
@@ -401,7 +401,8 @@ class AppWindow():
         
         canvas = tk.Canvas(top,width=350,
                            height=230,
-                           scrollregion=(0,0,2000,2000))
+                           scrollregion=(0,0,2000,2000),
+                           bg=self.background_color)
         canvas.grid(row=0,column=0,sticky="nsew")
 
         scroll.config(command=canvas.yview)
