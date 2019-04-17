@@ -115,8 +115,6 @@ class MainApp:
     isWithoutLogin = False       #controls whether a new user login file is created
     data_demo_key = True         #toggles between pre-made shared data messages
 
-    #potential background colors    
-    colors = ['LightCyan3','AntiqueWhite1','DarkOliveGreen1','plum2','spring green','green yellow','SteelBlue1']
     
     
     def __init__(self,master,icon_img,peripheral_device_enable=False,embedded_board_enable=False):
@@ -131,7 +129,6 @@ class MainApp:
         self.screen_width = self.master.winfo_screenwidth()
         self.screen_height = self.master.winfo_screenheight()
         self.geometry_string = str(self.screen_width)+"x"+ str(self.screen_height)
-        self.color_index = 0 #color_index aids in selecting a new background color for the app
         self.icon_img = icon_img                          #included for use in children windows
 
         self.ip_address = self.getIPAddress()             #retrieves current wlan0 IP address
