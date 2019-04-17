@@ -70,3 +70,13 @@
 2019-04-16 21:57:46.065562 : Running main application
 2019-04-16 21:57:46.828487 : Cleaned Config file.
 2019-04-16 21:57:54.527513 : admin logged in
+2019-04-16 22:51:17.711497 : Running main application
+2019-04-16 22:51:18.430671 : Cleaned Config file.
+2019-04-16 22:51:26.125977 : admin logged in
+2019-04-16 22:53:15.341560 : Deleted this drink: new drink
+2019-04-16 22:53:15.344973 : Cleaned Config file.
+2019-04-16 22:57:28.081527 : Running main application
+2019-04-16 22:57:28.845153 : Cleaned Config file.
+2019-04-16 22:57:37.470303 : admin logged in
+2019-04-16 23:35:34.461255 : Running main application
+2019-04-16 23:35:35.197634 : Cleaned Config file.

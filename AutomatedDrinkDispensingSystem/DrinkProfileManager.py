@@ -309,6 +309,7 @@ class DrinkProfileManager:
                 del drink
         self.drinks.delete(index)
         self.main_app.cleanOldDrinksFromConfig()
+        dir(self.main_app.employee_window)
         self.main_app.employee_window.resetDrinkOptions()
 
         

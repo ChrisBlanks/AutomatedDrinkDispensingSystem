@@ -618,5 +618,39 @@ class MainApp:
         self.embedded_board.initializeDrinkMenuOnBoard()
 
 
+    def updateDrinkMenu(self):
+        """Drink Menu file is updated when drink profile of a drink is changed"""
+        #sort by id_number of drinks
+        self.active_drink_objects.sort(key=lambda x: x.id_number)
+        
+        for drink in sorted_drinks:
+            
+            """
+            Need to generate a string of pump times that corresponds to valves on
+            boards, so ingredients must be associated with valve numbers
+            
+            Need to convert ounces of ingredients to a pump time and then
+            make a comma delimited string that will be represent pump times
+            for each valve.
+            
+            Need to make unused valves get a value of 0.
+            
+            conversion between ounces to millimeters:
+            1 fluid Oz = 29.5753 milliliters
+            
+            Time resolution: 30/255 = 0.117 sec = 0.117 milliliter
+            
+            Calculation:
+              time_res = 30/255 #30 seconds divided by 255 (A byte max value)
+              milli_req = OZ_num * 29.5735 
+              pump_time = int(milli_req / time_res)
+            """
+            pump_times = "51,52,53,54,55,56,57,58"
+            with open(self.main_app.DRINK_MENU_FILE_PATH,"w") as drink_menu:
+                for i in range(4):
+                    drink_menu_item = "{},{},{}\n".format(drink.id_number,pump_times,i)
+                    drink_menu.write(drink_menu_item)
+
+
 if __name__ == "__main__":
     runMainApplication()
