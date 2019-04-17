@@ -136,7 +136,7 @@ class EmbeddedBoard(PeripheralDevice):
 		if data_sequence is None:
 			# Test data
 			DRINK_ID = 1 
-			DATA =[DRINK_ID,5,0,0,0,0,0,0,0,0]
+			DATA =[DRINK_ID,2,0,0,0,0,0,0,0,0]
 		else:
 			DATA = data_sequence 
 		
@@ -145,6 +145,16 @@ class EmbeddedBoard(PeripheralDevice):
 			# Ordering the drink(s)
 			bus.write_i2c_block_data(self.I2C_SLAVE_ADDRESS,self.ORDER_DRINK_ADDRESS,DATA)
 			time.sleep(self.TRANSMIT_DELAY) #takes floats
+
+
+	def sendHaltCommand(self):
+		"""Commands the embedded board to stop making a drink."""
+		with SMBusWrapper(1) as bus:
+					# Ordering the drink(s)
+					bus.write_byte_data(self.I2C_SLAVE_ADDRESS,self.HALT_ADDRESS,0)
+					time.sleep(self.TRANSMIT_DELAY) #takes floats
+
+		
 
 
 if __name__ == "__main__":

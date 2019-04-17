@@ -265,6 +265,7 @@ class AppWindow():
                     print("Order sent. Waiting until done")
                     
                     def innerCallback():
+                        """Recursively called until drink making process is done (when pin is brought low)."""
                     
                         if str(self.main_app_instance.embedded_board.getStateOfPin() ) != "1":
                             self.setupDeliveryScreen() #go to final screen of drink making process
@@ -287,26 +288,6 @@ class AppWindow():
         else:
            dummy = input("Please, enter a value before continuing.\n>>") 
         
-        """#pause before final screen
-        if hasattr(self.main_app_instance, 'embedded_board'):
-            #wait until board is ready & then send
-            print("Sending order.")
-            self.sendDrinkOrderToEmbeddedBoard(num_of_drinks)
-            print("Order sent. Waiting until done")
-            #wait until drink is made
-            self.main_app_instance.embedded_board.pollPinUntilLow()
-            
-        else: # if testing, then enter a 1 into the terminal
-            dummy = input("Please, enter a value before continuing.\n>>")
-        
-        if hasattr(self.main_app_instance, 'camera'):
-            self.main_app_instance.camera.onExit() #turn off camera if used
-        
-            while(self.main_app_instance.camera.state == "enabled"):
-                pass #wait until camera is off before going to next screen
-        
-        self.setupDeliveryScreen() #go to final screen of drink making process
-        """
     
     
     def setupDeliveryScreen(self):

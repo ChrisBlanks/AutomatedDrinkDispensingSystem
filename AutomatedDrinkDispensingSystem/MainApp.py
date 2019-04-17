@@ -638,13 +638,15 @@ class MainApp:
             conversion between ounces to millimeters:
             1 fluid Oz = 29.5753 milliliters
             
-            Time resolution: 30/256 = 0.117 sec = 0.117 milliliter
+            Time resolution: 30/256 = 0.117 sec = 0.117 sec
             
             Calculation:
-              time_res = 30/256 #30 seconds divided by 255 (A byte max value)
+              time_res = 30/256 #30 seconds divided by 256 (A byte max value)
               milli_req = OZ_num * 29.5735 
               pump_time = int(milli_req / time_res)
+              amount_of_fluid = pump_time * (500 / 60) #500 ml per sec pump speed
             """
+            
             pump_times = "51,52,53,54,55,56,57,58"
             with open(self.main_app.DRINK_MENU_FILE_PATH,"w") as drink_menu:
                 for i in range(4):
