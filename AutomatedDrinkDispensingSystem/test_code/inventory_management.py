@@ -10,7 +10,8 @@ class Inventory:
 		self.org_quant = original_quantity
 		self.cur_quant = current_quantity
 
-	def retrieve
+	def retrieve(self):
+		pass
 
 
 
