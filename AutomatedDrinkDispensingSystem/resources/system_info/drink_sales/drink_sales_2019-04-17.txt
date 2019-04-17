@@ -2,3 +2,5 @@
 2019-04-17 10:18:15.042202 : 1 new drink was ordered.
 2019-04-17 10:19:13.522344 : 1 naval gimlet was ordered.
 2019-04-17 13:58:33.574603 : 1 cuba libre was ordered.
+2019-04-17 16:07:28.876393 : 1 kamikaze was ordered.
+2019-04-17 16:11:55.339328 : 1 new drink was ordered.

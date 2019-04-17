@@ -287,6 +287,11 @@ class AppWindow():
         
         else:
            dummy = input("Please, enter a value before continuing.\n>>") 
+           self.setupDeliveryScreen() #go to final screen of drink making process
+           if hasattr(self.main_app_instance, 'camera'):
+               self.main_app_instance.camera.onExit() #turn off camera if used
+               while(self.main_app_instance.camera.state == "enabled"):
+                   pass #wait until camera is off before going to next screen
         
     
     
