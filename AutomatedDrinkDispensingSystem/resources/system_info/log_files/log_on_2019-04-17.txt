@@ -1,0 +1,9 @@
+2019-04-17 09:52:29.589041 : Running main application
+2019-04-17 09:52:40.209071 : Cleaned Config file.
+2019-04-17 09:52:52.789225 : admin logged in
+2019-04-17 10:17:34.684603 : Running main application
+2019-04-17 10:17:38.772714 : Cleaned Config file.
+2019-04-17 10:18:11.095376 : admin logged in
+2019-04-17 10:18:46.147553 : Running main application
+2019-04-17 10:18:56.720244 : Cleaned Config file.
+2019-04-17 10:19:04.808252 : admin logged in

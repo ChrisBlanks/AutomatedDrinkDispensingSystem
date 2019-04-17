@@ -224,7 +224,7 @@ class AppWindow():
         DRINK_ID = int(self.current_drink.id_number)
         QUANT = int(drink_quantity)
         data_sequence = [DRINK_ID,QUANT,0,0,0,0,0,0,0,0]
-        self.main_app_instance.embedded_board.pollPinUntilLow()
+        #self.main_app_instance.embedded_board.pollPinUntilLow()
         
         self.main_app_instance.embedded_board.orderDrink(data_sequence)
 
@@ -253,11 +253,46 @@ class AppWindow():
 
         self.wait_frame.pack(fill=tk.X)
         
-        #pause before final screen
+        
+        if hasattr(self.main_app_instance, 'embedded_board'):
+            def callback():
+                """Recursively called until timer completes. Setup main window
+                to be used for next customer """
+                if str(self.main_app_instance.embedded_board.getStateOfPin() ) != "1":
+                    #if state is low on pin, then execute next code
+                    print("Sending order.")
+                    self.sendDrinkOrderToEmbeddedBoard(num_of_drinks)
+                    print("Order sent. Waiting until done")
+                    
+                    def innerCallback():
+                    
+                        if str(self.main_app_instance.embedded_board.getStateOfPin() ) != "1":
+                            self.setupDeliveryScreen() #go to final screen of drink making process
+                            
+                            if hasattr(self.main_app_instance, 'camera'):
+                                self.main_app_instance.camera.onExit() #turn off camera if used
+                            
+                                while(self.main_app_instance.camera.state == "enabled"):
+                                    pass #wait until camera is off before going to next screen
+                        else:
+                            self.main_app.master.after(1000,innerCallback)
+                    
+                    self.main_app.master.after(1000,innerCallback)
+
+                else: #if state is high on pin, use callback in 1 second
+                    self.main_app.master.after(1000,callback)
+            
+            self.main_app.master.after(1000,callback)
+        
+        else:
+           dummy = input("Please, enter a value before continuing.\n>>") 
+        
+        """#pause before final screen
         if hasattr(self.main_app_instance, 'embedded_board'):
             #wait until board is ready & then send
+            print("Sending order.")
             self.sendDrinkOrderToEmbeddedBoard(num_of_drinks)
-            
+            print("Order sent. Waiting until done")
             #wait until drink is made
             self.main_app_instance.embedded_board.pollPinUntilLow()
             
@@ -271,6 +306,7 @@ class AppWindow():
                 pass #wait until camera is off before going to next screen
         
         self.setupDeliveryScreen() #go to final screen of drink making process
+        """
     
     
     def setupDeliveryScreen(self):

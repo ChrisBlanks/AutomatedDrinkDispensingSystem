@@ -66,6 +66,10 @@ class EmbeddedBoard(PeripheralDevice):
 		#pull-up is setup on pin 4
 
 
+	def getStateOfPin(self):
+		return GPIO.input(self.COMM_INPUT_PIN)
+	
+	
 	def pollPinUntilLow(self):
 		"""Poll until pin 4 is low (signals that data transmission can start)"""
 		print(GPIO.input(self.COMM_INPUT_PIN))
@@ -136,7 +140,7 @@ class EmbeddedBoard(PeripheralDevice):
 		else:
 			DATA = data_sequence 
 		
-			
+		print("Sending drink data now.")	
 		with SMBusWrapper(1) as bus:
 			# Ordering the drink(s)
 			bus.write_i2c_block_data(self.I2C_SLAVE_ADDRESS,self.ORDER_DRINK_ADDRESS,DATA)
@@ -146,6 +150,6 @@ class EmbeddedBoard(PeripheralDevice):
 if __name__ == "__main__":
 	MainApp = None
 	embedded_dev = EmbeddedBoard(MainApp)
-	#embedded_dev.orderDrink()
+	embedded_dev.orderDrink()
 	
 

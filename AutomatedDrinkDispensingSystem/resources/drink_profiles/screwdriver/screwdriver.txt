@@ -1,7 +1,7 @@
 id_number 6
 name screwdriver
 ingredients vodka orange_juice ice
-picture_location /home/pi/projects/AutomatedDrinkDispensingSystem/AutomatedDrinkDispensingSystem/resources/drink_profiles/screwdriver/screwdriver.jpg
+picture_location /home/pi/PYTHON_PROJECTS/senior_design/AutomatedDrinkDispensingSystem/AutomatedDrinkDispensingSystem/resources/drink_profiles/screwdriver/screwdriver.jpg
 isUrl False
 isActive 1
 Price 1.00

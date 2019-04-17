@@ -638,10 +638,10 @@ class MainApp:
             conversion between ounces to millimeters:
             1 fluid Oz = 29.5753 milliliters
             
-            Time resolution: 30/255 = 0.117 sec = 0.117 milliliter
+            Time resolution: 30/256 = 0.117 sec = 0.117 milliliter
             
             Calculation:
-              time_res = 30/255 #30 seconds divided by 255 (A byte max value)
+              time_res = 30/256 #30 seconds divided by 255 (A byte max value)
               milli_req = OZ_num * 29.5735 
               pump_time = int(milli_req / time_res)
             """
