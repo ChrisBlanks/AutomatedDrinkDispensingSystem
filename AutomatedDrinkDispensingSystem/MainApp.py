@@ -41,6 +41,7 @@ import socketserver as ss
 from CustomerWindow import CustomerWindow
 from EmployeeWindow import EmployeeWindow
 import DrinkProfile as     dp_class
+from Inventory import InventoryItem
 from LoginWindow    import LoginWindow
 from KeyboardWindow import KeyboardWindow
 
@@ -97,6 +98,7 @@ class MainApp:
     CONFIG_FILE_PATH = "{}/config.txt".format(SYSTEM_INFO_PATH)
     USER_LOGIN_FILE_PATH= "{}/user_login.txt".format(SYSTEM_INFO_PATH)
     ENCRYPTION_KEY_FILE_PATH = "{}/key.txt".format(SYSTEM_INFO_PATH)
+    INVENTORY_FILE_PATH = "{}/inventory_info.csv".format(SYSTEM_INFO_PATH)
     DRINK_MENU_FILE_PATH = "{}/drink_menu.txt".format(SYSTEM_INFO_PATH)
     CASCADES_PATH = "{}/haar_cascade_files".format(OTHER_PATH)
     
@@ -141,6 +143,7 @@ class MainApp:
             self.createDefaultUserLoginFile()             #creates a new user login file
 
         self.active_drink_objects = self.getDrinks()      #returns a list of drink_objects for later use
+        self.inventory_items = self.collectInventoryInfo()
         
         self.device_enable = peripheral_device_enable
         self.embedded_board_enable = embedded_board_enable
@@ -294,6 +297,32 @@ class MainApp:
         return active_drinks
 
 
+    def collectInventoryInfo(self):
+        list_of_items = []
+        with open(self.INVENTORY_FILE_PATH,"r+") as inventory_file:
+            content = inventory_file.readlines()
+            count = 0
+            print("Inventory:")
+            for line in content:
+                if "Inventory" in line:
+                    count += 1 
+                    continue #skip first line
+                
+                line_vals = line.replace("\n","").split(",")
+                name = line_vals[0]
+                current_quant= int(line_vals[1])
+                original_quant = int(line_vals[2])
+                ratio = float(current_quant)/float(original_quant)
+                
+                inventory_item = InventoryItem(self.INVENTORY_FILE_PATH,
+                                            name,original_quant,current_quant,count)
+                print(inventory_item.name)
+                list_of_items.append(inventory_item)
+
+                count += 1 
+        return list_of_items
+    
+    
     def retrieveConfigurationInformation(self):
         """Retrieves configuration info (e.g. drink names) from config file """
         with open(self.CONFIG_FILE_PATH,'r+') as f:

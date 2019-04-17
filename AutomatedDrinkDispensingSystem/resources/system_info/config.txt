@@ -1,6 +1,7 @@
 locked 0
-active_drink_list tequila vodka_and_cranberry screwdriver long_island_iced_tea rum_and_coke cuba_libre kamikaze vodka naval_gimlet daiquiri new_drink 
+active_drink_list tequila vodka_and_cranberry screwdriver long_island_iced_tea rum_and_coke cuba_libre kamikaze vodka naval_gimlet daiquiri 
 system_status idle
+atus idle
 atus idle
 _status idle
  idle
