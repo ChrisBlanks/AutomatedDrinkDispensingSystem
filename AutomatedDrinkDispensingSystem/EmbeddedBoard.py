@@ -69,7 +69,7 @@ class EmbeddedBoard(PeripheralDevice):
 	def pollPinUntilLow(self):
 		"""Poll until pin 4 is low (signals that data transmission can start)"""
 		print(GPIO.input(self.COMM_INPUT_PIN))
-		while GPIO.input(self.COMM_INPUT_PIN) == True:
+		while str(GPIO.input(self.COMM_INPUT_PIN)) == "1":
 			print(GPIO.input(self.COMM_INPUT_PIN))
 
 

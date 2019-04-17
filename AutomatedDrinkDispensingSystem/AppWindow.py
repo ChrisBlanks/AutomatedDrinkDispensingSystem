@@ -215,10 +215,8 @@ class AppWindow():
                 
             self.clearDrinkProfile()
             
-
-            self.setupWaitScreen()
-            if hasattr(self.main_app_instance, 'embedded_board'):
-                self.sendDrinkOrderToEmbeddedBoard(num_of_drinks)
+            
+            self.setupWaitScreen(num_of_drinks)
                 
 
     def sendDrinkOrderToEmbeddedBoard(self,drink_quantity):
@@ -226,12 +224,12 @@ class AppWindow():
         DRINK_ID = int(self.current_drink.id_number)
         QUANT = int(drink_quantity)
         data_sequence = [DRINK_ID,QUANT,0,0,0,0,0,0,0,0]
-        
         self.main_app_instance.embedded_board.pollPinUntilLow()
+        
         self.main_app_instance.embedded_board.orderDrink(data_sequence)
 
 
-    def setupWaitScreen(self):
+    def setupWaitScreen(self,num_of_drinks):
         """Creates and displays the elements of the wait screen."""
         self.wait_frame = tk.Frame(self.master,height=500,width=500,bg=self.background_color)
         self.frame.grid_forget()
@@ -256,7 +254,15 @@ class AppWindow():
         self.wait_frame.pack(fill=tk.X)
         
         #pause before final screen
-        dummy = input("Please, enter a value before continuing.\n>>")
+        if hasattr(self.main_app_instance, 'embedded_board'):
+            #wait until board is ready & then send
+            self.sendDrinkOrderToEmbeddedBoard(num_of_drinks)
+            
+            #wait until drink is made
+            self.main_app_instance.embedded_board.pollPinUntilLow()
+            
+        else: # if testing, then enter a 1 into the terminal
+            dummy = input("Please, enter a value before continuing.\n>>")
         
         if hasattr(self.main_app_instance, 'camera'):
             self.main_app_instance.camera.onExit() #turn off camera if used
@@ -272,8 +278,10 @@ class AppWindow():
         self.waitLabel.pack_forget() #don't need text label anymore
         self.img_item.pack_forget()  # or past image
         
-        self.delivery_img = ttk.Label(self.wait_frame,anchor=tk.CENTER)
-        
+        #self.delivery_img = ttk.Label(self.wait_frame,anchor=tk.CENTER)
+        self.delivery_img = tk.Label(self.wait_frame,anchor=tk.CENTER,
+                                    bg=self.background_color)
+                                    
         img = Image.open(self.main_app_instance.DELIVERY_SCREEN_IMG_PATH)
         img = img.resize((500,500),Image.ANTIALIAS)
         tk_photo = ImageTk.PhotoImage(img)
@@ -282,24 +290,40 @@ class AppWindow():
         
         self.delivery_img.configure(image=tk_photo)
         self.delivery_img.pack(fill=tk.X,side=tk.BOTTOM)
-        dummy = input("Enter anything to continue.\n>>")
+
+        i = 10 #seconds
+        MILLI = 1000
+        print("Timer set for 10 seconds.\n")
         
-        #setup drink options again after drink has been picked up
+        def callback():
+            """Recursively called until timer completes. Setup main window
+            to be used for next customer """
+            nonlocal i, MILLI
+            print(i)
+            i-= 1 #decrement second value
+            if not i: #if i < 1
+                print("\nReturning to main window.")
+                #setup drink options again after drink has been picked up
+                self.delivery_img.pack_forget()
+                self.wait_frame.pack_forget()
+                
+                self.frame = tk.Frame(self.master)
+                self.frame.configure(background= self.background_color)
+                self.frame.grid() 
+               
+                if self.main_app_instance.device_enable :
+                    #Re-enable employee switch
+                    self.main_app_instance.BUTTON_ENABLE = True 
+                    self.main_app_instance.switch.state = "enabled"
+                
+                self.displayDrinkOptionsInGUI()
+            else:
+                self.main_app.master.after(MILLI,callback)
         
-        self.delivery_img.pack_forget()
-        self.wait_frame.pack_forget()
-        
-        self.frame = tk.Frame(self.master)
-        self.frame.configure(background= self.background_color)
-        self.frame.grid() 
-       
-        if self.main_app_instance.device_enable :
-            #Re-enable employee switch
-            self.main_app_instance.BUTTON_ENABLE = True 
-            self.main_app_instance.switch.state = "enabled"
-        
-        self.displayDrinkOptionsInGUI()
-        
+        self.main_app.master.after(MILLI,callback)
+        #setup recursive calls for 10,000 milliseconds & then proceed    
+            
+
 
     def displayConfirmationMessageBox(self,mode="Customer",num_of_drinks=1):
         """Asks the user if they are sure about their drink selection """
