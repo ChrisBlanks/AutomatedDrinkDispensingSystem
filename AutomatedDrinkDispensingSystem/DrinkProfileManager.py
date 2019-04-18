@@ -13,6 +13,7 @@ Note:
 from tkinter import messagebox
 from tkinter import filedialog
 import tkinter as tk
+from tkinter import ttk
 
 import os
 
@@ -28,7 +29,10 @@ class DrinkProfileManager:
         self.main_app = main_app
         self.admin_mode = admin_mode
         self.font1 = ("Georgia",12,"")
-
+        
+        self.current_inventory = self.main_app.inventory_items
+        self.inventory_names = self.getInventoryNames()
+        
         self.delete_button = None
         self.edit_button = None
         
@@ -42,6 +46,15 @@ class DrinkProfileManager:
         
         self.main_app.employee_window.top.protocol("WM_DELETE_WINDOW",self.deployExitMessageBox)
         self.createProfileManagerMainWindow()
+
+
+    def getInventoryNames(self):
+        """Gets all inventory names and returns as a list."""
+        names = ["None"]
+        for item in self.current_inventory:
+            names.append(item.name)
+
+        return names
 
 
     def createProfileManagerMainWindow(self):
@@ -210,6 +223,50 @@ class DrinkProfileManager:
         active_label.grid(row=6,column=0)
         self.active_entry = tk.Entry(self.top,width=138)
         self.active_entry.grid(row=6,column=1,sticky="w",pady=4)
+        
+        #ingredients setions
+        ingredient_canvas = tk.Canvas(self.top)
+        
+        ingredients_section1 = tk.Label(ingredient_canvas,text="Ingredient 1:")
+        ingredients_section1.grid(row=0,column=0)
+        self.ingredient_options1 = ttk.Combobox(ingredient_canvas,values=self.inventory_names)
+        self.ingredient_options1.grid(row=0,column=1)
+        self.Ounce_entry1 = tk.Entry(ingredient_canvas,width=20)
+        self.Ounce_entry1.grid(row=0,column=2,sticky="w",pady=4)
+        ounce_label1 = tk.Label(ingredient_canvas,text="Ounce(s)")
+        ounce_label1.grid(row=0,column=3)
+        
+        ingredients_section2 = tk.Label(ingredient_canvas,text="Ingredient 1:")
+        ingredients_section2.grid(row=1,column=0)
+        self.ingredient_options2 = ttk.Combobox(ingredient_canvas,values=self.inventory_names)
+        self.ingredient_options2.grid(row=1,column=1)
+        self.Ounce_entry2 = tk.Entry(ingredient_canvas,width=20)
+        self.Ounce_entry2.grid(row=1,column=2,sticky="w",pady=4)
+        ounce_label2 = tk.Label(ingredient_canvas,text="Ounce(s)")
+        ounce_label2.grid(row=1,column=3)
+        
+        ingredients_section3 = tk.Label(ingredient_canvas,text="Ingredient 1:")
+        ingredients_section3.grid(row=2,column=0)
+        self.ingredient_options3 = ttk.Combobox(ingredient_canvas,values=self.inventory_names)
+        self.ingredient_options3.grid(row=2,column=1)
+        self.Ounce_entry3 = tk.Entry(ingredient_canvas,width=20)
+        self.Ounce_entry3.grid(row=2,column=2,sticky="w",pady=4)
+        ounce_label3 = tk.Label(ingredient_canvas,text="Ounce(s)")
+        ounce_label3.grid(row=2,column=3)        
+        
+        ingredients_section4 = tk.Label(ingredient_canvas,text="Ingredient 1:")
+        ingredients_section4.grid(row=3,column=0)
+        self.ingredient_options4 = ttk.Combobox(ingredient_canvas,values=self.inventory_names)
+        self.ingredient_options4.grid(row=3,column=1)
+        self.Ounce_entry4 = tk.Entry(ingredient_canvas,width=20)
+        self.Ounce_entry4.grid(row=3,column=2,sticky="w",pady=4)
+        ounce_label4 = tk.Label(ingredient_canvas,text="Ounce(s)")
+        ounce_label4.grid(row=3,column=3)        
+        
+        ingredient_canvas.grid(column=1,sticky="s")
+        
+        
+        
         if title != "Make A New Drink":
             self.active_entry.insert(0,self.drinkToEdit.isActive)
 
@@ -231,6 +288,7 @@ class DrinkProfileManager:
         keyboard_canvas = tk.Canvas(self.top,width=350,height=350)
         embed_keyboard = EmbeddedKeyboard(keyboard_canvas,entries)
         keyboard_canvas.grid(column=1,sticky="s")
+        
 
 
     def selectAnImage(self):
@@ -328,7 +386,30 @@ class DrinkProfileManager:
         new_pic_loc = self.pic_loc_entry.get()    #would have to parse and update extension here
         new_price = self.price_entry.get()
         new_active_condition = self.active_entry.get()
-            
+        
+        #get ingredients
+        ingredient1 = self.ingredient_options1.get()
+        ounce_1 = self.Ounce_entry1.get() 
+        
+        ingredient2 = self.ingredient_options2.get()
+        ounce_2 = self.Ounce_entry2.get() 
+
+        ingredient3 = self.ingredient_options3.get()
+        ounce_3 = self.Ounce_entry3.get() 
+
+        ingredient4 = self.ingredient_options4.get()
+        ounce_4 = self.Ounce_entry4.get() 
+        
+        ingre = "{} ,{} ,{} ,{}".format(ingredient1,ingredient2,
+                                        ingredient3,ingredient4)
+        
+        ounces = "{} ,{} ,{} ,{}".format(ounce_1,ounce_2,
+                                        ounce_3,ounce_4)
+        print("Ingredients:",ingre)
+        print("Ounces:",ounces)
+        
+        
+
         if new_name == "" or new_id == "" or new_ingredients == "" or new_pic_loc == "" \
            or new_price == "" or new_active_condition == "":
             self.deployIncompleteMessageBox()
