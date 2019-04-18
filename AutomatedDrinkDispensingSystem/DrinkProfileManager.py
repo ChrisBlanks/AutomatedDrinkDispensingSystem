@@ -224,47 +224,138 @@ class DrinkProfileManager:
         self.active_entry = tk.Entry(self.top,width=138)
         self.active_entry.grid(row=6,column=1,sticky="w",pady=4)
         
-        #ingredients setions
-        ingredient_canvas = tk.Canvas(self.top)
-        
-        ingredients_section1 = tk.Label(ingredient_canvas,text="Ingredient 1:")
-        ingredients_section1.grid(row=0,column=0)
-        self.ingredient_options1 = ttk.Combobox(ingredient_canvas,values=self.inventory_names)
-        self.ingredient_options1.grid(row=0,column=1)
-        self.Ounce_entry1 = tk.Entry(ingredient_canvas,width=20)
-        self.Ounce_entry1.grid(row=0,column=2,sticky="w",pady=4)
-        ounce_label1 = tk.Label(ingredient_canvas,text="Ounce(s)")
-        ounce_label1.grid(row=0,column=3)
-        
-        ingredients_section2 = tk.Label(ingredient_canvas,text="Ingredient 1:")
-        ingredients_section2.grid(row=1,column=0)
-        self.ingredient_options2 = ttk.Combobox(ingredient_canvas,values=self.inventory_names)
-        self.ingredient_options2.grid(row=1,column=1)
-        self.Ounce_entry2 = tk.Entry(ingredient_canvas,width=20)
-        self.Ounce_entry2.grid(row=1,column=2,sticky="w",pady=4)
-        ounce_label2 = tk.Label(ingredient_canvas,text="Ounce(s)")
-        ounce_label2.grid(row=1,column=3)
-        
-        ingredients_section3 = tk.Label(ingredient_canvas,text="Ingredient 1:")
-        ingredients_section3.grid(row=2,column=0)
-        self.ingredient_options3 = ttk.Combobox(ingredient_canvas,values=self.inventory_names)
-        self.ingredient_options3.grid(row=2,column=1)
-        self.Ounce_entry3 = tk.Entry(ingredient_canvas,width=20)
-        self.Ounce_entry3.grid(row=2,column=2,sticky="w",pady=4)
-        ounce_label3 = tk.Label(ingredient_canvas,text="Ounce(s)")
-        ounce_label3.grid(row=2,column=3)        
-        
-        ingredients_section4 = tk.Label(ingredient_canvas,text="Ingredient 1:")
-        ingredients_section4.grid(row=3,column=0)
-        self.ingredient_options4 = ttk.Combobox(ingredient_canvas,values=self.inventory_names)
-        self.ingredient_options4.grid(row=3,column=1)
-        self.Ounce_entry4 = tk.Entry(ingredient_canvas,width=20)
-        self.Ounce_entry4.grid(row=3,column=2,sticky="w",pady=4)
-        ounce_label4 = tk.Label(ingredient_canvas,text="Ounce(s)")
-        ounce_label4.grid(row=3,column=3)        
-        
-        ingredient_canvas.grid(column=1,sticky="s")
-        
+        if title != "Make A New Drink":
+            ingredient_buffer = []
+            drink_edit_names= " ".join(self.drinkToEdit.ingredients)
+            for name in self.inventory_names:
+                if name in drink_edit_names.replace("_"," ").title():
+                    ingredient_buffer.append(name)
+            
+            if len(ingredient_buffer) < 4:
+                for i in range(4-len(ingredient_buffer)):
+                    ingredient_buffer.append("None")
+            
+            ordered_ounces = []
+            list_of_OZ= self.drinkToEdit.ounces
+            for oz in list_of_OZ:
+                ordered_ounces.append(oz)
+            print(ordered_ounces)    
+            if len(ordered_ounces) < 4:
+                for i in range(4-len(ordered_ounces)):
+                    ordered_ounces.append(" ")
+            
+            #ingredients setions
+            ingredient_canvas = tk.Canvas(self.top)
+            
+            ingredients_section1 = tk.Label(ingredient_canvas,text="Ingredient 1:")
+            ingredients_section1.grid(row=0,column=0)
+            
+            self.ingredient_options1 = ttk.Combobox(ingredient_canvas,values=self.inventory_names)
+            self.ingredient_options1.grid(row=0,column=1)
+            self.ingredient_options1.set(ingredient_buffer[0])
+            
+            self.Ounce_entry1 = tk.Entry(ingredient_canvas,width=20)
+            self.Ounce_entry1.insert(0,ordered_ounces[0])
+            self.Ounce_entry1.grid(row=0,column=2,sticky="w",pady=4)
+            
+            ounce_label1 = tk.Label(ingredient_canvas,text="Ounce(s)")
+            ounce_label1.grid(row=0,column=3)
+            
+            ingredients_section2 = tk.Label(ingredient_canvas,text="Ingredient 1:")
+            ingredients_section2.grid(row=1,column=0)
+            
+            self.ingredient_options2 = ttk.Combobox(ingredient_canvas,values=self.inventory_names)
+            self.ingredient_options2.grid(row=1,column=1)
+            self.ingredient_options2.set(ingredient_buffer[1])
+            
+            self.Ounce_entry2 = tk.Entry(ingredient_canvas,width=20)
+            self.Ounce_entry2.insert(0,ordered_ounces[1])
+            self.Ounce_entry2.grid(row=1,column=2,sticky="w",pady=4)
+            
+            ounce_label2 = tk.Label(ingredient_canvas,text="Ounce(s)")
+            ounce_label2.grid(row=1,column=3)
+            
+            ingredients_section3 = tk.Label(ingredient_canvas,text="Ingredient 1:")
+            ingredients_section3.grid(row=2,column=0)
+            
+            self.ingredient_options3 = ttk.Combobox(ingredient_canvas,values=self.inventory_names)
+            self.ingredient_options3.grid(row=2,column=1)
+            self.ingredient_options3.set(ingredient_buffer[2])
+            
+            self.Ounce_entry3 = tk.Entry(ingredient_canvas,width=20)
+            self.Ounce_entry3.insert(0,ordered_ounces[2])
+            self.Ounce_entry3.grid(row=2,column=2,sticky="w",pady=4)
+            
+            ounce_label3 = tk.Label(ingredient_canvas,text="Ounce(s)")
+            ounce_label3.grid(row=2,column=3)        
+            
+            ingredients_section4 = tk.Label(ingredient_canvas,text="Ingredient 1:")
+            ingredients_section4.grid(row=3,column=0)
+            
+            self.ingredient_options4 = ttk.Combobox(ingredient_canvas,values=self.inventory_names)
+            self.ingredient_options4.grid(row=3,column=1)
+            self.ingredient_options4.set(ingredient_buffer[3])
+            
+            self.Ounce_entry4 = tk.Entry(ingredient_canvas,width=20)
+            self.Ounce_entry4.grid(row=3,column=2,sticky="w",pady=4)
+            self.Ounce_entry4.insert(0,ordered_ounces[3])
+            ounce_label4 = tk.Label(ingredient_canvas,text="Ounce(s)")
+            ounce_label4.grid(row=3,column=3)        
+            
+            ingredient_canvas.grid(column=1,sticky="s")
+            
+        else:
+            ingredient_canvas = tk.Canvas(self.top)
+            
+            ingredients_section1 = tk.Label(ingredient_canvas,text="Ingredient 1:")
+            ingredients_section1.grid(row=0,column=0)
+            
+            self.ingredient_options1 = ttk.Combobox(ingredient_canvas,values=self.inventory_names)
+            self.ingredient_options1.grid(row=0,column=1)
+            
+            self.Ounce_entry1 = tk.Entry(ingredient_canvas,width=20)
+            self.Ounce_entry1.grid(row=0,column=2,sticky="w",pady=4)
+            
+            ounce_label1 = tk.Label(ingredient_canvas,text="Ounce(s)")
+            ounce_label1.grid(row=0,column=3)
+            
+            ingredients_section2 = tk.Label(ingredient_canvas,text="Ingredient 2:")
+            ingredients_section2.grid(row=1,column=0)
+            
+            self.ingredient_options2 = ttk.Combobox(ingredient_canvas,values=self.inventory_names)
+            self.ingredient_options2.grid(row=1,column=1)
+            
+            self.Ounce_entry2 = tk.Entry(ingredient_canvas,width=20)
+            self.Ounce_entry2.grid(row=1,column=2,sticky="w",pady=4)
+            
+            ounce_label2 = tk.Label(ingredient_canvas,text="Ounce(s)")
+            ounce_label2.grid(row=1,column=3)
+            
+            ingredients_section3 = tk.Label(ingredient_canvas,text="Ingredient 3:")
+            ingredients_section3.grid(row=2,column=0)
+            
+            self.ingredient_options3 = ttk.Combobox(ingredient_canvas,values=self.inventory_names)
+            self.ingredient_options3.grid(row=2,column=1)
+            
+            self.Ounce_entry3 = tk.Entry(ingredient_canvas,width=20)
+            self.Ounce_entry3.grid(row=2,column=2,sticky="w",pady=4)
+            
+            ounce_label3 = tk.Label(ingredient_canvas,text="Ounce(s)")
+            ounce_label3.grid(row=2,column=3)        
+            
+            ingredients_section4 = tk.Label(ingredient_canvas,text="Ingredient 4:")
+            ingredients_section4.grid(row=3,column=0)
+            
+            self.ingredient_options4 = ttk.Combobox(ingredient_canvas,values=self.inventory_names)
+            self.ingredient_options4.grid(row=3,column=1)
+            
+            self.Ounce_entry4 = tk.Entry(ingredient_canvas,width=20)
+            self.Ounce_entry4.grid(row=3,column=2,sticky="w",pady=4)
+            
+            ounce_label4 = tk.Label(ingredient_canvas,text="Ounce(s)")
+            ounce_label4.grid(row=3,column=3)        
+            
+            ingredient_canvas.grid(column=1,sticky="s")
         
         
         if title != "Make A New Drink":
@@ -313,10 +404,33 @@ class DrinkProfileManager:
         """Creates a drink profile from the given parameters"""
         self.new_drink.name = self.name_entry.get()
         self.new_drink.id_number = self.id_entry.get()
-        self.new_drink.ingredients = self.ingredient_entry.get()
+        #self.new_drink.ingredients = self.ingredient_entry.get()
         pic_path = self.pic_loc_entry.get()
         self.new_drink.price = self.price_entry.get()
         self.new_drink.isActive = self.active_entry.get()
+        
+        #get ingredients
+        ingredient1 = self.ingredient_options1.get()
+        ounce_1 = self.Ounce_entry1.get() 
+        
+        ingredient2 = self.ingredient_options2.get()
+        ounce_2 = self.Ounce_entry2.get() 
+
+        ingredient3 = self.ingredient_options3.get()
+        ounce_3 = self.Ounce_entry3.get() 
+
+        ingredient4 = self.ingredient_options4.get()
+        ounce_4 = self.Ounce_entry4.get() 
+        
+        
+        ingre = "{} {} {} {}".format(ingredient1,ingredient2,
+                                        ingredient3,ingredient4)
+        ingre.replace("None","").lower().replace(" juice","_juice").replace(" sec","_sec")
+        ounces = "{} {} {} {}".format(ounce_1,ounce_2,
+                                        ounce_3,ounce_4)
+        print("Ingredients:",ingre)
+        print("Ounces:",ounces)
+        
         
         self.new_drink.name = (self.new_drink.name).replace(" ","_") #prevents spaces in drink profile names
         if self.new_drink.name == "" or self.new_drink.id_number == "" or self.new_drink.ingredients == "" or \
@@ -325,9 +439,11 @@ class DrinkProfileManager:
             return
         
         # Processing of ingredients
-        temp_edit = self.new_drink.ingredients.replace(","," ") #get rid of commas
-        self.new_drink.ingredients = temp_edit 
+        #temp_edit = self.new_drink.ingredients.replace(","," ") #get rid of commas
+        #self.new_drink.ingredients = temp_edit 
         #must be a space delimited string when creating a new drink profile
+        self.new_drink.ingredients = ingre
+        self.new_drink.ounces = ounces
         
         #limited for right now
         if ".jpg" in pic_path:
@@ -342,7 +458,8 @@ class DrinkProfileManager:
            
         self.new_drink.createDrinkProfile(pic_path)
         
-        self.new_drink.ingredients = temp_edit.split(" ") 
+        self.new_drink.ingredients = ingre.split()
+        #self.new_drink.ingredients = temp_edit.split(" ") 
         #split into a list by space delimiters for correct format in drink profile display
         
         self.main_app.all_drinks.append(self.new_drink)
@@ -376,13 +493,14 @@ class DrinkProfileManager:
         new_name = self.name_entry.get()
         new_id = self.id_entry.get()
 
-        new_ingredients = (self.ingredient_entry.get())
+        """new_ingredients = (self.ingredient_entry.get())
         if "," in new_ingredients:
             new_ingredients = (new_ingredients.replace(","," ")).split(" ") #converts into a list
             print(new_ingredients)
         else:
             new_ingredients = new_ingredients.split(" ")
-
+        """
+        
         new_pic_loc = self.pic_loc_entry.get()    #would have to parse and update extension here
         new_price = self.price_entry.get()
         new_active_condition = self.active_entry.get()
@@ -400,14 +518,16 @@ class DrinkProfileManager:
         ingredient4 = self.ingredient_options4.get()
         ounce_4 = self.Ounce_entry4.get() 
         
-        ingre = "{} ,{} ,{} ,{}".format(ingredient1,ingredient2,
+        ingre = "{} {} {} {}".format(ingredient1,ingredient2,
                                         ingredient3,ingredient4)
+        ingre = ingre.replace("None",
+        "").lower().replace(" juice","_juice").replace(" sec","_sec")
         
-        ounces = "{} ,{} ,{} ,{}".format(ounce_1,ounce_2,
+        ounces = "{} {} {} {}".format(ounce_1,ounce_2,
                                         ounce_3,ounce_4)
         print("Ingredients:",ingre)
         print("Ounces:",ounces)
-        
+        new_ingredients = ingre
         
 
         if new_name == "" or new_id == "" or new_ingredients == "" or new_pic_loc == "" \
@@ -422,8 +542,12 @@ class DrinkProfileManager:
             self.drinkToEdit.name = new_name
             self.changeName()
         if new_ingredients != "" and new_ingredients != self.drinkToEdit.ingredients:
+            print(new_ingredients)
             self.drinkToEdit.ingredients = new_ingredients
             self.changeIngredients()
+        if ounces != "" and ounces != self.drinkToEdit.ounces:
+            self.drinkToEdit.ounces = ounces
+            self.changeOunces()
         if new_pic_loc != "" and new_pic_loc != self.drinkToEdit.pic_location:
             self.changeDrinkPicLocation(self.drinkToEdit,new_pic_loc)
         if new_price != ""  and new_price != self.drinkToEdit.price:
@@ -457,10 +581,15 @@ class DrinkProfileManager:
 
     def changeIngredients(self):
         """Changes drink ingredients in its respective text file."""   
-        self.drinkToEdit.edited_attributes[2] = " ".join((self.drinkToEdit.ingredients))
+        self.drinkToEdit.edited_attributes[2] = self.drinkToEdit.ingredients
         self.drinkToEdit.editDrinkProfile()
-
-
+        self.drinkToEdit.ingredients = self.drinkToEdit.ingredients.split()                            
+    
+    def changeOunces(self):
+        """Changes ounces value. """
+        self.drinkToEdit.edited_attributes[7] = self.drinkToEdit.ounces
+        self.drinkToEdit.editDrinkProfile()
+    
     def changePrice(self):
         """Changes drink name in its respective text file."""
         self.drinkToEdit.edited_attributes[6] = self.drinkToEdit.price

@@ -40,6 +40,8 @@ class DrinkProfile:
         self.isUrl = "False"
         self.isActive = "1"
         self.price = 0.0
+        self.ounces = "" 
+        #comma delimited string that has an ordered 1-to-1 relationship with ingredients
         
         """
         Note on self.edited_attributes:
@@ -48,7 +50,7 @@ class DrinkProfile:
         Each index corresponds to the drink attributes declared above in descending
         order, so index 0 is id_number and index 7 is price of the drinks
         """
-        self.edited_attributes = [0,0,0,0,0,0,0]
+        self.edited_attributes = [0,0,0,0,0,0,0,0]
         
         self.checkIfNew()
 
@@ -98,7 +100,10 @@ class DrinkProfile:
                     self.isActive = line.split()[1]
                 if line_count == 7:
                     self.price = line.split()[1]
-
+                if line_count == 8:
+                    ounces_vals = line.split()
+                    self.ounces = ounces_vals[1:len(ingredient_list)]
+                    
                 line_count += 1
                 lines.append(line)
             if self.isUrl == "False":
@@ -129,6 +134,7 @@ class DrinkProfile:
             new_text_file.write("isUrl " + str(self.isUrl)+"\n")
             new_text_file.write("isActive " + self.isActive+"\n")
             new_text_file.write("Price "+str(self.price)+ "\n")
+            new_text_file.write("ounces "+str(self.ounces)+ "\n")
         
         if self.isUrl != "False":
             print("Somehow the impossible happened?")
@@ -177,7 +183,8 @@ class DrinkProfile:
             lines = file.read().splitlines()
             file.seek(0)
             
-            line_headers = ["id_number ","name ","ingredients ","picture_location ", "isUrl ","isActive ","Price "]
+            line_headers = ["id_number ","name ","ingredients ","picture_location ",
+                            "isUrl ","isActive ","Price ","ounces "]
             line_count = 1
             for line in lines:
                 for i in range(len(changes)):

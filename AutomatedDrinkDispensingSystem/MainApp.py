@@ -521,8 +521,14 @@ class MainApp:
 
 
     def getIPAddress(self):
-        host_info = check_output(['hostname','-I'])
-        ip_address = host_info.split()[0].decode('ascii')
+        host_info=None
+        ip_address=None
+        try:
+            host_info = check_output(['hostname','-I'])
+            ip_address = host_info.split()[0].decode('ascii')
+        except:
+            print("Couldn't get ip address")
+            ip_address="localhost"
         print( "IP: {}\n".format(ip_address) )
         return ip_address
 

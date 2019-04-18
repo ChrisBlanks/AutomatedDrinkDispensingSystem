@@ -51,3 +51,52 @@
 2019-04-17 20:53:41.926604 : Edited this drink: vodka and cranberry
 2019-04-17 20:54:02.134320 : Edited this drink: vodka and cranberry
 2019-04-17 20:54:28.630125 : Edited this drink: vodka and cranberry
+2019-04-17 21:14:19.147091 : Running main application
+2019-04-17 21:14:19.949195 : Cleaned Config file.
+2019-04-17 21:14:28.463268 : admin logged in
+2019-04-17 21:16:55.247622 : Running main application
+2019-04-17 21:16:55.985842 : Cleaned Config file.
+2019-04-17 21:17:03.648276 : admin logged in
+2019-04-17 21:20:06.546050 : Running main application
+2019-04-17 21:20:07.323183 : Cleaned Config file.
+2019-04-17 21:20:15.034697 : admin logged in
+2019-04-17 21:20:35.491560 : Edited this drink: vodka and cranberry
+2019-04-17 21:22:06.005322 : Running main application
+2019-04-17 21:22:06.781431 : Cleaned Config file.
+2019-04-17 21:22:14.816644 : admin logged in
+2019-04-17 21:24:37.017223 : Running main application
+2019-04-17 21:24:37.810695 : Cleaned Config file.
+2019-04-17 21:24:45.910017 : admin logged in
+2019-04-17 21:31:48.752359 : Running main application
+2019-04-17 21:31:49.547113 : Cleaned Config file.
+2019-04-17 21:32:00.178919 : admin logged in
+2019-04-17 22:13:22.987130 : Running main application
+2019-04-17 22:13:23.781092 : Cleaned Config file.
+2019-04-17 22:13:33.189292 : admin logged in
+2019-04-17 22:14:57.362635 : Running main application
+2019-04-17 22:14:58.153815 : Cleaned Config file.
+2019-04-17 22:15:05.893175 : admin logged in
+2019-04-17 22:17:38.700081 : Running main application
+2019-04-17 22:17:39.489774 : Cleaned Config file.
+2019-04-17 22:17:49.781358 : admin logged in
+2019-04-17 22:19:48.215044 : Running main application
+2019-04-17 22:19:49.015847 : Cleaned Config file.
+2019-04-17 22:19:56.005539 : admin logged in
+2019-04-17 22:20:42.051890 : Edited this drink: tequila
+2019-04-17 22:24:54.933770 : Running main application
+2019-04-17 22:24:55.772782 : Cleaned Config file.
+2019-04-17 22:25:04.036948 : admin logged in
+2019-04-17 22:27:47.626451 : Running main application
+2019-04-17 22:27:48.433675 : Cleaned Config file.
+2019-04-17 22:27:56.212629 : admin logged in
+2019-04-17 22:28:17.123097 : Edited this drink: vodka and cranberry
+2019-04-17 22:37:43.262336 : Running main application
+2019-04-17 22:37:44.040442 : Cleaned Config file.
+2019-04-17 22:37:51.731287 : admin logged in
+2019-04-17 22:39:29.186394 : Edited this drink: vodka and cranberry
+2019-04-17 22:47:28.480222 : Running main application
+2019-04-17 22:47:29.263216 : Cleaned Config file.
+2019-04-17 22:49:30.832596 : admin logged in
+2019-04-17 22:49:50.303137 : Edited this drink: vodka and cranberry
+2019-04-17 22:55:13.022337 : Created new drink: test
+2019-04-17 22:55:54.765173 : admin logged in
