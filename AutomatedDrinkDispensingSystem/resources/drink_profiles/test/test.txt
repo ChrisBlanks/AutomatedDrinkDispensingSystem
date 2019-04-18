@@ -1,6 +1,6 @@
 id_number 100
 name test
-ingredients Gin Rum  
+ingredients gin rum  
 picture_location /home/pi/projects/AutomatedDrinkDispensingSystem/AutomatedDrinkDispensingSystem/resources/drink_profiles/test/test.jpg
 isUrl False
 isActive 1

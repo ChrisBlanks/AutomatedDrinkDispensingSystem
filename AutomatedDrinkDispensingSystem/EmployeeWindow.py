@@ -80,7 +80,8 @@ class EmployeeWindow(AppWindow):
         self.admin_menu.add_command(label="Show IP Address" ,command= self.showIPAddress)
         self.admin_menu.add_separator()
         self.admin_menu.add_command(label="Change background color" ,command= self.switchBackgroundColor)
-        
+        self.admin_menu.add_separator()
+        self.admin_menu.add_command(label="Edit Inventory" ,command= self.launchInventoryManager)
 
     
     def setupOptionsMenuBar(self):
@@ -94,6 +95,8 @@ class EmployeeWindow(AppWindow):
         self.options_menu.add_command(label="Show IP Address" ,command= self.showIPAddress)
         self.options_menu.add_separator()
         self.options_menu.add_command(label="Change background color" ,command= self.switchBackgroundColor)
+        self.options_menu.add_separator()
+        self.options_menu.add_command(label="Edit Inventory" ,command= self.launchInventoryManager)
 
 
     def switchBackgroundColor(self):
@@ -113,6 +116,21 @@ class EmployeeWindow(AppWindow):
         self.main_app.master.update_idletasks()
         #should write this to a file eventually
 
+
+    def launchInventoryManager(self):
+        """Launchs inventory manager."""
+        self.inventory_manager = tk.Toplevel(self.master,background=self.main_app.MASTER_BACKGROUND_COLOR)
+        self.inventory_manager.tk.call("wm","iconphoto",self.inventory_manager._w,self.main_app.icon_img) 
+        self.inventory_manager.title("Drink Profile Manager")
+        self.inventory_manager.geometry(self.main_app.geometry_string)
+        
+        self.inventory_manager_win = tk.PanedWindow(self.inventory_manager,
+                                                orient= tk.HORIZONTAL)
+        self.inventory_manager_win.pack(fill=tk.BOTH,expand=1)
+
+        #self.master.withdraw()
+        
+        
 
     def launchDrinkProfileManager(self):
         """Allows the employee to add, edit, or delete drink profiles."""

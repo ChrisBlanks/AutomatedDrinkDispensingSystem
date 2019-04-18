@@ -197,13 +197,6 @@ class DrinkProfileManager:
         self.id_entry.grid(row=2,column=1,sticky="w",pady=4)
         if title != "Make A New Drink":
             self.id_entry.insert(0,self.drinkToEdit.id_number)
-        
-        ingredients_label = tk.Label(self.top,text="Ingredients:",pady=4)
-        ingredients_label.grid(row=3,column=0)
-        self.ingredient_entry = tk.Entry(self.top,width=138)
-        self.ingredient_entry.grid(row=3,column=1,sticky="w",pady=4)
-        if title != "Make A New Drink":
-            self.ingredient_entry.insert(0,self.drinkToEdit.ingredients)
 
         pic_loc_label = tk.Label(self.top,text="Image path:")
         pic_loc_label.grid(row=4,column=0)
@@ -404,7 +397,6 @@ class DrinkProfileManager:
         """Creates a drink profile from the given parameters"""
         self.new_drink.name = self.name_entry.get()
         self.new_drink.id_number = self.id_entry.get()
-        #self.new_drink.ingredients = self.ingredient_entry.get()
         pic_path = self.pic_loc_entry.get()
         self.new_drink.price = self.price_entry.get()
         self.new_drink.isActive = self.active_entry.get()
@@ -492,14 +484,6 @@ class DrinkProfileManager:
         """Checks for changed fields and puts into effect the changes."""
         new_name = self.name_entry.get()
         new_id = self.id_entry.get()
-
-        """new_ingredients = (self.ingredient_entry.get())
-        if "," in new_ingredients:
-            new_ingredients = (new_ingredients.replace(","," ")).split(" ") #converts into a list
-            print(new_ingredients)
-        else:
-            new_ingredients = new_ingredients.split(" ")
-        """
         
         new_pic_loc = self.pic_loc_entry.get()    #would have to parse and update extension here
         new_price = self.price_entry.get()
