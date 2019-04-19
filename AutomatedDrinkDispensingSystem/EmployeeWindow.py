@@ -18,6 +18,7 @@ from LogManager import LogManager
 from AppWindow import AppWindow
 from DrinkProfileManager import DrinkProfileManager
 from ApplicationUserEditor import ApplicationUserEditor
+from InventoryManager import InventoryManager
 
 
 class EmployeeWindow(AppWindow):
@@ -121,13 +122,13 @@ class EmployeeWindow(AppWindow):
         """Launchs inventory manager."""
         self.inventory_manager = tk.Toplevel(self.master,background=self.main_app.MASTER_BACKGROUND_COLOR)
         self.inventory_manager.tk.call("wm","iconphoto",self.inventory_manager._w,self.main_app.icon_img) 
-        self.inventory_manager.title("Drink Profile Manager")
+        self.inventory_manager.title("Inventory Manager")
         self.inventory_manager.geometry(self.main_app.geometry_string)
         
         self.inventory_manager_win = tk.PanedWindow(self.inventory_manager,
                                                 orient= tk.HORIZONTAL)
         self.inventory_manager_win.pack(fill=tk.BOTH,expand=1)
-
+        self.inventory_manager_obj = InventoryManager(self.inventory_manager_win,self.main_app)
         #self.master.withdraw()
         
         

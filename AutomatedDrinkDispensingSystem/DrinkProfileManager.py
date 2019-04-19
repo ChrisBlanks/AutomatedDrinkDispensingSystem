@@ -366,7 +366,7 @@ class DrinkProfileManager:
         pic_select_button = tk.Button(self.top,text="Find Pic!", command=self.selectAnImage)
         pic_select_button.grid(row=0,column=2)
     
-        entries = (self.name_entry,self.id_entry,self.ingredient_entry,self.pic_loc_entry,
+        entries = (self.name_entry,self.id_entry,self.pic_loc_entry,
                    self.price_entry,self.active_entry)
         
         keyboard_canvas = tk.Canvas(self.top,width=350,height=350)

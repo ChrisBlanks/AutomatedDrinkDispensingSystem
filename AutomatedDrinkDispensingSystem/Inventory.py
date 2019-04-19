@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python3
 
 class InventoryItem:
 	LOW_MSG = "Inventory item {} is low."
