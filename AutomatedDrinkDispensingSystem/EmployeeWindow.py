@@ -78,6 +78,8 @@ class EmployeeWindow(AppWindow):
         self.admin_menu.add_separator()
         self.admin_menu.add_command(label="Edit User Logins" ,command= self.editUserLogins)
         self.admin_menu.add_separator()
+        self.admin_menu.add_command(label="Show URL for Phone App" ,command= self.showURL)
+        self.admin_menu.add_separator()
         self.admin_menu.add_command(label="Show IP Address" ,command= self.showIPAddress)
         self.admin_menu.add_separator()
         self.admin_menu.add_command(label="Change background color" ,command= self.switchBackgroundColor)
@@ -92,6 +94,8 @@ class EmployeeWindow(AppWindow):
         self.parent_menu.add_cascade(label="Employee Options",menu= self.options_menu)
 
         self.options_menu.add_command(label="Launch Drink Profile Manager" ,command= self.launchDrinkProfileManager)
+        self.options_menu.add_separator()
+        self.options_menu.add_command(label="Show URL for Phone App" ,command= self.showURL)
         self.options_menu.add_separator()
         self.options_menu.add_command(label="Show IP Address" ,command= self.showIPAddress)
         self.options_menu.add_separator()
@@ -234,7 +238,24 @@ class EmployeeWindow(AppWindow):
         
         ip_label.grid()
 
+
+    def showURL(self):
+        """Shows the current ngrok URL in a top level window. """
+        url_window = tk.Toplevel(background=self.main_app.MASTER_BACKGROUND_COLOR,width="300")
+        url_window.attributes("-topmost",True)
+        url_window.tk.call("wm","iconphoto",url_window._w,self.main_app.icon_img)
+        url_window.title("URL for Phone App")
         
+        url = str(self.main_app.url)
+        if url is None:
+            url="Could not make a ngrok URL"
+        
+        url_label = tk.Label(url_window,text=url,font=("Georgia","20","bold"),
+        fg="red",background=self.main_app.MASTER_BACKGROUND_COLOR)
+        
+        url_label.grid()
+
+
     def deployExitMessageBox(self):
         """Destroys employee window and brings up root window."""
         if messagebox.askokcancel("Quit","Are you sure?",parent=self.master):
