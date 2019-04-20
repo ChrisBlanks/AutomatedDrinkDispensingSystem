@@ -1,8 +1,10 @@
 id_number 3
 name long_island_iced_tea
-ingredients tequila orange_liquer lime_juice
+ingredients tequila gin rum 
 picture_location /home/pi/projects/AutomatedDrinkDispensingSystem/AutomatedDrinkDispensingSystem/resources/drink_profiles/long_island_iced_tea/long_island_iced_tea.jpg
 isUrl False
 isActive 1
 Price 3.00
+ounces 2 2 2  
+00
 ounces 1 1 2

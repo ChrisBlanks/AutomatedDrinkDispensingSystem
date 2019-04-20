@@ -451,7 +451,7 @@ class DrinkProfileManager:
         self.new_drink.createDrinkProfile(pic_path)
         
         self.new_drink.ingredients = ingre.split()
-        #self.new_drink.ingredients = temp_edit.split(" ") 
+        self.new_drink.ounces  = ounces.split()
         #split into a list by space delimiters for correct format in drink profile display
         
         self.main_app.all_drinks.append(self.new_drink)
@@ -461,7 +461,7 @@ class DrinkProfileManager:
         
         
         self.main_app.active_drink_objects = self.main_app.getDrinks()
-        self.main_app.employee_window.resetDrinkOptions()
+        self.main_app.updateDrinkMenu()
         
 
 
@@ -546,7 +546,8 @@ class DrinkProfileManager:
                 self.deactivateDrink(self.drinkToEdit)
             else:
                 print("Incorrect state for isActive")
-
+        
+        self.main_app.updateDrinkMenu()
         self.main_app.writeToLog("Edited this drink: "+ self.drinkToEdit.name)
         self.top.destroy()
 
@@ -573,6 +574,7 @@ class DrinkProfileManager:
         """Changes ounces value. """
         self.drinkToEdit.edited_attributes[7] = self.drinkToEdit.ounces
         self.drinkToEdit.editDrinkProfile()
+        self.drinkToEdit.ounces = self.drinkToEdit.ounces.split()
     
     def changePrice(self):
         """Changes drink name in its respective text file."""

@@ -160,7 +160,7 @@ class MainApp:
             #if other devices off & want to still test embedded board
             self.embedded_board = EmbeddedBoard(self)
             self.embedded_board.initializeDrinkMenuOnBoard()
-        
+        self.updateDrinkMenu()
         self.createMainWindow()
         self.retrieveHttpURL()
         self.retrieveConfigurationInformation()
@@ -317,6 +317,8 @@ class MainApp:
                 original_quant = float(line_vals[2])
                 ratio = float(current_quant)/float(original_quant)
                 
+                #valve number corresponds with line count 
+                #(e.g. line 2 is valve 1 or second index of content)
                 inventory_item = InventoryItem(self.INVENTORY_FILE_PATH,
                                             name,original_quant,current_quant,count)
                 print(inventory_item.name)
@@ -324,7 +326,14 @@ class MainApp:
 
                 count += 1 
         return list_of_items
-    
+
+    def getInventoryItemNames(self):
+        """Get inventory item names."""
+        names = []
+        for item in self.inventory_items:
+            names.append(item.name)
+        return names
+
     
     def retrieveConfigurationInformation(self):
         """Retrieves configuration info (e.g. drink names) from config file """
@@ -697,13 +706,8 @@ class MainApp:
 
 
     def updateDrinkMenu(self):
-        """Drink Menu file is updated when drink profile of a drink is changed"""
-        #sort by id_number of drinks
-        self.active_drink_objects.sort(key=lambda x: x.id_number)
-        
-        for drink in sorted_drinks:
-            
-            """
+        """Drink Menu file is updated when drink profile of a drink is changed
+        Notes:
             Need to generate a string of pump times that corresponds to valves on
             boards, so ingredients must be associated with valve numbers
             
@@ -723,13 +727,115 @@ class MainApp:
               milli_req = OZ_num * 29.5735 
               pump_time = int(milli_req / time_res)
               amount_of_fluid = pump_time * (500 / 60) #500 ml per sec pump speed
-            """
+        """
+        
+        #Constants
+        OZ_TO_ML_CONV = 29.5753 # 1 fluid Oz = 29.
+        MAX_TIME = 30 #pump will run for a max of 30 seconds
+        BIT_RES = 256
+        PUMP_SPEED_ML_PER_SEC = int(500/60) #rating of pump
+        #other pump speed may be:  PUMP_SPEED_ML_PER_SEC = int(1000/60) 
+        
+        #sort by id_number of drinks
+        self.active_drink_objects.sort(key=lambda x: x.id_number)
+        
+        recipe_menu=[]
+        inventory_names_list = self.getInventoryItemNames()
+        print(inventory_names_list)
+        oz= 0
+        for recipe in self.active_drink_objects:
+            recipe_packet=[]
+            b1_r1=[0,0,0,0,0,0,0,0] #board 1, register 1
+            b1_r2=[0,0,0,0,0,0,0,0]
+            b2_r1=[0,0,0,0,0,0,0,0]
+            b2_r2=[0,0,0,0,0,0,0,0]
             
-            pump_times = "51,52,53,54,55,56,57,58"
-            with open(self.main_app.DRINK_MENU_FILE_PATH,"w") as drink_menu:
-                for i in range(4):
-                    drink_menu_item = "{},{},{}\n".format(drink.id_number,pump_times,i)
-                    drink_menu.write(drink_menu_item)
+            count = 0 #index for ounces values for each ingredient
+            for ingredient in recipe.ingredients:
+                
+                inventory_id = inventory_names_list.index(ingredient.replace("_"," ").title())+1
+                print("Ingredient {} in {} has id {}.".format(ingredient,recipe.name,inventory_id))
+                #inventory ids start at 1
+                
+                if inventory_id <=8:
+                    print('ounces: {}'.format(recipe.ounces[count]))
+                    oz = float(recipe.ounces[count])
+                    pump_time = int(oz*OZ_TO_ML_CONV / (PUMP_SPEED_ML_PER_SEC *MAX_TIME/BIT_RES) )
+                    print("Pump time is {} /255".format(pump_time))
+                    b1_r1[inventory_id-1] = pump_time
+                elif inventory_id <=16:
+                    inventory_id = inventory_id-8
+                    print('ounces: {}'.format(recipe.ounces[count]))
+                    oz = float(recipe.ounces[count])
+                    pump_time = int(oz*OZ_TO_ML_CONV / (PUMP_SPEED_ML_PER_SEC *MAX_TIME/BIT_RES) )
+                    print("Pump time is {} /255".format(pump_time))
+                    b1_r2[inventory_id-1] = pump_time
+                elif inventory_id <=24:
+                    inventory_id = inventory_id-16
+                    oz = float(recipe.ounces[count])
+                    pump_time = int(oz*OZ_TO_ML_CONV / (PUMP_SPEED_ML_PER_SEC *MAX_TIME/BIT_RES) )
+                    b2_r1[inventory_id-1] = pump_time
+                elif inventory_id <=32:
+                    inventory_id = inventory_id-16
+                    oz =float(recipe.ounces[count])
+                    pump_time = int(oz*OZ_TO_ML_CONV / (PUMP_SPEED_ML_PER_SEC *MAX_TIME/BIT_RES) )
+                    b2_r2[inventory_id-1] = pump_time
+                
+                
+                count +=1
+            
+            recipe_packet.extend([b1_r1,b1_r2,b2_r1,b2_r2])
+            recipe_menu.append(recipe_packet)
+        
+        #populate the rest of the recipe menu
+        empty_reg=[0,0,0,0,0,0,0,0] #board 1, register 1
+        for i in range(24-len(self.active_drink_objects)):
+            empty_recipe=[]
+            for i in range(4):
+                empty_recipe.append(empty_reg)
+            recipe_menu.append(empty_recipe)
+        
+        
+        data = []
+        time1 = 0
+        time2 = 0
+        time3 = 0
+        time4 = 0
+        time5 = 0
+        time6 = 0
+        time7 = 0
+        time8 = 0
+        
+        with open(self.DRINK_MENU_FILE_PATH,"w+") as drink_menu:
+            for recipe_num in range(24):
+                for reg_num in range(4):
+                    if recipe_num >= len(recipe_menu):
+                        time1 = 0
+                        time2 = 0
+                        time3 = 0
+                        time4 = 0
+                        time5 = 0
+                        time6 = 0
+                        time7 = 0
+                        time8 = 0
+                    else:
+                        time1 = recipe_menu[recipe_num][reg_num][0]
+                        time2 = recipe_menu[recipe_num][reg_num][1]
+                        time3 = recipe_menu[recipe_num][reg_num][2]
+                        time4 = recipe_menu[recipe_num][reg_num][3]
+                        time5 = recipe_menu[recipe_num][reg_num][4]
+                        time6 = recipe_menu[recipe_num][reg_num][5]
+                        time7 = recipe_menu[recipe_num][reg_num][6]
+                        time8 = recipe_menu[recipe_num][reg_num][7]
+
+                    
+                    data_out = [recipe_num,time1,time2,time3,time4,time5,time6,time7,time8,reg_num]
+                    data_out_s = [str(x) for x in data_out]
+                    data.append(",".join(data_out_s)+"\n")
+
+
+            print(data)
+            drink_menu.writelines(data)
 
 
 if __name__ == "__main__":

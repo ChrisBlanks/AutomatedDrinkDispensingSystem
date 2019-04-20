@@ -100,11 +100,11 @@ class EmbeddedBoard(PeripheralDevice):
 
 			with SMBusWrapper(1) as bus:
 				for j in range(4):
-					valve_num = j
+					valve_array_num = j #there are 4 valve arrays; 2 boards with 2 registers dedicated to valves
 					print("Valve #{}".format(str(j)))
 					
 					if self.main_app is None:
-						DATA= [DRINK_ID, 51+i,52+i,53+i,54+i ,55+i,56+i,57+i,58+i, valve_num]
+						DATA= [DRINK_ID, 51+i,52+i,53+i,54+i ,55+i,56+i,57+i,58+i, valve_array_num]
 						#each element after DRINK_ID represents a pump time for each valve connected to the embedded board
 					else:
 						DATA = (data_buffer[buffer_count]).split(",")

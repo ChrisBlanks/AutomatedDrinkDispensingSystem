@@ -1,6 +1,6 @@
 id_number 7
 name tequila
-ingredients tequila, gin 
+ingredients tequila gin 
 picture_location /home/pi/projects/AutomatedDrinkDispensingSystem/AutomatedDrinkDispensingSystem/resources/drink_profiles/tequila/tequila.jpg
 isUrl False
 isActive 1

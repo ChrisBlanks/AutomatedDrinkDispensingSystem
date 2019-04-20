@@ -1,5 +1,5 @@
 Inventory, Current QTY(ml),Original QTY(ml)
-Gin,500,1000
+Gin,500.0,1000.0
 Rum,500,1000
 Tequila,500,1000
 Triple Sec,500,1000
@@ -9,4 +9,6 @@ Simple Syrup,500,1000
 Lemon Juice,500,1000
 Lime Juice,500,1000
 Orange Juice,500,1000
+Cranberry Juice,500,1000
 Orange Liquer, 300, 1000
+Vodka, 400, 1000

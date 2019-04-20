@@ -252,10 +252,11 @@ class InventoryManager:
 			else: #update file in all other cases
 				self.current_item.replaceItem(rtrv_name.title(),float(rtrv_cur_qty),float(rtrv_org_qty))
 
-			#update inventory items			
-			self.main_app.inventory_items = self.main_app.collectInventoryInfo()
-			self.updateListbox()
-			self.top.destroy() #close editor
+		#update inventory items			
+		self.main_app.inventory_items = self.main_app.collectInventoryInfo()
+		self.updateListbox()
+		self.main_app.updateDrinkMenu()
+		self.top.destroy() #close editor
 		
 
 	def updateListbox(self):
