@@ -246,10 +246,12 @@ class EmployeeWindow(AppWindow):
         url_window.tk.call("wm","iconphoto",url_window._w,self.main_app.icon_img)
         url_window.title("URL for Phone App")
         
-        url = str(self.main_app.url)
-        if url is None:
-            url="Could not make a ngrok URL"
         
+        if self.main_app.url is None:
+            url="Could not make a ngrok URL"
+        else:
+            url = str(self.main_app.url)
+            
         url_label = tk.Label(url_window,text=url,font=("Georgia","20","bold"),
         fg="red",background=self.main_app.MASTER_BACKGROUND_COLOR)
         

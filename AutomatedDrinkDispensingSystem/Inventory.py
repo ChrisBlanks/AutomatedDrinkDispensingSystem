@@ -74,5 +74,25 @@ class InventoryItem:
 
 		with open(self.inventory_file_path ,"w") as inventory_file:	
 			inventory_file.writelines(lines)
+
+			
+	def addNewItem(self):
+		"""Create a new item to the inventory file"""
+		new_item = "{},{},{}\n".format(self.name,self.cur_quant,self.org_quant)
+		with open(self.inventory_file_path ,"a+") as inventory_file:
+			inventory_file.write(new_item)
+
+			
+	def deleteItem(self):
+		"""Removes the current item from inventory file."""
+		with open(self.inventory_file_path ,"r+") as inventory_file:
+			lines = inventory_file.readlines()
+		
+		del lines[self.valve_number] #removes that line from the file
+
+		with open(self.inventory_file_path ,"w") as inventory_file:	
+			inventory_file.writelines(lines)
+		
+		
 			
 			
