@@ -1,0 +1,3 @@
+2019-04-22 09:37:52.220155 : Running main application
+2019-04-22 09:37:53.990407 : Cleaned Config file.
+2019-04-22 09:38:48.049350 : admin logged in

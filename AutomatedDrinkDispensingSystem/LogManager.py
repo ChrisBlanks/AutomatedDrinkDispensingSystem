@@ -152,10 +152,11 @@ class LogManager():
     def setupRightPane(self):
         """Creates the widgets necessary for the right pane. """
         self.text_id = None
-        self.frame = tk.Frame(self.master)
+        self.frame = tk.Frame(self.master,background=self.main_app.MASTER_BACKGROUND_COLOR)
         self.master.add(self.frame)
 
-        self.canvas = tk.Canvas(self.frame,width=300,height=300,scrollregion=(0,0,10000,10000))
+        self.canvas = tk.Canvas(self.frame,width=300,height=300,scrollregion=(0,0,10000,10000),
+                                background=self.main_app.MASTER_BACKGROUND_COLOR)
         
         self.scroll = tk.Scrollbar(self.frame,width=25,orient= tk.VERTICAL)
         self.scroll.pack(side=tk.RIGHT,fill=tk.Y)

@@ -248,7 +248,8 @@ class AppWindow():
             
             self.wait_screen_img_reference = tk_photo #keeping a reference allows photo to display
             
-            self.img_item = ttk.Label(self.wait_frame,image=tk_photo,anchor=tk.CENTER)
+            self.img_item = tk.Label(self.wait_frame,image=tk_photo,anchor=tk.CENTER,
+                                    background=self.main_app_instance.MASTER_BACKGROUND_COLOR)
             self.img_item.pack(fill=tk.X,side=tk.BOTTOM)
 
         self.wait_frame.pack(fill=tk.X)

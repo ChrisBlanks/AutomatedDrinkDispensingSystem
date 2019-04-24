@@ -144,7 +144,8 @@ class EmployeeWindow(AppWindow):
         self.top.title("Drink Profile Manager")
         self.top.geometry(self.main_app.geometry_string)
         
-        self.profile_manager_win = tk.PanedWindow(self.top,orient= tk.HORIZONTAL)
+        self.profile_manager_win = tk.PanedWindow(self.top,orient= tk.HORIZONTAL,
+                                                background=self.main_app.MASTER_BACKGROUND_COLOR)
         self.profile_manager_win.pack(fill=tk.BOTH,expand=1)
         self.drink_profile_manager = DrinkProfileManager(self.profile_manager_win
                                                          ,self.main_app,self.isAdminMode)
@@ -157,7 +158,8 @@ class EmployeeWindow(AppWindow):
         self.log_top.title("Log Manager")
         self.log_top.geometry(self.main_app.geometry_string)
 
-        log_manager_win = tk.PanedWindow(self.log_top,orient=tk.HORIZONTAL)
+        log_manager_win = tk.PanedWindow(self.log_top,orient=tk.HORIZONTAL,
+                                        background=self.main_app.MASTER_BACKGROUND_COLOR)
         log_manager_win.pack(fill=tk.BOTH,expand=1)
         
         self.log_manager = LogManager(log_manager_win,self.main_app)

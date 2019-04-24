@@ -73,7 +73,7 @@ class DrinkProfileManager:
         self.master.add(self.drinks)
         self.drink_selected = None
         
-        self.canvas = tk.Canvas(self.master)
+        self.canvas = tk.Canvas(self.master,background=self.main_app.MASTER_BACKGROUND_COLOR)
         
         drink_name = tk.Label(self.canvas,text="Name: ",font=self.font1)
         drink_name.grid(row=0,column=0)
@@ -172,7 +172,7 @@ class DrinkProfileManager:
             title = "Make A New Drink"
         else:
             title = drink.name
-        self.top = tk.Toplevel()
+        self.top = tk.Toplevel(background=self.main_app.MASTER_BACKGROUND_COLOR)
         self.top.tk.call("wm","iconphoto",self.top._w,self.main_app.icon_img) 
         self.top.title("Drink editor: " + title)
         self.top.geometry("{0}x{1}+0+0".format(self.master.winfo_screenwidth()
@@ -238,7 +238,7 @@ class DrinkProfileManager:
                     ordered_ounces.append(" ")
             
             #ingredients setions
-            ingredient_canvas = tk.Canvas(self.top)
+            ingredient_canvas = tk.Canvas(self.top,background=self.main_app.MASTER_BACKGROUND_COLOR)
             
             ingredients_section1 = tk.Label(ingredient_canvas,text="Ingredient 1:")
             ingredients_section1.grid(row=0,column=0)
@@ -254,7 +254,7 @@ class DrinkProfileManager:
             ounce_label1 = tk.Label(ingredient_canvas,text="Ounce(s)")
             ounce_label1.grid(row=0,column=3)
             
-            ingredients_section2 = tk.Label(ingredient_canvas,text="Ingredient 1:")
+            ingredients_section2 = tk.Label(ingredient_canvas,text="Ingredient 2:")
             ingredients_section2.grid(row=1,column=0)
             
             self.ingredient_options2 = ttk.Combobox(ingredient_canvas,values=self.inventory_names)
@@ -268,7 +268,7 @@ class DrinkProfileManager:
             ounce_label2 = tk.Label(ingredient_canvas,text="Ounce(s)")
             ounce_label2.grid(row=1,column=3)
             
-            ingredients_section3 = tk.Label(ingredient_canvas,text="Ingredient 1:")
+            ingredients_section3 = tk.Label(ingredient_canvas,text="Ingredient 3:")
             ingredients_section3.grid(row=2,column=0)
             
             self.ingredient_options3 = ttk.Combobox(ingredient_canvas,values=self.inventory_names)
@@ -282,7 +282,7 @@ class DrinkProfileManager:
             ounce_label3 = tk.Label(ingredient_canvas,text="Ounce(s)")
             ounce_label3.grid(row=2,column=3)        
             
-            ingredients_section4 = tk.Label(ingredient_canvas,text="Ingredient 1:")
+            ingredients_section4 = tk.Label(ingredient_canvas,text="Ingredient 4:")
             ingredients_section4.grid(row=3,column=0)
             
             self.ingredient_options4 = ttk.Combobox(ingredient_canvas,values=self.inventory_names)
@@ -298,7 +298,7 @@ class DrinkProfileManager:
             ingredient_canvas.grid(column=1,sticky="s")
             
         else:
-            ingredient_canvas = tk.Canvas(self.top)
+            ingredient_canvas = tk.Canvas(self.top,background=self.main_app.MASTER_BACKGROUND_COLOR)
             
             ingredients_section1 = tk.Label(ingredient_canvas,text="Ingredient 1:")
             ingredients_section1.grid(row=0,column=0)
@@ -369,7 +369,8 @@ class DrinkProfileManager:
         entries = (self.name_entry,self.id_entry,self.pic_loc_entry,
                    self.price_entry,self.active_entry)
         
-        keyboard_canvas = tk.Canvas(self.top,width=350,height=350)
+        keyboard_canvas = tk.Canvas(self.top,width=350,height=350,
+                                    background=self.main_app.MASTER_BACKGROUND_COLOR)
         embed_keyboard = EmbeddedKeyboard(keyboard_canvas,entries)
         keyboard_canvas.grid(column=1,sticky="s")
         

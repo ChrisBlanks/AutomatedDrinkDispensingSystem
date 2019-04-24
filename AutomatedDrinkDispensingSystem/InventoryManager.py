@@ -124,7 +124,7 @@ class InventoryManager:
 	
 	def setupRightPane(self):
 		"""Initializes elements for right pane."""
-		self.frame = tk.Frame(self.top_level)
+		self.frame = tk.Frame(self.top_level,background=self.main_app.MASTER_BACKGROUND_COLOR)
 		self.top_level.add(self.frame) #add frame to right pane
 
 		#make buttons & labels here
@@ -164,7 +164,7 @@ class InventoryManager:
 	def launchEditor(self):
 		"""Launches the editor for changing inventory information."""
 		print("Launching inventory editor.")
-		self.top = tk.Toplevel()
+		self.top = tk.Toplevel(background=self.main_app.MASTER_BACKGROUND_COLOR)
 		self.top.tk.call("wm","iconphoto",self.top._w,self.main_app.icon_img) 
 		self.top.title("Inventory editor: ")
 		#self.top.geometry("{0}x{1}+0+0".format(self.top_level.winfo_screenwidth()
