@@ -1,3 +1,4 @@
 #The source code will generate its own key and user_login (default admin admin login)
 key.txt
 user_login.txt
+*__pycache__*
