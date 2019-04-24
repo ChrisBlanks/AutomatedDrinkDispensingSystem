@@ -1,3 +1,12 @@
+<<<<<<< HEAD
 2019-04-22 09:37:52.220155 : Running main application
 2019-04-22 09:37:53.990407 : Cleaned Config file.
 2019-04-22 09:38:48.049350 : admin logged in
+=======
+2019-04-22 14:12:20.711767 : Running main application
+2019-04-22 14:12:35.788052 : Running main application
+2019-04-22 14:19:22.982104 : Running main application
+2019-04-22 14:19:23.864327 : Cleaned Config file.
+2019-04-22 14:19:36.177591 : admin logged in
+2019-04-22 14:21:25.977446 : admin logged in
+>>>>>>> 2655d804357715e52c074eca13b508e3a0ca922c

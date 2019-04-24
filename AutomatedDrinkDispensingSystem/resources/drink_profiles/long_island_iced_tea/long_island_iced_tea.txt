@@ -1,7 +1,7 @@
 id_number 3
 name long_island_iced_tea
 ingredients tequila gin rum 
-picture_location /home/pi/projects/AutomatedDrinkDispensingSystem/AutomatedDrinkDispensingSystem/resources/drink_profiles/long_island_iced_tea/long_island_iced_tea.jpg
+picture_location /home/pi/PYTHON_PROJECTS/senior_design/AutomatedDrinkDispensingSystem/AutomatedDrinkDispensingSystem/resources/drink_profiles/long_island_iced_tea/long_island_iced_tea.jpg
 isUrl False
 isActive 1
 Price 3.00
