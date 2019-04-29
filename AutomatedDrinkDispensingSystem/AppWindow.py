@@ -149,13 +149,22 @@ class AppWindow():
             quantity_label.grid(row=2,column=1,sticky="n")
             self.drink_profile_elements.append(quantity_label)
             
+            self.drink_num_option = ttk.Combobox(self.frame,values=[1,2,3,4,5])
+            self.drink_num_option.set(1) #initialize to 1
+            self.drink_num_option.grid(row=2,column=2)
+            self.drink_profile_elements.append(self.drink_num_option)
+            order_btn = ttk.Button(self.frame,text="Finish Order",
+                                         command=self.startEmployeeOrderEvent )
+            order_btn.grid(row=2,column=3)
+            self.drink_profile_elements.append(order_btn)
+            """#if buttons are desired
             for i in range(5):
                 quantity_btn = ttk.Button(self.frame,text=str(i+1),
                                          command= lambda x = i+1: self.startEmployeeOrderEvent(x) )
                 quantity_btn.configure(width=2)
                 quantity_btn.grid(row= 2,column=i+2,padx=6,sticky="w")
                 self.drink_profile_elements.append(quantity_btn)
-        
+            """
         back_button = ttk.Button(self.frame, text="Back",command=self.resetDrinkOptions)
         back_button.grid(row=3,column=0)
             
@@ -202,8 +211,11 @@ class AppWindow():
             
 
 			
-    def startEmployeeOrderEvent(self,num_of_drinks):
+    def startEmployeeOrderEvent(self,num_of_drinks=None):
         """Starts the ordering process for the employee mode."""
+        if num_of_drinks is None:
+            num_of_drinks= int(self.drink_num_option.get())
+        
         self.isOrdered = self.displayConfirmationMessageBox("Employee",num_of_drinks)
         if self.isOrdered:
             print("Going to wait screen")
