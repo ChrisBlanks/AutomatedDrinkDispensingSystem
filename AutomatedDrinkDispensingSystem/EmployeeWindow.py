@@ -127,8 +127,9 @@ class EmployeeWindow(AppWindow):
         self.inventory_manager = tk.Toplevel(self.master,background=self.main_app.MASTER_BACKGROUND_COLOR)
         self.inventory_manager.tk.call("wm","iconphoto",self.inventory_manager._w,self.main_app.icon_img) 
         self.inventory_manager.title("Inventory Manager")
-        self.inventory_manager.geometry(self.main_app.geometry_string)
-        
+        #self.inventory_manager.geometry(self.main_app.geometry_string)
+        # args for geometry(): width,height,x-offset,y-offset
+        self.inventory_manager.geometry("{}x{}+{}+{}".format(400,300,0,0))
         self.inventory_manager_win = tk.PanedWindow(self.inventory_manager,
                                                 orient= tk.HORIZONTAL)
         self.inventory_manager_win.pack(fill=tk.BOTH,expand=1)

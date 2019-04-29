@@ -29,6 +29,8 @@ class InventoryManager:
 		self.current_item = None
 		self.replace_but = None
 		
+		self.hasOldItems = False
+		
 		self.collectInventoryItemsInfo()
 		self.configureWindow()
 
@@ -64,8 +66,12 @@ class InventoryManager:
 
 	def setupEachPane(self):
 		"""Sets up each individual pane of the toplevel window."""
-		self.setupLeftPane()
 		self.setupRightPane()
+		self.setupLeftPane()
+		
+		self.top_level.add(self.inventory_options) #puts listbox into left pane
+		self.top_level.add(self.frame) #add frame to right pane
+		
 
 
 	def populateListbox(self):
@@ -82,7 +88,7 @@ class InventoryManager:
 		self.inventory_options = tk.Listbox(self.top_level,selectmode=tk.SINGLE)
 
 		self.inventory_options.bind('<<ListboxSelect>>',self.listboxCallback)
-		self.top_level.add(self.inventory_options) #puts listbox into left pane
+		
 		self.populateListbox() #add names to listbox
 
 
@@ -117,6 +123,9 @@ class InventoryManager:
 		if self.replace_but is not None:
 			self.replace_but.grid_forget() #get rid of last button
 		
+		if self.hasOldItems == True:
+			self.canvas.delete(tk.ALL) #get rid of past drawings
+		
 		self.populateRightPane()
 
 
@@ -124,23 +133,31 @@ class InventoryManager:
 	
 	def setupRightPane(self):
 		"""Initializes elements for right pane."""
-		self.frame = tk.Frame(self.top_level,background=self.main_app.MASTER_BACKGROUND_COLOR)
-		self.top_level.add(self.frame) #add frame to right pane
+		self.frame = tk.Frame(self.top_level,background="white")
 
 		#make buttons & labels here
-		self.name_label = tk.Label(self.frame,text=self.NAME_LABEL_STR.format(""))
+		self.name_label = tk.Label(self.frame,bg="white",
+									text=self.NAME_LABEL_STR.format(""))
 		self.name_label.grid(row=0)
 		
-		self.valve_num_label = tk.Label(self.frame,text=self.VALVE_NUM_LABEL_STR.format(""))
+		self.valve_num_label = tk.Label(self.frame,bg="white",
+								text=self.VALVE_NUM_LABEL_STR.format(""))
 		self.valve_num_label.grid(row=1)
 		
-		self.original_qty_label = tk.Label(self.frame,text=self.ORIG_QTY_LABEL_STR.format(""))
+		self.original_qty_label = tk.Label(self.frame,bg="white",
+								text=self.ORIG_QTY_LABEL_STR.format(""))
 		self.original_qty_label.grid(row=2)
 
-		self.current_qty = tk.Label(self.frame,text=self.CUR_QTY_LABEL_STR.format(""))
+		self.current_qty = tk.Label(self.frame,bg="white",
+									text=self.CUR_QTY_LABEL_STR.format(""))
 		self.current_qty.grid(row=3)
 		
 		self.replace_but = ttk.Button(self.frame,text="Edit",command= self.launchEditor)
+		
+		self.canvas = tk.Canvas(self.frame,height=150,width=150,
+								background="white")
+
+
 
 
 	def populateRightPane(self):
@@ -148,6 +165,7 @@ class InventoryManager:
 		if self.add_new_flag:
 			self.launchEditor() #Go straight to editor
 		else:	
+			self.past_canvas_items = []
 			self.name_label.configure(text=self.NAME_LABEL_STR.format(self.current_item.name))
 			self.valve_num_label.configure(text=self.VALVE_NUM_LABEL_STR.format(self.current_item.valve_number))
 			
@@ -157,10 +175,54 @@ class InventoryManager:
 			self.current_qty.configure(
 			text=self.CUR_QTY_LABEL_STR.format(self.current_item.cur_quant))
 			
+			self.canvas.grid(row=4)
+			
 			#place button when an item is selected
-			self.replace_but.grid(row=4)
+			self.replace_but.grid(row=5)
+			
+			
+		
+			top_left_x = 30
+			top_left_y = 10
+			bottom_right_x = 100
+			bottom_right_y = 80
+			height_of_box = 120
 
+			box_bot_left_x = top_left_x 
+			box_bot_left_y = top_left_y + height_of_box
+			box_bot_right_x = bottom_right_x
+			box_bot_right_y = box_bot_left_y
+			
+			liquid_height = box_bot_left_y-top_left_y
+			ratio = 1-self.current_item.ratio_left
+			level = int(ratio * liquid_height)
 
+			outline="#05f"
+			fill="#05f"
+			self.canvas.create_rectangle(top_left_x,top_left_y+level,
+						box_bot_right_x,box_bot_right_y,
+						outline=outline,fill=fill)
+			
+			# arg list for create_line: X1,Y1,X2,X3,option= ...
+			self.canvas.create_line(top_left_x,top_left_y,
+									bottom_right_x,top_left_y) #top line
+			self.canvas.create_line(box_bot_left_x,box_bot_left_y,
+								box_bot_right_x,box_bot_right_y) #bottom line               
+			
+			self.canvas.create_line(top_left_x,top_left_y,
+								top_left_x,box_bot_left_y) # left side of box
+			self.canvas.create_line(bottom_right_x,top_left_y,box_bot_right_x,box_bot_right_y)
+			
+			#calculate text position in drawing
+			mid_offset = 0.5 * (bottom_right_x-top_left_x)
+			text_center_x = top_left_x + mid_offset
+			text_center_y = top_left_y+level
+			self.canvas.create_text(text_center_x,text_center_y,
+								text="{}% left".format(self.current_item.ratio_left*100))
+
+			self.hasOldItems = True
+
+	
 	def launchEditor(self):
 		"""Launches the editor for changing inventory information."""
 		print("Launching inventory editor.")
