@@ -215,8 +215,11 @@ class InventoryManager:
 			
 			#calculate text position in drawing
 			mid_offset = 0.5 * (bottom_right_x-top_left_x)
+			above_liquid_offset = 10
+			if float(self.current_item.ratio_left) > 0.85:
+				above_liquid_offset = 0 # prevent ratio % from going out of view of canvas
 			text_center_x = top_left_x + mid_offset
-			text_center_y = top_left_y+level
+			text_center_y = top_left_y+level - above_liquid_offset
 			self.canvas.create_text(text_center_x,text_center_y,
 								text="{}% left".format(self.current_item.ratio_left*100))
 
