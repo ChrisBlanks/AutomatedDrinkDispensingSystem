@@ -151,7 +151,7 @@ class AppWindow():
             
             self.drink_num_option = ttk.Combobox(self.frame,values=[1,2,3,4,5])
             self.drink_num_option.set(1) #initialize to 1
-            self.drink_num_option.grid(row=2,column=2)
+            self.drink_num_option.grid(row=2,column=2,padx=20)
             self.drink_profile_elements.append(self.drink_num_option)
             order_btn = ttk.Button(self.frame,text="Finish Order",
                                          command=self.startEmployeeOrderEvent )
@@ -167,7 +167,6 @@ class AppWindow():
             """
         back_button = ttk.Button(self.frame, text="Back",command=self.resetDrinkOptions)
         back_button.grid(row=3,column=0)
-            
         self.drink_profile_elements.extend((img_item,name_of_drink,ingredient_text,back_button))
          
 
