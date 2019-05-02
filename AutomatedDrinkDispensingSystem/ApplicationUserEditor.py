@@ -76,14 +76,14 @@ class ApplicationUserEditor:
         bg=self.background_color)
         
         username_label.grid(row=0,column = 0)
-        self.user_name_entry = tk.Entry(self.frame,width=138)
+        self.user_name_entry = tk.Entry(self.frame,width=128)
         self.user_name_entry.grid(row=0,column=1)
         
         pass_label = tk.Label(self.frame,text="Password",font=self.font,
         bg=self.background_color)
         pass_label.grid(row=1,column = 0)
         
-        self.pass_entry = tk.Entry(self.frame,width=138)
+        self.pass_entry = tk.Entry(self.frame,width=128)
         self.pass_entry.grid(row=1,column=1)
         
         if button_type == "Delete":
@@ -95,10 +95,13 @@ class ApplicationUserEditor:
 
         entries = [self.user_name_entry,self.pass_entry]
         
-        keyboard_canvas = tk.Canvas(self.frame,width=350,height=350,bg=self.background_color)
+        keyboard_canvas = tk.Canvas(self.frame,width=100,height=350,bg=self.background_color)
         embed_keyboard = EmbeddedKeyboard(keyboard_canvas,entries)
         keyboard_canvas.grid(column=1,sticky="s")
         self.frame.grid()
+        self.done = tk.Button(self.frame,text="Done",bg="orange",
+                              command=lambda x="add": self.deployDoneMessageBox(x))
+        self.done.grid(column=0)
         
 
 
@@ -110,15 +113,16 @@ class ApplicationUserEditor:
          
     
     def setupAddItems(self):
-        self.done = tk.Button(self.frame,text="Done",bg="orange",
-                              command=lambda x="add": self.deployDoneMessageBox(x))
+        #self.done = tk.Button(self.frame,text="Done",bg="orange",
+        #                      command=lambda x="add": self.deployDoneMessageBox(x))
 
         self.checkbut_state = tk.IntVar()
         self.admin_check = tk.Checkbutton(self.frame,text="Admin user?",
                                         variable=self.checkbut_state,bg=self.background_color)
-        
-        self.admin_check.grid(row=0,column=2)
-        self.done.grid(row=1,column=2,sticky="nsew",rowspan=2)
+        self.admin_check.grid(column=0)
+        #self.done.grid(column=0)
+        #self.admin_check.grid(row=0,column=2)
+        #self.done.grid(row=1,column=2,sticky="nsew",rowspan=2)
 
 
     def deployDoneMessageBox(self,button_type):

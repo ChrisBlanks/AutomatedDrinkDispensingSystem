@@ -73,7 +73,7 @@ class AppWindow():
             self.drink_button = ttk.Button(self.canvas_frame,image=drink_photo
                                           ,command=lambda drink_op= self.main_app.active_drink_objects[drink_num]: self.setupDrinkEvent(drink_op))
             self.drink_button.img_ref = drink_photo
-            self.drink_button.grid(row =row_position,column=column_position, padx = 25
+            self.drink_button.grid(row =row_position,column=column_position, padx = 15
                                    ,pady = 15)
 
             drink.name =(drink.name).replace("_"," ")
@@ -203,10 +203,12 @@ class AppWindow():
 
                 else:
                     messagebox.showinfo("Payment","Payment was not received, so process was cancelled.",parent=self.master)
-            
+            else: #no bill acceptor connected
+                self.setupWaitScreen(1)
+                return
             self.isOrdered = False #reset value
             self.clearDrinkProfile()
-            self.setupWaitScreen()
+            self.setupWaitScreen(1)
             
 
 			
@@ -298,12 +300,14 @@ class AppWindow():
             self.main_app.master.after(1000,callback)
         
         else:
-           dummy = input("Please, enter a value before continuing.\n>>") 
-           self.setupDeliveryScreen() #go to final screen of drink making process
-           if hasattr(self.main_app_instance, 'camera'):
-               self.main_app_instance.camera.onExit() #turn off camera if used
-               while(self.main_app_instance.camera.state == "enabled"):
-                   pass #wait until camera is off before going to next screen
+           def goToWait():
+               self.setupDeliveryScreen() #go to final screen of drink making process
+               if hasattr(self.main_app_instance, 'camera'):
+                   self.main_app_instance.camera.onExit() #turn off camera if used
+                   while(self.main_app_instance.camera.state == "enabled"):
+                       pass #wait until camera is off before going to next screen
+           self.main_app.master.after(5000,goToWait)
+
         
     
     

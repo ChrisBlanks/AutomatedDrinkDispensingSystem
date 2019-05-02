@@ -199,23 +199,23 @@ class DrinkProfileManager:
             self.id_entry.insert(0,self.drinkToEdit.id_number)
 
         pic_loc_label = tk.Label(self.top,text="Image path:")
-        pic_loc_label.grid(row=4,column=0)
+        pic_loc_label.grid(row=5,column=0)
         self.pic_loc_entry = tk.Entry(self.top,width=138)
-        self.pic_loc_entry.grid(row=4,column=1,sticky="w",pady=4)
+        self.pic_loc_entry.grid(row=5,column=1,sticky="w",pady=4)
         if title != "Make A New Drink":
             self.pic_loc_entry.insert(0,self.drinkToEdit.pic_location)
 
         price_label = tk.Label(self.top,text="Price:")
-        price_label.grid(row=5,column=0)
+        price_label.grid(row=6,column=0)
         self.price_entry = tk.Entry(self.top,width=138)
-        self.price_entry.grid(row=5,column=1,sticky="w",pady=4)
+        self.price_entry.grid(row=6,column=1,sticky="w",pady=4)
         if title != "Make A New Drink":
             self.price_entry.insert(0,self.drinkToEdit.price)
 
         active_label = tk.Label(self.top,text="Active Drink:")
-        active_label.grid(row=6,column=0)
+        active_label.grid(row=7,column=0)
         self.active_entry = tk.Entry(self.top,width=138)
-        self.active_entry.grid(row=6,column=1,sticky="w",pady=4)
+        self.active_entry.grid(row=7,column=1,sticky="w",pady=4)
         
         if title != "Make A New Drink":
             ingredient_buffer = []
@@ -354,26 +354,26 @@ class DrinkProfileManager:
         if title != "Make A New Drink":
             self.active_entry.insert(0,self.drinkToEdit.isActive)
 
-        if title == "Make A New Drink":
-            create_button = tk.Button(self.top,text="Create",bg="green",fg="white",
-                                    command=self.createNewProfile)
-            create_button.grid(row=0,column=0,sticky="new",rowspan=2)
-        else:
-            save_button = tk.Button(self.top,text="Save",bg="green",fg="white",
-                                command=self.saveChanges)
-            save_button.grid(row=0,column=0,sticky="new",rowspan=2)
-
         pic_select_button = tk.Button(self.top,text="Find Pic!", command=self.selectAnImage)
-        pic_select_button.grid(row=0,column=2)
+        pic_select_button.grid(row=4,column=0)
     
         entries = (self.name_entry,self.id_entry,self.pic_loc_entry,
                    self.price_entry,self.active_entry)
         
-        keyboard_canvas = tk.Canvas(self.top,width=350,height=350,
+        keyboard_canvas = tk.Canvas(self.top,width=100,height=350,
                                     background=self.main_app.MASTER_BACKGROUND_COLOR)
         embed_keyboard = EmbeddedKeyboard(keyboard_canvas,entries)
         keyboard_canvas.grid(column=1,sticky="s")
-        
+        if title == "Make A New Drink":
+            create_button = tk.Button(self.top,text="Create",bg="green",fg="white",
+                                    command=self.createNewProfile)
+            create_button.grid(column=0,sticky="new",rowspan=2)
+            #create_button.grid(row=0,column=0,sticky="new",rowspan=2)
+        else:
+            save_button = tk.Button(self.top,text="Save",bg="green",fg="white",
+                                command=self.saveChanges)
+            save_button.grid(column=0,sticky="new",rowspan=2)
+            #save_button.grid(row=0,column=0,sticky="new",rowspan=2)
 
 
     def selectAnImage(self):
