@@ -4,3 +4,7 @@
 2019-05-01 22:40:31.421059 : 1 cuba libre was ordered.
 2019-05-01 22:41:39.196276 : 5 screwdrivers were ordered.
 2019-05-01 22:53:32.473286 : 1 cuba libre was ordered.
+2019-05-01 22:57:00.136861 : 1 daiquiri was ordered.
+2019-05-01 23:35:09.066635 : 1 kamikaze was ordered.
+2019-05-01 23:44:08.644039 : 1 kamikaze was ordered.
+2019-05-01 23:50:53.700294 : 1 kamikaze was ordered.

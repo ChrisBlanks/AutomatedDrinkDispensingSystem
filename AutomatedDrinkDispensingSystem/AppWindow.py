@@ -114,6 +114,8 @@ class AppWindow():
 
     def setupDrinkProfileInGUI(self):
         """Creates a drink profile for the current drink."""
+        self.main_app_instance.style.configure("artsy_text.TButton",font=('Helvetica',20))
+        
         self.drink_profile_elements = []
         
         img = Image.open(self.current_drink.pic_location)
@@ -124,37 +126,45 @@ class AppWindow():
         img_item = ttk.Label(self.frame,image=tk_photo)
         img_item.grid(row=0,column=0)
 
-        name_of_drink = ttk.Label(self.frame,text=(self.current_drink.name).title())
+        name_of_drink = ttk.Label(self.frame,text=(self.current_drink.name).title(),
+                                font=('Helvetica',20,"bold"))
         name_of_drink.grid(row=1,column=0)
         
         print(self.current_drink.ingredients)
         text_builder =" ".join(self.current_drink.ingredients).replace(' ',', ').replace('_',' ')
         print(text_builder)
         
-        ingredient_text = ttk.Label(self.frame,text="Ingredients: " + text_builder)
+        ingredient_text = ttk.Label(self.frame,text="Ingredients: " + text_builder,
+                                    font=('Helvetica',20,"bold"))
         ingredient_text.grid(row=0,column = 1,columnspan=10,sticky="n")
 
 
         if self.main_app.isEmployeeMode == False:
             drink_price_str = "Price: $"+str(self.current_drink.price)
-            drink_price = tk.Label(self.frame,text= drink_price_str)
+            drink_price = ttk.Label(self.frame,text= drink_price_str,
+                                    font=('Helvetica',20,"bold"))
             drink_price.grid(row=1,column=2)
             
-            buy_button = ttk.Button(self.frame,text="Buy?",command=self.startBuyEvent)
+            buy_button = ttk.Button(self.frame,text="Buy?",
+                                    command=self.startBuyEvent,
+                                    style="artsy_text.TButton")
             buy_button.grid(row=2,column=2,sticky="nsew")
 
             self.drink_profile_elements.extend((buy_button,drink_price))
         else:
-            quantity_label = ttk.Label(self.frame,text="Order Quantity:")
+            quantity_label = ttk.Label(self.frame,text="Order Quantity:",
+                                        font=('Helvetica',20,"bold"))
             quantity_label.grid(row=2,column=1,sticky="n")
             self.drink_profile_elements.append(quantity_label)
             
-            self.drink_num_option = ttk.Combobox(self.frame,values=[1,2,3,4,5])
+            self.drink_num_option = ttk.Combobox(self.frame,values=[1,2,3,4,5],
+                                    font=('Helvetica',20))
             self.drink_num_option.set(1) #initialize to 1
             self.drink_num_option.grid(row=2,column=2,padx=20)
             self.drink_profile_elements.append(self.drink_num_option)
             order_btn = ttk.Button(self.frame,text="Finish Order",
-                                         command=self.startEmployeeOrderEvent )
+                                    command=self.startEmployeeOrderEvent,
+                                    style="artsy_text.TButton")
             order_btn.grid(row=2,column=3)
             self.drink_profile_elements.append(order_btn)
             """#if buttons are desired
@@ -165,7 +175,9 @@ class AppWindow():
                 quantity_btn.grid(row= 2,column=i+2,padx=6,sticky="w")
                 self.drink_profile_elements.append(quantity_btn)
             """
-        back_button = ttk.Button(self.frame, text="Back",command=self.resetDrinkOptions)
+        back_button = ttk.Button(self.frame, text="Back",
+                                command=self.resetDrinkOptions,
+                                style="artsy_text.TButton")
         back_button.grid(row=3,column=0)
         self.drink_profile_elements.extend((img_item,name_of_drink,ingredient_text,back_button))
          

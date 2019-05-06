@@ -7,7 +7,7 @@ from tkinter import ttk
 
 #my modules
 import Inventory
-
+from EmbeddedKeyboard import EmbeddedKeyboard
 
 class InventoryManager:
 	MAX_ITEMS = 32 #cannot have more than 32 inventory items
@@ -241,24 +241,27 @@ class InventoryManager:
 
 	def configureEditor(self):
 		"""Adds widgets to the editor top level."""
-		name_label = tk.Label(self.top,text="Item Name:")
+		label_canvas = tk.Canvas(self.top,width=100,height=350,
+							background=self.main_app.MASTER_BACKGROUND_COLOR)
+							
+		name_label = tk.Label(label_canvas,text="Item Name:")
 		name_label.grid(row=0,column=0)
-		self.name_entry = tk.Entry(self.top)
+		self.name_entry = tk.Entry(label_canvas)
 		self.name_entry.grid(row=0,column=1,sticky="w")
 		
-		valve_num_label = tk.Label(self.top,text="Valve Number:")
+		valve_num_label = tk.Label(label_canvas,text="Valve Number:")
 		valve_num_label.grid(row=1,column=0)
-		self.possible_valves = ttk.Combobox(self.top,values=self.valve_numbers)
+		self.possible_valves = ttk.Combobox(label_canvas,values=self.valve_numbers)
 		self.possible_valves.grid(row=1,column=1)
 		
-		original_qty_label = tk.Label(self.top,text="Initial Quantity (Ounces)")
+		original_qty_label = tk.Label(label_canvas,text="Initial Quantity (Ounces)")
 		original_qty_label.grid(row=2,column=0)
-		self.original_qty_entry = tk.Entry(self.top)
+		self.original_qty_entry = tk.Entry(label_canvas)
 		self.original_qty_entry.grid(row=2,column=1,sticky="w")
 		
-		cur_qty_label = tk.Label(self.top,text="Current Quantity (Ounces)")
+		cur_qty_label = tk.Label(label_canvas,text="Current Quantity (Ounces)")
 		cur_qty_label.grid(row=3,column=0)
-		self.cur_qty_entry = tk.Entry(self.top)
+		self.cur_qty_entry = tk.Entry(label_canvas)
 		self.cur_qty_entry.grid(row=3,column=1,sticky="w")
 		
 		if self.add_new_flag:
@@ -266,15 +269,22 @@ class InventoryManager:
 			for num in self.valve_numbers:
 				new_vals.append(num)
 			self.possible_valves.configure(values=new_vals)
-			save_but = ttk.Button(self.top,text="Save",command=self.processGivenData)
-			save_but.grid()
+			save_but = ttk.Button(label_canvas,text="Save",command=self.processGivenData)
+			save_but.grid(row=0,column=2)
 		else:
 			self.name_entry.insert(0,self.current_item.name)
 			self.possible_valves.set(self.current_item.valve_number)
 			self.original_qty_entry.insert(0,self.current_item.org_quant)
 			self.cur_qty_entry.insert(0,self.current_item.cur_quant)
-			change_but = ttk.Button(self.top,text="Replace",command=self.processGivenData)
-			change_but.grid()
+			change_but = ttk.Button(label_canvas,text="Replace",command=self.processGivenData)
+			change_but.grid(row=0,column=2)
+
+		label_canvas.grid(column=1,sticky="s")
+		entries = (self.name_entry,self.original_qty_entry,self.cur_qty_entry)
+		keyboard_canvas = tk.Canvas(self.top,width=100,height=350,
+									background=self.main_app.MASTER_BACKGROUND_COLOR)
+		embed_keyboard = EmbeddedKeyboard(keyboard_canvas,entries)
+		keyboard_canvas.grid(column=1,sticky="s")
 			
 
 	def processGivenData(self):

@@ -25,6 +25,8 @@ icon_path = "{}/resources/gui_images/martini.png".format(main_path)
 #Standard library imports
 import tkinter as tk
 from tkinter import ttk
+from tkinter import font as tkFont
+
 import time
 import datetime
 
@@ -58,6 +60,9 @@ def runMainApplication():
     root = tk.Tk()                                              #initiliazes the tk interpreter
     root.title("Automated Drink Dispensing System")
     
+    combobox_font = tkFont.Font(family="Helvetica",size=20)
+    root.option_add("*TCombobox*Listbox*Font",combobox_font)
+    
     icon_img = tk.Image("photo",file= icon_path)  # found image online; created by RoundIcons
     root.tk.call("wm","iconphoto",root._w,icon_img)             #sets the application icon
     
@@ -73,11 +78,10 @@ def runMainApplication():
             if arg == "embed_en":
                 enableEmbedBoard = True
 
-    
-    main_app = MainApp(root,icon_img,enableDevices,enableEmbedBoard) 
-    
     style = ttk.Style()
     current_theme = style.theme_use('clam')  #sets up the clam style for all ttk widgets
+    
+    main_app = MainApp(root,icon_img,enableDevices,enableEmbedBoard,style) 
 
     root.mainloop()                          #starts loop for displaying content
 
@@ -122,8 +126,10 @@ class MainApp:
 
     
     
-    def __init__(self,master,icon_img,peripheral_device_enable=False,embedded_board_enable=False):
+    def __init__(self,master,icon_img,peri_dev_enable=False,em_bd_enable=False,style=None):
+        
         self.master = master
+        self.style= style # style used for ttk widgets
         
         stored_color = self.retrieveBackgroundColor()
         if stored_color != self.MASTER_BACKGROUND_COLOR:
@@ -149,8 +155,8 @@ class MainApp:
         self.active_drink_objects = self.getDrinks()      #returns a list of drink_objects for later use
         self.inventory_items = self.collectInventoryInfo()
         
-        self.device_enable = peripheral_device_enable
-        self.embedded_board_enable = embedded_board_enable
+        self.device_enable = peri_dev_enable
+        self.embedded_board_enable = em_bd_enable
         
         #check args
         if self.device_enable:
@@ -202,12 +208,17 @@ class MainApp:
 
         self.main_title = ttk.Label(self.master,text="Selection Window")
         self.main_title.pack()
-
-        self.customer_window_btn = ttk.Button(self.master,text="customer window"
-                                             ,command= lambda window="customer": self.relaunchWindow(window))
+        
+        self.style.configure("artsy_text.TButton",font=('Helvetica',20))
+        
+        self.customer_window_btn = ttk.Button(self.master,text="customer window",
+                                            command= lambda window="customer": self.relaunchWindow(window),
+                                            style="artsy_text.TButton")
+                                            
         self.customer_window_btn.pack(fill=tk.BOTH)
-        self.employee_window_btn = ttk.Button(self.master,text="employee window"
-                                             ,command= lambda window="employee": self.relaunchWindow(window))
+        self.employee_window_btn = ttk.Button(self.master,text="employee window",
+                                            command= lambda window="employee": self.relaunchWindow(window),
+                                            style="artsy_text.TButton")
         self.employee_window_btn.pack(fill=tk.BOTH)
 
 

@@ -1,0 +1,4 @@
+2019-05-02 02:22:26.345693 : Running main application
+2019-05-02 02:22:27.841318 : Cleaned Config file.
+2019-05-02 02:22:34.849249 : Running main application
+2019-05-02 02:22:35.378093 : Cleaned Config file.
