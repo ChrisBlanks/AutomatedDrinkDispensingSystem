@@ -2,7 +2,8 @@
 Programmer: Chris Blanks
 Last Edited: 1/09/2019
 Project: Automated Self-Serving System
-Purpose: This script defines the LogManager Class.
+Purpose: This script defines the LogManager Class. The LogManager class
+displays all log information (shared data, system information, and sales).
 """
 import os
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Programmer: Chris Blanks
-Last Edited: 11/3/2018
+Last Edited: May 2019
 Project: Automated Self-Serving System
 Purpose: This script defines the EmployeeWindow Class.
 """

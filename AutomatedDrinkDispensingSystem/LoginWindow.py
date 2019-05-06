@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """
 Programmer: Chris Blanks
-Last Edited: 11/3/2018
+Last Edited: May 2019
 Project: Automated Self-Serving System
-Purpose: This script defines the Drink Class.
+Purpose: This script defines the LoginWindow class, which creates the login
+page for employee users. It does some decryption of user login credentials
+that are stored in the local file system. 
 """
 
 

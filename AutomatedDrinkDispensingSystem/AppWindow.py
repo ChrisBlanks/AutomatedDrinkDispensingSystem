@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Programmer: Chris Blanks
-Last Edited: 1/11/2019
+Last Edited: May 2019
 Project: Automated Self-Serving System
 Purpose: This script defines the AppWindow Class, which
 the Employee and Customer windows inherit from.

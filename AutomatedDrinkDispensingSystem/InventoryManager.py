@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
 
+"""
+Programmer: Chris Blanks
+Last Edited: May 2019
+Project: Automated Self-Serving System
+Purpose: This script defines the Inventory Manager class that allows GUI
+users to view current inventory information and to edit inventory
+information in an editor.
+"""
+
+
 #standard libraries
 import tkinter as tk
 from tkinter import messagebox

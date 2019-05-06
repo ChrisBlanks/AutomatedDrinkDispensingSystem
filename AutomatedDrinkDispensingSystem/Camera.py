@@ -4,7 +4,10 @@
 Programmer: Chris Blanks
 Last Edited: March 2019
 Project: Automated Self-Serving System
-Purpose: This script defines the Camera class.
+Purpose: This script defines the Camera class. It inherits the basic attributes
+of the peripheral device class, so that it can have a standard interface that
+a MainApp instance can use. Also it uses UtilityFuncs functions in order
+to apply filters to frames captured by a PiCamera.
 """
 
 

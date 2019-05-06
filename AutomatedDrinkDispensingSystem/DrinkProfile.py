@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
 Programmer: Chris Blanks
-Last Edited: 1/12/2019
+Last Edited: May 2019
 Project: Automated Self-Serving System
-Purpose: This script defines the Drink Class.
+Purpose: This script defines the Drink Class, which provides basic file IO
+functions for managing drink profiles (a.k.a recipes).
 
 Note:
     - The current code can only handle JPGs, so have to make it capable of more

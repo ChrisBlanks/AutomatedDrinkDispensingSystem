@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
 Programmer: Chris Blanks
-Last Edited: 11/3/2018
+Last Edited: May 2019
 Project: Automated Self-Serving System
-Purpose: This script defines the ApplicationUserEditor class that controls
-user login information.
+Purpose: This script defines the ApplicationUserEditor class that creates an
+editor window for the GUI and can edit user login information.
 """
 from tkinter import messagebox
 import tkinter as tk

@@ -2,9 +2,12 @@
 
 """
 Programmer: Chris Blanks
-Last Edited: April 2019
+Last Edited: May 2019
 Project: Automated Self-Serving System
-Purpose: This script defines the EmbeddedBoard class.
+Purpose: This script defines the EmbeddedBoard class, which inherits basic
+attribute from the PeripheralDevice class. The methods of this class define
+the interactions needed to send recipes and orders to the Fluid Microcontroller
+PCB.
 
 Notes:
   >	If the following error is received, the it is most likely due to a

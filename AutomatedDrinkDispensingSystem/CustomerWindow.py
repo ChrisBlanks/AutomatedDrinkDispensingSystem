@@ -1,8 +1,9 @@
 """
 Programmer: Chris Blanks
-Last Edited: 11/3/2018
+Last Edited: May 2019
 Project: Automated Self-Serving System
-Purpose: This script defines the CustomerWindow Class.
+Purpose: This script defines the CustomerWindow Class, which defines the
+views that a Customer user of the GUI will see.
 """
 
 import tkinter as tk

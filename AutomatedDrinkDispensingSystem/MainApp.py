@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Programmer: Chris Blanks
-Last Edited: 1/13/2019
+Last Edited: May 2019
 Project: Automated Self-Serving System
 Purpose: This script defines the MainApp class that runs the desktop application.
 Note:
